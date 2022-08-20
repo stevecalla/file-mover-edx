@@ -1,8 +1,12 @@
-const { main, employees } = require('./dist/js/inquirer.js');
+const { getTeamDetails, teamMembers } = require('./dist/js/inquirer.js');
 
 async function makeTeam() {
-  await main();
-  // console.log(employees);
+  await getTeamDetails();
+}
+
+async function console() {
+  console.log(teamMembers);
 }
 
 makeTeam();
+// console();
