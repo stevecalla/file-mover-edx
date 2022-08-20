@@ -1,0 +1,31 @@
+const htmlEmployeeTemplate = ({
+  nameFirstLast,
+  employeeId,
+  email,
+  officeNumber,
+  gitHubUserId,
+  internSchool,
+}) => 
+`          <div class="project">
+            <div class="titles">
+              <p>First Last Name</p>
+              <p><i class="fas fa-mug-hot"></i> Title</p>
+            </div>
+            <div>
+              <p>`ID: ${employeeId}`</p>
+              <p>EMAIL: <a href="mailto:${emailAddress}">callasteven@gmail.com</a></p>
+              <p>OFFICE #: ${officeNumber}</p>
+              <p>GITHUB: ${gitHubUserId}</p>
+              <p>SCHOOL: ${internSchool}</p>
+            </div>
+        </div>`
+
+  module.exports = {
+    htmlEmployeeTemplate,
+  };
+
+
+
+<!-- <i class="fas fa-glasses"></i>
+<i class="fas fa-user-graduate"></i>
+<i class="fas fa-mug-hot"></i> -->
