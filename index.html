@@ -31,58 +31,58 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
 
-    <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./dist/css/normalize.css" />
+    <link rel="stylesheet" href="./dist/css/style.css" />
   </head>
   <body>
-    <header class="">
+    <header>
       <h1 class="">MY TEAM</h1>
     </header>
 
     <main>
-      <section class="about-me-container" id="about-me-section">
+      <section class="mission-container" id="about-me-section">
         <aside>
           <h1>Mission</h1>
         </aside>
-        <article class="about-me-description">
+        <article class="mission-description">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit non doloremque quod neque a qui repellat aliquam, nisi, facere nostrum quae beatae consequuntur tenetur aperiam pariatur unde architecto cum dicta? Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati nisi optio rerum et dolorum vero ipsam numquam explicabo deleniti rem maxime in autem quae quisquam, commodi consequatur at
           </p>
         </article>
       </section>
 
-      <section class="work-container" id="portfolio-section">
+      <section class="member-wrapper" id="member-section">
         <aside class="work-aside">
           <h1>Members</h1>
         </aside>
-        <article class="portfolio-container">
-          <div class="project">
-              <div class="titles">
-                <p>First Last Name</p>
-                <p><i class="fas fa-mug-hot"></i> Title</p>
-              </div>
-              <div>
-                <p>ID: XXX</p>
-                <p>EMAIL: XXX</p>
-                <p>EMAIL: <a href="mailto:${emailAddress}">callasteven@gmail.com</a></p>
-                <p>OFFICE #: XXX</p>
-                <p>GITHUB: XXXX</p>
-                <p>SCHOOL: XXXX</p>
-              </div>
+        <article class="employee-container">
+          <!-- ${employeeProfiles} -->
+          <div class="employee">
+            <div class="titles">
+              <p>First Last Name</p>
+              <p><i class="fas fa-mug-hot"></i> Title</p>
+            </div>
+            <div class="employee-details">
+              <p class="list-items">`ID: ${employeeId}`</p>
+              <p class="list-items">EMAIL: <a href="mailto:${emailAddress}">callasteven@gmail.com</a></p>
+              <p class="list-items">OFFICE #: ${officeNumber}</p>
+              <p class="list-items">GITHUB: ${gitHubUserId}</p>
+              <p class="list-items">SCHOOL: ${internSchool}</p>
+            </div>
           </div>
-          <div class="project">
-              <div class="titles">
-                <p>First Last Name</p>
-                <p><i class="fas fa-mug-hot"></i> Title</p>
-              </div>
-              <div>
-                <p>ID: XXX</p>
-                <p>EMAIL: XXX</p>
-                <p>OFFICE #: XXX</p>
-                <p>GITHUB: XXXX</p>
-                <p>SCHOOL: XXXX</p>
-              </div>
-          </div>
+          <div class="employee">
+            <div class="titles">
+              <p>First Last Name</p>
+              <p><i class="fas fa-mug-hot"></i> Title</p>
+            </div>
+            <div class="employee-details">
+              <p class="list-items">`ID: ${employeeId}`</p>
+              <p class="list-items">EMAIL: <a href="mailto:${emailAddress}">callasteven@gmail.com</a></p>
+              <p class="list-items">OFFICE #: ${officeNumber}</p>
+              <p class="list-items">GITHUB: ${gitHubUserId}</p>
+              <p class="list-items">SCHOOL: ${internSchool}</p>
+            </div>
+          </div>  
         </article>
       </section>
     </main>
