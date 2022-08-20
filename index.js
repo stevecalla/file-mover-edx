@@ -1,12 +1,7 @@
-const { getTeamDetails, teamMembers } = require('./dist/js/inquirer.js');
+const { getTeamDetails, teamMembers } = require("./dist/js/inquirer");
 
-async function makeTeam() {
-  await getTeamDetails();
+let main = async () => {
+  const step1 = await getTeamDetails();
 }
 
-async function console() {
-  console.log(teamMembers);
-}
-
-makeTeam();
-// console();
+main();
