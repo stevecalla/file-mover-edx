@@ -4,6 +4,8 @@ const { getBasicInfo, getRole, getEmployeeDetails, confirmContinue } = require("
 const { createTeamMemberList } = require("./teamMembers.js");
 const { employeeProfileTemplate } = require("../../src/employeeProfileTemplate.html");
 const template = require("../../src/homePageTemplate.html");
+const Employee = require('../../lib/employee.js');
+const Intern = require('../../lib/intern.js');
 let teamMembers = [];
 
 getTeamDetails = async (role = 'Manager') => {
@@ -22,7 +24,8 @@ inputMoreMembers = async (addMoreMembers, role) => {
   } else {
     await writeTeamMembers();
     await createMemberHTML();
-  console.log(teamMembers);
+
+  // console.log(teamMembers);
   // process.exit();
   }
 }
@@ -37,6 +40,20 @@ createMemberHTML = async () => {
     if (err) throw err;
     // console.log('It\'s saved!');
   });
+
+  console.log(teamMembers);
+  let testClass = [];
+  for ({ firstName, lastName, employeeId, emailAddress, role } of teamMembers) {
+    const employee = new Employee(firstName, lastName, employeeId, emailAddress);
+    const intern = new Intern(firstName, lastName, employeeId, emailAddress);
+    intern.getRole();
+    console.log(intern);
+    employee.getRole();
+    testClass.push(employee);
+  }
+
+  console.log(testClass);
+
   return membersHTML;
 }
 

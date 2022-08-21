@@ -1,5 +1,5 @@
 createTeamMemberList = (role, member, employeeDetails, teamMembers) => {
-  console.log(member, employeeDetails)
+  // console.log(member, employeeDetails)
   member.role = role; //add role to the object
   member.icon = role === "Manager" ? "fa-mug-hot" : role === "Engineer" ? "fa-glasses" : "fa-user-graduate";
   member.showHide = role === "Manager" ? ["", "hide", "hide"] : role === "Engineer" ? ["hide", "", "hide"] : ["hide", "hide", ""];
