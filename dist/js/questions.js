@@ -1,3 +1,5 @@
+const { capitalizeFirstCharacter, lowerCase } = require("../../lib/util");
+
 const questionsRole = [
   {
     prefix: "\n⠋🟡",
@@ -26,9 +28,7 @@ const questionsBasicInfo = [
      return true;
    },
    filter(answer) {
-     answer = answer.trim();
-     // answer = //to uppercase
-     return answer;
+    return capitalizeFirstCharacter(answer);
    },
  },
  {
@@ -45,16 +45,14 @@ const questionsBasicInfo = [
      return true;
    },
    filter(answer) {
-     answer = answer.trim();
-     // answer = //to uppercase
-     return answer;
+    return capitalizeFirstCharacter(answer);
    },
  },
  {
    prefix: "⠋🟡 3)",
    name: "employeeId",
    type: "number",
-   message: "Please enter the employee ID?",
+   message: `\u001b[0;1mEnter the \x1b[36;1memployee ID\u001b[0;1m?`,
    default: "1",
    // validate(input) {
    //   console.log(input)
@@ -72,7 +70,7 @@ const questionsBasicInfo = [
    prefix: "⠋🟡 4)",
    name: "emailAddress",
    type: "input",
-   message: "Please enter the email address?",
+   message: `\u001b[0;1mEnter the \x1b[36;1memail address\u001b[0;1m?`,
    default: "callasteven@gmail.com",
    validate(answer) {
      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -89,7 +87,7 @@ const questionsManager = [
    prefix: "⠋🟡 5)",
    type: "input",
    name: "officeNumber",
-   message: "Please enter the manager's office number?",
+   message: `\u001b[0;1mEnter the manager's \x1b[36;1moffice number\u001b[0;1m?`,
    default: "10",
    suffix: " 🟡",
    filter(answer) {
@@ -103,11 +101,11 @@ const questionsEngineer = [
    prefix: "⠋🟡 5)",
    type: "input",
    name: "gitHubUserName",
-   message: "Please enter the engineer's GitHub user name?",
+   message: `\u001b[0;1mEnter the engineer's \x1b[36;1mGitHub user name\u001b[0;1m?`,
    default: "stevecalla",
    suffix: " 🟡",
    filter(answer) {
-     return answer.trim();
+    return lowerCase(answer);
    },
  },
 ]
@@ -117,12 +115,11 @@ const questionsIntern = [
    prefix: "⠋🟡 5)",
    type: "input",
    name: "internSchool",
-   message: "Please enter the intern's school?",
+   message: `\u001b[0;1mEnter the intern's\x1b[36;1mschool\u001b[0;1m?`,
    default: "Oxford",
    suffix: " 🟡",
    filter(answer) {
-     //todo capitalize
-     return answer.trim();
+     return capitalizeFirstCharacter(answer);
    },
  },
 ]
@@ -132,7 +129,7 @@ const questionsContinue = [
    prefix: "\n⠋🟡",
    type: "confirm",
    name: "isContinue",
-   message: `Would you like to add more employees?`,
+   message: `Would you like to add more team members?`,
    default: "true",
    suffix: " 🟡",
  },
