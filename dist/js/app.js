@@ -1,7 +1,6 @@
 const fs = require("fs").promises;
-// const inquirer = require("inquirer");
 const { getBasicInfo, getRole, getRoleQuestion, confirmContinue } = require("./runInquirer");
-const { createMembers } = require("./teamMembers.js");
+const { createMembers, createClass } = require("./createMembers.js");
 const { employeeProfileTemplate } = require("../../src/employeeProfileTemplate.html");
 const template = require("../../src/homePageTemplate.html");
 const Employee = require('../../lib/employee.js');
@@ -14,7 +13,7 @@ getTeamDetails = async (role = 'Manager') => {
   await getBasicInfo() //get basic employee info
   .then((answers) => basicInfo = answers)
   .then(() => getRoleQuestion(role))
-  .then((details) => createMembers(role, basicInfo, details, teamMembers)) 
+  .then((details) => createMembers(role, basicInfo, details, teamMembers))
   .then(() => confirmContinue())
   .then((confirm) => inputMoreMembers(confirm, role))
 
@@ -37,10 +36,13 @@ inputMoreMembers = async (confirm, role) => {
 
 createMemberHTML = async () => {
   let membersHTML = "";
-  for (member of teamMembers) {
+  
+  //USED FOR OF STATEMENT BECAUSE IT SEMED TO WORK LIKE AN AWAIT STATEMENT WHILE MAP & FOR EACH DID NOT EXECUTE BEFORE THE NEXT WRITE FILE STATEMENT
+  for (member of teamMembers) { 
+    console.log(member)
     membersHTML += employeeProfileTemplate(member);
   };
-
+  
   fs.writeFile("./index-draft.html", template.homePageTemplate(membersHTML), function (err) {
     if (err) throw err;
     // console.log('It\'s saved!');
@@ -50,7 +52,6 @@ createMemberHTML = async () => {
 
 module.exports = {
   getTeamDetails,
-  // teamMembers,
 }
 
 // WRITE INFO TO JSON FILE
@@ -65,33 +66,20 @@ module.exports = {
   //   );
   // }
 
-  // let role = "Manager"
-// const getTeamDetails = (role = "Manager") => {
-//     new Promise((resolve, reject) => {
-//     // let basicInfo = {};
-//     console.log(`\n\u001b[0;1mPLEASE ENTER THE ${role.toUpperCase()}\'S INFORMATION.`);
-//     // let basicInfo = getBasicInfo();
-//     resolve (getBasicInfo())
-//   });
-// }
+  //ATTEMPT AT BUILING A PROMISE
+    // let role = "Manager"
+    // const getTeamDetails = (role = "Manager") => {
+    //     new Promise((resolve, reject) => {
+    //     // let basicInfo = {};
+    //     console.log(`\n\u001b[0;1mPLEASE ENTER THE ${role.toUpperCase()}\'S INFORMATION.`);
+    //     // let basicInfo = getBasicInfo();
+    //     resolve (getBasicInfo())
+    //   });
+    // }
 
-// getTeamDetails
-//   .then((answers) => basicInfo = answers)
-//   .then(() => getRoleQuestion(role))
-//   .then((details) => createMembers(role, basicInfo, details, teamMembers)) 
-//   .then(() => confirmContinue())
-//   .then((confirm) => inputMoreMembers(confirm, role))
-
-//DRAFT CLASS CODE
-  // console.log(teamMembers);
-  // let testClass = [];
-  // for ({ firstName, lastName, employeeId, emailAddress, role } of teamMembers) {
-  //   const employee = new Employee(firstName, lastName, employeeId, emailAddress);
-  //   const intern = new Intern(firstName, lastName, employeeId, emailAddress);
-  //   intern.getRole();
-  //   console.log(intern);
-  //   employee.getRole();
-  //   testClass.push(employee);
-  // }
-
-  // console.log(testClass);
+    // getTeamDetails
+    //   .then((answers) => basicInfo = answers)
+    //   .then(() => getRoleQuestion(role))
+    //   .then((details) => createMembers(role, basicInfo, details, teamMembers)) 
+    //   .then(() => confirmContinue())
+    //   .then((confirm) => inputMoreMembers(confirm, role))
