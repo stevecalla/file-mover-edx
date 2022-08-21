@@ -6,6 +6,7 @@ const {
   questionsEngineer,
   questionsIntern,
   questionsContinue,
+  questionsTest,
 } = require("./questions");
 
 getBasicInfo = async () => {
@@ -38,7 +39,7 @@ getInternInfo = async () => {
   return internInfo;
 };
 
-getEmployeeDetails = async (role) => {
+getRoleQuestion = async (role) => {
   let employeeDetails = {};
   switch(role) {
     case ("Engineer"): employeeDetails = await getEngineerInfo(); break;
@@ -59,6 +60,6 @@ module.exports = {
   getManagerInfo,
   getEngineerInfo,
   getInternInfo,
-  getEmployeeDetails,
+  getRoleQuestion,
   confirmContinue,
 };
