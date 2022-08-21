@@ -1,10 +1,9 @@
 const fs = require("fs").promises;
-const inquirer = require("inquirer");
+// const inquirer = require("inquirer");
 const { getBasicInfo, getRole, getEmployeeDetails, confirmContinue } = require("./runInquirer");
 const { createTeamMemberList } = require("./teamMembers.js");
 const { employeeProfileTemplate } = require("../../src/employeeProfileTemplate.html");
 const template = require("../../src/homePageTemplate.html");
-// const { homedir } = require("os");
 let teamMembers = [];
 
 getTeamDetails = async (role = 'Manager') => {
@@ -23,7 +22,7 @@ inputMoreMembers = async (addMoreMembers, role) => {
   } else {
     await writeTeamMembers();
     await createMemberHTML();
-  // console.log(teamMembers);
+  console.log(teamMembers);
   // process.exit();
   }
 }

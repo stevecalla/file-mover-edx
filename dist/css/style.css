@@ -89,8 +89,8 @@ aside h1 {
 }
 
 .employee:nth-child(even) {
-  color: var(--black);
-  background-color: white;
+  /* color: var(--black);
+  background-color: white; */
 }
 
 .employee:hover {
@@ -116,6 +116,10 @@ aside h1 {
 
 .list-items {
   margin: 15px 8px;
+}
+
+.hide {
+  display: none;
 }
 
 /* ---------- MOBILE RESPONSIVE ---------- */
