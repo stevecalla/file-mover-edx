@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage --watch"
   },
   "repository": {
     "type": "git",
@@ -23,3 +23,5 @@
     "jest": "^28.1.3"
   }
 }
+
+
