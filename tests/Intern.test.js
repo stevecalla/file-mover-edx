@@ -1,7 +1,7 @@
 const Intern = require('../lib/intern.js');
 
 describe("Intern", () => {
-    it("should should be an instance of intern class", () => {
+    it("should be an instance of intern class", () => {
 
       expect(new Intern()).toBeInstanceOf(Intern);
     });

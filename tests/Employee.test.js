@@ -1,7 +1,7 @@
 const Employee = require('../lib/employee');
 
 describe("Employee", () => {
-    it("should should be an instance of employee class", () => {
+    it("should be an instance of employee class", () => {
 
       expect(new Employee()).toBeInstanceOf(Employee);
     });

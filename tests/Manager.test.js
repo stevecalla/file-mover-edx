@@ -1,7 +1,7 @@
 const Manager = require('../lib/manager');
 
 describe("Manager", () => {
-    it("should should be an instance of manager class", () => {
+    it("should be an instance of manager class", () => {
 
       expect(new Manager()).toBeInstanceOf(Manager);
     });
