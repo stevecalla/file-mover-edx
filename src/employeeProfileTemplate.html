@@ -1,0 +1,30 @@
+const employeeProfileTemplate = ({
+  firstName,
+  lastName,
+  employeeId,
+  emailAddress,
+  role,
+  officeNumber,
+  gitHubUserName,
+  internSchool,
+}) => 
+`
+        <div class="employee">
+          <div class="titles">
+            <p>${firstName} ${lastName}</p>
+            <p><i class="fas fa-mug-hot"></i> ${role}</p>
+          </div>
+          <div class="employee-details">
+            <p class="list-items">ID: ${employeeId}</p>
+            <p class="list-items">EMAIL:<a href="mailto:${emailAddress}"> ${emailAddress}</a></p>
+            <p class="list-items">OFFICE #: ${officeNumber}</p>
+            <p class="list-items">GITHUB:<a href="https://github.com/${gitHubUserName}" target="_blank" tile="Github"> ${gitHubUserName}</a></p>
+            <p class="list-items">SCHOOL: ${internSchool}</p>
+          </div>
+        </div>`
+
+module.exports = {
+  employeeProfileTemplate,
+};
+
+<!-- <p>GITHUB: https://github.com/${gitHubUserName}</p> -->
