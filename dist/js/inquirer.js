@@ -1,7 +1,10 @@
-const inquirer = require("inquirer");
 const fs = require("fs").promises;
+const inquirer = require("inquirer");
 const { getBasicInfo, getRole, getEmployeeDetails, confirmContinue } = require("./runInquirer");
 const { createTeamMemberList } = require("./teamMembers.js");
+const { employeeProfileTemplate } = require("../../src/employeeProfileTemplate.html");
+const template = require("../../src/homePageTemplate.html");
+// const { homedir } = require("os");
 let teamMembers = [];
 
 getTeamDetails = async (role = 'Manager') => {
@@ -18,10 +21,24 @@ inputMoreMembers = async (addMoreMembers, role) => {
     role = await getRole();
     getTeamDetails(role.role);
   } else {
-    writeTeamMembers();
-    // console.log(teamMembers);
-    // process.exit();
+    await writeTeamMembers();
+    await createMemberHTML();
+  // console.log(teamMembers);
+  // process.exit();
   }
+}
+
+createMemberHTML = async () => {
+  let membersHTML = "";
+  for (member of teamMembers) {
+    membersHTML += employeeProfileTemplate(member);
+  };
+
+  fs.writeFile("./index-draft.html", template.homePageTemplate(membersHTML), function (err) {
+    if (err) throw err;
+    // console.log('It\'s saved!');
+  });
+  return membersHTML;
 }
 
 writeTeamMembers = async () => {

@@ -1,7 +1,8 @@
-const htmlHomePageTemplate = ({
-  employeeProfiles,
-}) => 
-`<!DOCTYPE html>
+const homePageTemplate = (
+  membersHTML,
+) => 
+`
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,7 +12,7 @@ const htmlHomePageTemplate = ({
     <link
       rel="shortcut icon"
       type="image/jpg"
-      href="../dist/images/flavicon-shark.jpeg"
+      href="./dist/images/flavicon-shark.jpeg"
     />
 
     <!-- ADD GOOGLE FONT -->
@@ -34,8 +35,8 @@ const htmlHomePageTemplate = ({
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
     />
 
-    <link rel="stylesheet" href="../dist/css/normalize.css" />
-    <link rel="stylesheet" href="../dist/css/style.css" />
+    <link rel="stylesheet" href="./dist/css/normalize.css" />
+    <link rel="stylesheet" href="./dist/css/style.css" />
   </head>
   <body>
     <header>
@@ -59,41 +60,16 @@ const htmlHomePageTemplate = ({
           <h1>Members</h1>
         </aside>
         <article class="employee-container">
-          <!-- ${employeeProfiles} -->
-          <div class="employee">
-            <div class="titles">
-              <p>First Last Name</p>
-              <p><i class="fas fa-mug-hot"></i> Title</p>
-            </div>
-            <div class="employee-details">
-              <p class="list-items">`ID: ${employeeId}`</p>
-              <p class="list-items">EMAIL: <a href="mailto:${emailAddress}">callasteven@gmail.com</a></p>
-              <p class="list-items">OFFICE #: ${officeNumber}</p>
-              <p class="list-items">GITHUB: ${gitHubUserId}</p>
-              <p class="list-items">SCHOOL: ${internSchool}</p>
-            </div>
-          </div>
-          <div class="employee">
-            <div class="titles">
-              <p>First Last Name</p>
-              <p><i class="fas fa-mug-hot"></i> Title</p>
-            </div>
-            <div class="employee-details">
-              <p class="list-items">`ID: ${employeeId}`</p>
-              <p class="list-items">EMAIL: <a href="mailto:${emailAddress}">callasteven@gmail.com</a></p>
-              <p class="list-items">OFFICE #: ${officeNumber}</p>
-              <p class="list-items">GITHUB: ${gitHubUserId}</p>
-              <p class="list-items">SCHOOL: ${internSchool}</p>
-            </div>
-          </div>  
+          ${membersHTML}
         </article>
       </section>
     </main>
 
-    <script type="text/javascript" src="./assets/js/script.js"></script>
   </body>
-</html>`
-
+</html>
+`
 module.exports = {
-  htmlHomePageTemplate,
+  homePageTemplate,
 };
+
+<!-- <p>GITHUB: https://github.com/${gitHubUserName}</p> -->
