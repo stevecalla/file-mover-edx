@@ -1,8 +1,8 @@
 const employeeProfileTemplate = ({
   firstName,
   lastName,
-  employeeId,
-  emailAddress,
+  id,
+  email,
   role,
   icon,
   showHide,
@@ -17,8 +17,8 @@ const employeeProfileTemplate = ({
             <p><i class="fas ${icon}"></i> ${role}</p>
           </div>
           <div class="employee-details">
-            <p class="list-items">ID: ${employeeId}</p>
-            <p class="list-items">EMAIL: <a href="mailto:${emailAddress}">${emailAddress}</a></p>
+            <p class="list-items">ID: ${id}</p>
+            <p class="list-items">EMAIL: <a href="mailto:${email}">${email}</a></p>
             <p class="list-items ${showHide[0]}">OFFICE #: ${officeNumber}</p>
             <p class="list-items ${showHide[1]}">GITHUB: <a href="https://github.com/${gitHubUserName}" target="_blank" tile="Github">${gitHubUserName}</a></p>
             <p class="list-items ${showHide[2]}">SCHOOL: ${internSchool}</p>

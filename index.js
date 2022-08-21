@@ -1,4 +1,4 @@
-const { getTeamDetails, teamMembers } = require("./dist/js/inquirer");
+const { getTeamDetails, teamMembers } = require("./dist/js/app");
 const Manager = require("./lib/manager.js")
 
 let main = async () => {
