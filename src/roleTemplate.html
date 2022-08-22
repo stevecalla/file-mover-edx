@@ -1,0 +1,11 @@
+const managerTemplate = (member) => `<p class="list-items">OFFICE #: ${member.getOfficeNumber()}</p>`;
+
+const engineerTemplate = (member) => `<p class="list-items">GITHUB: <a href="https://github.com/${member.getGitHubUserName}" target="_blank" tile="Github">${member.getGitHubUserName()}</a></p>`;
+
+const internTemplate = (member) => `<p class="list-items">SCHOOL: ${member.getSchool()}</p>`;
+
+module.exports = {
+  managerTemplate,
+  engineerTemplate,
+  internTemplate
+};

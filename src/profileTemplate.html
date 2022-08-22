@@ -1,0 +1,17 @@
+const profileTemplate = (roleHTML, member) => 
+`
+        <div class="employee">
+          <div class="titles">
+            <p>${member.getName()}</p>
+            <p><i class="fas ${member.getIcon()}"></i> ${member.getRole()}</p>
+          </div>
+          <div class="employee-details">
+            <p class="list-items">ID: ${member.getId()}</p>
+            <p class="list-items">EMAIL: <a href="mailto:${member.getEmail()}">${member.getEmail()}</a></p>
+            ${roleHTML}
+          </div>
+        </div>`
+
+module.exports = {
+  profileTemplate,
+};
