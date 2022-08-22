@@ -33,19 +33,7 @@ inputMoreMembers = async (confirm, role) => {
 module.exports = {
   getTeamDetails
 }
-
-// WRITE INFO TO JSON FILE
-  // writeTeamMembers = async () => {
-  //   await fs.writeFile(
-  //     "./src/teamMembers.json",
-  //     JSON.stringify(teamMembers),
-  //     function (err) {
-  //       if (err) throw err;
-  //       // console.log('It\'s saved!');
-  //     }
-  //   );
-  // }
-
+q
   //ATTEMPT AT BUILING A PROMISE
     // let role = "Manager"
     // const getTeamDetails = (role = "Manager") => {
