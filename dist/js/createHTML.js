@@ -1,9 +1,10 @@
 const fs = require("fs").promises;
-const { managerTemplate, engineerTemplate, internTemplate } = require("../../src/roleTemplate.html");
+const { managerTemplate, engineerTemplate, internTemplate, managerIcon, engineerIcon, internIcon } = require("../../src/roleTemplate.html");
 const { profileTemplate } = require("../../src/profileTemplate.html");
 const { homeTemplate } = require("../../src/homeTemplate.html");
 
 createHTML = async (teamMembers) => {
+  let iconHTML = "";
   let roleHTML = "";
   let membersHTML = "";
   
@@ -11,18 +12,21 @@ createHTML = async (teamMembers) => {
   for (member of teamMembers) {
     switch(member.role) {
       case ("Engineer"):
+        iconHTML = engineerIcon,
         roleHTML = engineerTemplate(member);
-        membersHTML += profileTemplate(roleHTML, member);
+        membersHTML += profileTemplate(roleHTML, iconHTML, member);
         break;
 
       case ("Intern"):
+        iconHTML = internIcon,
         roleHTML = internTemplate(member);
-        membersHTML += profileTemplate(roleHTML, member);
+        membersHTML += profileTemplate(roleHTML, iconHTML, member);
         break;
 
       default:
+        iconHTML = managerIcon,
         roleHTML = managerTemplate(member);
-        membersHTML += profileTemplate(roleHTML, member);
+        membersHTML += profileTemplate(roleHTML, iconHTML, member);
         break;
     }
   }

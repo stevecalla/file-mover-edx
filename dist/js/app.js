@@ -33,7 +33,7 @@ inputMoreMembers = async (confirm, role) => {
 module.exports = {
   getTeamDetails
 }
-q
+
   //ATTEMPT AT BUILING A PROMISE
     // let role = "Manager"
     // const getTeamDetails = (role = "Manager") => {
