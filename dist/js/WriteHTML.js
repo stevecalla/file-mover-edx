@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 class WriteHTML {
-  constructor() { }
+  constructor() {}
 
   read(file) {
     return fs.readFileSync(file, "utf8");
