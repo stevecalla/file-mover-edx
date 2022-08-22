@@ -3,7 +3,7 @@ const { managerTemplate, engineerTemplate, internTemplate, managerIcon, engineer
 const { profileTemplate } = require("../../src/profileTemplate.html");
 const { homeTemplate } = require("../../src/homeTemplate.html");
 
-const WriteHTML = require("./WriteHTML.js");
+const WriteHTML = require("./writeHTML.js");
 
 createHTML = (teamMembers) => {
   let iconHTML = "";
