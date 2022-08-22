@@ -3,12 +3,13 @@ const { managerTemplate, engineerTemplate, internTemplate, managerIcon, engineer
 const { profileTemplate } = require("../../src/profileTemplate.html");
 const { homeTemplate } = require("../../src/homeTemplate.html");
 
-createHTML = async (teamMembers) => {
+const WriteHTML = require("./WriteHTML.js");
+
+createHTML = (teamMembers) => {
   let iconHTML = "";
   let roleHTML = "";
   let membersHTML = "";
   
-  //USED FOR OF STATEMENT BECAUSE IT SEMED TO WORK LIKE AN AWAIT STATEMENT WHILE MAP & FOR EACH DID NOT EXECUTE BEFORE THE NEXT WRITE FILE STATEMENT
   for (member of teamMembers) {
     switch(member.role) {
       case ("Engineer"):
@@ -31,11 +32,17 @@ createHTML = async (teamMembers) => {
     }
   }
   
-  fs.writeFile("./index-draft.html", homeTemplate(membersHTML), function (err) {
-    if (err) throw err;
-    // console.log('It\'s saved!');
-  });
+  writeHTML(membersHTML);
+  
+  // console.log(teamMembers);
   return membersHTML;
+}
+
+writeHTML = (membersHTML) => {
+  const writeHTML = new WriteHTML();
+  writeHTML.write("./index-draft.html", homeTemplate(membersHTML));
+  // const message = writeHTML.read("./index-draft2.html");
+  // console.log(message);
 }
 
 module.exports = {
