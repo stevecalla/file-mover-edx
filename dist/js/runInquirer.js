@@ -6,7 +6,6 @@ const {
   questionsEngineer,
   questionsIntern,
   questionsContinue,
-  questionsTest,
 } = require("./questions");
 
 getBasicInfo = async () => {
