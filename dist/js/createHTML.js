@@ -1,50 +1,54 @@
 const fs = require("fs").promises;
-const { managerTemplate, engineerTemplate, internTemplate, managerIcon, engineerIcon, internIcon } = require("../../src/roleTemplate.html");
+const {
+  managerTemplate,
+  engineerTemplate,
+  internTemplate,
+  managerIcon,
+  engineerIcon,
+  internIcon,
+} = require("../../src/roleTemplate.html");
 const { profileTemplate } = require("../../src/profileTemplate.html");
 const { homeTemplate } = require("../../src/homeTemplate.html");
 
-const WriteHTML = require("./WriteHTML.js");
+const WriteHTML = require("./writeHTML.js");
 
 createHTML = (teamMembers) => {
   let iconHTML = "";
   let roleHTML = "";
   let membersHTML = "";
-  
+
   for (member of teamMembers) {
-    switch(member.role) {
-      case ("Engineer"):
-        iconHTML = engineerIcon,
-        roleHTML = engineerTemplate(member);
+    switch (member.role) {
+      case "Engineer":
+        (iconHTML = engineerIcon), (roleHTML = engineerTemplate(member));
         membersHTML += profileTemplate(roleHTML, iconHTML, member);
         break;
 
-      case ("Intern"):
-        iconHTML = internIcon,
-        roleHTML = internTemplate(member);
+      case "Intern":
+        (iconHTML = internIcon), (roleHTML = internTemplate(member));
         membersHTML += profileTemplate(roleHTML, iconHTML, member);
         break;
 
       default:
-        iconHTML = managerIcon,
-        roleHTML = managerTemplate(member);
+        (iconHTML = managerIcon), (roleHTML = managerTemplate(member));
         membersHTML += profileTemplate(roleHTML, iconHTML, member);
         break;
     }
   }
-  
+
   writeHTML(membersHTML);
-  
+
   // console.log(teamMembers);
   return membersHTML;
-}
+};
 
 writeHTML = (membersHTML) => {
   const writeHTML = new WriteHTML();
   writeHTML.write("./index-draft.html", homeTemplate(membersHTML));
   // const message = writeHTML.read("./index-draft2.html");
   // console.log(message);
-}
+};
 
 module.exports = {
-  createHTML
-}
+  createHTML,
+};

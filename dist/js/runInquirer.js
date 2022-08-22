@@ -40,18 +40,23 @@ getInternInfo = async () => {
 
 getRoleQuestion = async (role) => {
   let employeeDetails = {};
-  switch(role) {
-    case ("Engineer"): employeeDetails = await getEngineerInfo(); break;
-    case ("Intern"): employeeDetails = await getInternInfo(); break;
-    default: employeeDetails = getManagerInfo();
+  switch (role) {
+    case "Engineer":
+      employeeDetails = await getEngineerInfo();
+      break;
+    case "Intern":
+      employeeDetails = await getInternInfo();
+      break;
+    default:
+      employeeDetails = getManagerInfo();
   }
   return employeeDetails;
-}
+};
 
 confirmContinue = async () => {
   const confirm = await inquirer.prompt(questionsContinue);
   return confirm.isContinue;
-}
+};
 
 module.exports = {
   getBasicInfo,
