@@ -1,7 +1,7 @@
-const { capitalizeFirstCharacter, lowerCase } = require('../lib/util.js');
+// const { capitalizeFirstCharacter, lowerCase } = require('../lib/util.js');
 
-describe("Capitalize", () => {
-    it("should capitalize first char and lower case other char of one word string", () => {
+// describe("Capitalize", () => {
+//     it("should capitalize first char and lower case other char of one word string", () => {
     //   let test1 = "joanna";
     //   let test2 = "BESTY";
     //   let test3 = "aMAnda"
@@ -10,7 +10,7 @@ describe("Capitalize", () => {
     //   expect(capitalizeFirstCharacter(test2)).toBe('Besty');
     //   expect(capitalizeFirstCharacter(test3)).toBe('Amanda');
     // });
-  });
+  // });
 
 // describe("Lower Case", () => {
 //   it("should convert one word string to lower case", () => {
@@ -22,4 +22,4 @@ describe("Capitalize", () => {
 //     expect(lowerCase(test2)).toBe('besty');
 //     expect(lowerCase(test3)).toBe('amanda');
 //   });
-});
+// });

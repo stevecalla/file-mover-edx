@@ -1,25 +1,19 @@
-const { capitalizeFirstCharacter, lowerCase } = require('../lib/util.js');
+// const inquirer = require("inquirer");
+// const { questionsRole } = require('../dist/js/runInquirer.js');
 
-describe("Capitalize", () => {
-    it("should capitalize first char and lower case other char of one word string", () => {
-    //   let test1 = "joanna";
-    //   let test2 = "BESTY";
-    //   let test3 = "aMAnda"
+// // jest.mock('inquirer');
 
-    //   expect(capitalizeFirstCharacter(test1)).toBe('Joanna');
-    //   expect(capitalizeFirstCharacter(test2)).toBe('Besty');
-    //   expect(capitalizeFirstCharacter(test3)).toBe('Amanda');
-    // });
-  });
+// describe("Ask Questions", () => {
+//   // it("it should ask \"Please select the employee's role?\"", () => {
+//   //   // const log = new Logger();
 
-// describe("Lower Case", () => {
-//   it("should convert one word string to lower case", () => {
-//     let test1 = "jOanna";
-//     let test2 = "BESTY";
-//     let test3 = "aMAnda"
+//   //   const selectRole = inquirer.prompt(questionsRole);
+//   //   const message = "Please select the employee's role?";
+//   //   const mock = jest.spyOn(console, selectRole);
+//   //   mock.mockImplementation(() => {});
 
-//     expect(lowerCase(test1)).toBe('joanna');
-//     expect(lowerCase(test2)).toBe('besty');
-//     expect(lowerCase(test3)).toBe('amanda');
-//   });
-});
+//   //   expect(mock).resolved.toBeCalledWith(message);
+
+//   //   mock.mockRestore();
+//   // });
+// });
