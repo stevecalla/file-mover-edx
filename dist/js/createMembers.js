@@ -41,5 +41,5 @@ createMembers = (role, member, employeeDetails, teamMembers) => {
 };
 
 module.exports = {
-  createMembers
+  createMembers,
 };

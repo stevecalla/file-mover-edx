@@ -1,9 +1,9 @@
 const fs = require("fs");
 const { createHTML, writeToFile } = require("../dist/js/createHTML");
-const Manager = require("../lib/manager.js");
+const Manager = require("../lib/Manager.js");
 const WriteHTML = require("../dist/js/WriteHTML.js");
 
-jest.mock("fs"); //section add
+jest.mock("fs");
 
 describe("Create HTML", () => {
   it("should create html string containing manager class details", () => {

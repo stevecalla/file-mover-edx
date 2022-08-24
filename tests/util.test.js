@@ -67,4 +67,3 @@ describe("Is Blank", () => {
     expect(isBlank(test3, "first name")).toBe(true);
   });
 });
-

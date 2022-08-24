@@ -1,4 +1,4 @@
-const { getTeamDetails} = require("./dist/js/app");
+const { getTeamDetails } = require("./dist/js/app");
 
 let main = () => {
   getTeamDetails();
