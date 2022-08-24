@@ -23,3 +23,48 @@ describe("Lower Case", () => {
     expect(lowerCase(test3)).toBe("amanda");
   });
 });
+
+describe("Is Number", () => {
+  it("should input a number with no letters", () => {
+    let test1 = "a";
+    let test2 = "a1";
+    let test3 = "aaaaa1";
+    let test4 = "3";
+    let test5 = "4526";
+
+    expect(isNumber(test1)).toBe("Please provide a number (with no letters).");
+    expect(isNumber(test2)).toBe("Please provide a number (with no letters).");
+    expect(isNumber(test3)).toBe("Please provide a number (with no letters).");
+    expect(isNumber(test4)).toBe(true);
+    expect(isNumber(test5)).toBe(true);
+  });
+});
+
+describe("Is Email", () => {
+  it("should provide a valid email in the form of a@a.com", () => {
+    let test1 = "a";
+    let test2 = "a@";
+    let test3 = "a@a";
+    let test4 = "a@a.";
+    let test5 = "a@a.com";
+
+    expect(isEmail(test1)).toBe("Please provide a valid email address!");
+    expect(isEmail(test2)).toBe("Please provide a valid email address!");
+    expect(isEmail(test3)).toBe("Please provide a valid email address!");
+    expect(isEmail(test4)).toBe("Please provide a valid email address!");
+    expect(isEmail(test5)).toBe(true);
+  });
+});
+
+describe("Is Blank", () => {
+  it("should request a name if input is blank", () => {
+    let test1 = " ";
+    let test2 = "      ";
+    let test3 = "      Joanna";
+
+    expect(isBlank(test1, "first name")).toBe("Please, provide a first name.");
+    expect(isBlank(test2, "first name")).toBe("Please, provide a first name.");
+    expect(isBlank(test3, "first name")).toBe(true);
+  });
+});
+
