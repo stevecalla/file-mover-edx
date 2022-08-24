@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 :root {
@@ -46,6 +46,7 @@ main {
 
 .mission-description p {
   margin: 0 20px 0 20px;
+  font-size: 28px;
   font-weight: 500;
 }
 
@@ -86,11 +87,7 @@ aside h1 {
   color: var(--black);
   background: var(--black);
   border: 5px solid var(--black);
-}
-
-.employee:nth-child(even) {
-  /* color: var(--black);
-  background-color: white; */
+  border-radius: 5px;
 }
 
 .employee:hover {
@@ -99,7 +96,7 @@ aside h1 {
 
 .titles {
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   background-color: var(--black);
   color: var(--white);
   font-size: 28px;
@@ -111,11 +108,19 @@ aside h1 {
   height: 200px;
   margin: 7px;
   color: var(--black);
-  background-color: var(--white);
+  background-color: #F6F7F9;
+  border-radius: 5px;
 }
 
 .list-items {
   margin: 15px 8px;
+  display: flex;
+  align-items: center;
+  border: 1px solid gray;
+  height: 40px;
+  padding: 0px 10px;
+  border-radius: 5px;
+  background-color: white;
 }
 
 /* ---------- MOBILE RESPONSIVE ---------- */
@@ -157,11 +162,11 @@ aside h1 {
 @media screen and (max-width: 650px) {
   .employee {
     flex: 0 0 100%;
-    /* object-fit: contain; */
   }
 
-  .mission-description {
-    height: 100px;
+  .mission-description p {
+    height: 50px;
+    font-size: 18px;
     overflow: scroll;
   }
 }
