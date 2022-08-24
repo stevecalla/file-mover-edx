@@ -1,6 +1,6 @@
-const Manager = require("../../lib/manager.js");
-const Engineer = require("../../lib/engineer.js");
-const Intern = require("../../lib/intern.js");
+const Manager = require("../../lib/Manager.js");
+const Engineer = require("../../lib/Engineer.js");
+const Intern = require("../../lib/Intern.js");
 
 createMembers = (role, member, employeeDetails, teamMembers) => {
   switch (role) {
@@ -37,10 +37,9 @@ createMembers = (role, member, employeeDetails, teamMembers) => {
       manager.getRole();
       teamMembers.push(manager); //push employees into an array
   }
-  // console.log(teamMembers);
   return teamMembers;
 };
 
 module.exports = {
-  createMembers,
+  createMembers
 };

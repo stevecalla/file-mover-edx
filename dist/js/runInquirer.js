@@ -8,44 +8,40 @@ const {
   questionsContinue,
 } = require("./questions");
 
-getBasicInfo = async () => {
-  const employeeAnswers = await inquirer.prompt(questionsBasicInfo);
-  // console.log(employeeAnswers);
+getBasicInfo = () => {
+  const employeeAnswers = inquirer.prompt(questionsBasicInfo);
   return employeeAnswers;
 };
 
-getRole = async () => {
-  const selectRole = await inquirer.prompt(questionsRole);
-  // console.log(selectRole);
+getRole = () => {
+  const selectRole = inquirer.prompt(questionsRole);
   return selectRole;
 };
 
-getManagerInfo = async () => {
-  const managerInfo = await inquirer.prompt(questionsManager);
-  // console.log(managerInfo);
+getManagerInfo = () => {
+  const managerInfo = inquirer.prompt(questionsManager);
   return managerInfo;
 };
 
-getEngineerInfo = async () => {
-  const engineerInfo = await inquirer.prompt(questionsEngineer);
-  // console.log(engineerInfo);
+getEngineerInfo = () => {
+  const engineerInfo = inquirer.prompt(questionsEngineer);
+
   return engineerInfo;
 };
 
-getInternInfo = async () => {
-  const internInfo = await inquirer.prompt(questionsIntern);
-  // console.log(internInfo);
+getInternInfo = () => {
+  const internInfo = inquirer.prompt(questionsIntern);
   return internInfo;
 };
 
-getRoleQuestion = async (role) => {
+getRoleQuestion = (role) => {
   let employeeDetails = {};
   switch (role) {
     case "Engineer":
-      employeeDetails = await getEngineerInfo();
+      employeeDetails = getEngineerInfo();
       break;
     case "Intern":
-      employeeDetails = await getInternInfo();
+      employeeDetails = getInternInfo();
       break;
     default:
       employeeDetails = getManagerInfo();
