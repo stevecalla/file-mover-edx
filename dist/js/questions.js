@@ -17,7 +17,7 @@ const questionsBasicInfo = [
     type: "input",
     name: "firstName",
     message: `\u001b[0;1mEnter the \x1b[36;1mfirst\u001b[0;1m name?`,
-    default: "steve",
+    default: "Steve",
     suffix: " 🟡",
     validate(answer) {
       return isBlank(answer, "first name");
@@ -31,7 +31,7 @@ const questionsBasicInfo = [
     type: "input",
     name: "lastName",
     message: `\u001b[0;1mEnter the \x1b[36;1mlast\u001b[0;1m name?`,
-    default: "calla",
+    default: "Calla",
     suffix: " 🟡",
     validate(answer) {
       return isBlank(answer, "last name");
@@ -104,7 +104,7 @@ const questionsIntern = [
     prefix: "⠋🟡 5)",
     type: "input",
     name: "internSchool",
-    message: `\u001b[0;1mEnter the intern's \x1b[36;1mschool\u001b[0;1m?`,
+    message: `\u001b[0;1mEnter the intern's\x1b[36;1mschool.\u001b[0;1m?`,
     default: "Oxford",
     suffix: " 🟡",
     validate(answer) {

@@ -28,5 +28,5 @@ inputMoreMembers = async (confirm, role) => {
 };
 
 module.exports = {
-  getTeamDetails
+  getTeamDetails,
 };

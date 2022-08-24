@@ -1,9 +1,9 @@
 const fs = require("fs");
 const { createHTML, writeToFile } = require("../dist/js/createHTML");
-const Manager = require("../lib/manager.js");
+const Manager = require("../lib/Manager.js");
 const WriteHTML = require("../dist/js/WriteHTML.js");
 
-jest.mock("fs"); //section add
+jest.mock("fs");
 
 describe("Create HTML", () => {
   it("should create html string containing manager class details", () => {
@@ -28,7 +28,7 @@ describe("Create HTML", () => {
           </div>
           <div class="employee-details">
             <p class="list-items">ID: ${member.getId()}</p>
-            <p class="list-items">EMAIL: <a href="mailto:${member.getEmail()}">${member.getEmail()}</a></p>
+            <p class="list-items">EMAIL:&nbsp;<a href="mailto:${member.getEmail()}">${member.getEmail()}</a></p>
             <p class="list-items">OFFICE #: 10</p>
           </div>
         </div>`

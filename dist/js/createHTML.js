@@ -47,5 +47,5 @@ writeHTML = (membersHTML) => {
 };
 
 module.exports = {
-  createHTML
+  createHTML,
 };

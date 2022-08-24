@@ -45,7 +45,7 @@ This app can be enhanced by (a) creating the ability to add multiple teams with 
 
 ## App Preview - Static Screenshot
 
-<img alt="" src="./dist/images/webpage-static-image.jpeg" width="100%" height="425"/>
+<img alt="" src="./dist/images/webpage-static-image.png" width="100%" height="425"/>
 
 
 ## App Preview - Video Preview
@@ -54,7 +54,7 @@ This app can be enhanced by (a) creating the ability to add multiple teams with 
 
 ## Tests
 
-To run Jest tests, run "npm test". Jest is setup to use a "--watcher" and provide "--coverage" statistics.
+To run Jest tests, run "npm test". Jest is setup to use a "--watch" and to provide "--coverage" statistics.
 
 ## Contributing
 
