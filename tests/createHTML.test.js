@@ -40,8 +40,8 @@ describe("Write HTML", () => {
   it("should call fs.writeFile with the passed in 'path' and 'data' arguments", () => {
     const writeHTML = new WriteHTML();
 
-    fs.writeFileSync.mockResolvedValue("");
+    fs.writeFileSync.mockReturnValue("");
 
-    expect(writeHTML.write("./index-draft.html", "")).resolves.toEqual("");
+    expect(writeHTML.write("./index-draft.hmtl", "")).toEqual("");
   });
 });

@@ -1,4 +1,4 @@
-const { capitalizeFirstCharacter, lowerCase } = require("../../lib/util");
+const { capitalizeFirstCharacter, lowerCase, isNumber, isEmail, isBlank } = require("../../lib/util");
 
 const questionsRole = [
   {
@@ -7,8 +7,6 @@ const questionsRole = [
     name: "role",
     message: "Please select the employee's role?",
     choices: ["Engineer", "Intern"],
-    // pageSize: 10,
-    //  default: 2,
     suffix: " 🟡",
   },
 ];
@@ -22,10 +20,7 @@ const questionsBasicInfo = [
     default: "steve",
     suffix: " 🟡",
     validate(answer) {
-      if (!answer) {
-        return "Please, provide a first name.";
-      }
-      return true;
+      return isBlank(answer, "first name");
     },
     filter(answer) {
       return capitalizeFirstCharacter(answer);
@@ -39,10 +34,7 @@ const questionsBasicInfo = [
     default: "calla",
     suffix: " 🟡",
     validate(answer) {
-      if (!answer) {
-        return "Please, provide a last name.";
-      }
-      return true;
+      return isBlank(answer, "last name");
     },
     filter(answer) {
       return capitalizeFirstCharacter(answer);
@@ -51,18 +43,13 @@ const questionsBasicInfo = [
   {
     prefix: "⠋🟡 3)",
     name: "employeeId",
-    type: "number",
+    type: "input",
     message: `\u001b[0;1mEnter the \x1b[36;1memployee ID\u001b[0;1m?`,
     default: "1",
-    // validate(input) {
-    //   console.log(input)
-    //   if (typeof input !== 'number') {
-    //     return "Please provide a number!";
-    //   }
-    //   return true;
-    // },
+    validate(answer) {
+      return isNumber(answer);
+    },
     filter(answer) {
-      // answer = answer.trim();
       return answer;
     },
   },
@@ -73,11 +60,7 @@ const questionsBasicInfo = [
     message: `\u001b[0;1mEnter the \x1b[36;1memail address\u001b[0;1m?`,
     default: "callasteven@gmail.com",
     validate(answer) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(answer)) {
-        return "Please provide a valid email address!";
-      }
-      return true;
+      return isEmail(answer);
     },
   },
 ];
@@ -90,6 +73,9 @@ const questionsManager = [
     message: `\u001b[0;1mEnter the manager's \x1b[36;1moffice number\u001b[0;1m?`,
     default: "10",
     suffix: " 🟡",
+    validate(answer) {
+      return isBlank(answer, "manager's office number");
+    },
     filter(answer) {
       return answer.trim();
     },
@@ -104,6 +90,9 @@ const questionsEngineer = [
     message: `\u001b[0;1mEnter the engineer's \x1b[36;1mGitHub user name\u001b[0;1m?`,
     default: "stevecalla",
     suffix: " 🟡",
+    validate(answer) {
+      return isBlank(answer, "engineer' GitHub user name");
+    },
     filter(answer) {
       return lowerCase(answer);
     },
@@ -118,6 +107,9 @@ const questionsIntern = [
     message: `\u001b[0;1mEnter the intern's\x1b[36;1mschool\u001b[0;1m?`,
     default: "Oxford",
     suffix: " 🟡",
+    validate(answer) {
+      return isBlank(answer, "intern's school");
+    },
     filter(answer) {
       return capitalizeFirstCharacter(answer);
     },
