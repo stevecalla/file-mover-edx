@@ -62,9 +62,9 @@ describe("Is Blank", () => {
     let test2 = "      ";
     let test3 = "      Joanna";
 
-    expect(isBlank(test1, "firstName")).toBe("Please, provide a first name.");
-    expect(isBlank(test2, "firstName")).toBe("Please, provide a first name.");
-    expect(isBlank(test3, "firstname")).toBe(true);
+    expect(isBlank(test1, "first name")).toBe("Please, provide a first name.");
+    expect(isBlank(test2, "first name")).toBe("Please, provide a first name.");
+    expect(isBlank(test3, "first name")).toBe(true);
   });
 });
 
