@@ -28,7 +28,7 @@ describe("Create HTML", () => {
           </div>
           <div class="employee-details">
             <p class="list-items">ID: ${member.getId()}</p>
-            <p class="list-items">EMAIL: <a href="mailto:${member.getEmail()}">${member.getEmail()}</a></p>
+            <p class="list-items">EMAIL:&nbsp;<a href="mailto:${member.getEmail()}">${member.getEmail()}</a></p>
             <p class="list-items">OFFICE #: 10</p>
           </div>
         </div>`
