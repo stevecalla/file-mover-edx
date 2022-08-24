@@ -38,17 +38,14 @@ createHTML = (teamMembers) => {
 
   writeHTML(membersHTML);
 
-  // console.log(teamMembers);
   return membersHTML;
 };
 
 writeHTML = (membersHTML) => {
   const writeHTML = new WriteHTML();
-  writeHTML.write("./index-draft.html", homeTemplate(membersHTML));
-  // const message = writeHTML.read("./index-draft2.html");
-  // console.log(message);
+  writeHTML.write("./index.html", homeTemplate(membersHTML));
 };
 
 module.exports = {
-  createHTML,
+  createHTML
 };

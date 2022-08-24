@@ -104,7 +104,7 @@ const questionsIntern = [
     prefix: "⠋🟡 5)",
     type: "input",
     name: "internSchool",
-    message: `\u001b[0;1mEnter the intern's\x1b[36;1mschool\u001b[0;1m?`,
+    message: `\u001b[0;1mEnter the intern's \x1b[36;1mschool\u001b[0;1m?`,
     default: "Oxford",
     suffix: " 🟡",
     validate(answer) {

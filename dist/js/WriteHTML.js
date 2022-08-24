@@ -8,7 +8,6 @@ class WriteHTML {
   }
 
   write(path, data) {
-    // console.log(path, data)
     return fs.writeFileSync(path, data);
   }
 }
