@@ -70,8 +70,10 @@ Contributor Covenant Code of Conduct
 
 ## Resources
 
-1. Project Manager: [Steve Calla - GitHub Profile](https://github.com/stevecalla)
-2. Contact: [Email Steve](mailto:callasteven@gmail.com)
+1. GitHub Repo: <https://github.com/stevecalla/team-profile-generator>
+2. GitHub Hosted URL: <https://stevecalla.github.io/team-profile-generator/>
+3. Project Manager: [Steve Calla - GitHub Profile](https://github.com/stevecalla)
+4. Contact: [Email Steve](mailto:callasteven@gmail.com)
 
 ## License 
 
