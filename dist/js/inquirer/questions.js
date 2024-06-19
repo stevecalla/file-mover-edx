@@ -1,4 +1,4 @@
-const { capitalizeFirstCharacter, lowerCase, isNumber, isEmail, isBlank } = require("../../lib/util");
+const { capitalizeFirstCharacter, lowerCase, isNumber, isEmail, isBlank } = require("../../../lib/util");
 
 const questionsRole = [
   {

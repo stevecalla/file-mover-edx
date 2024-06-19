@@ -5,10 +5,11 @@ const {
   confirmContinue,
 } = require("./runInquirer");
 const { createMembers } = require("./createMembers.js");
-const { createHTML } = require("./createHTML.js");
+// const { createHTML } = require("./createHTML.js");
 let teamMembers = [];
 
 getTeamDetails = async (role = "Manager") => {
+  console.log('hello');
   let basicInfo = {};
   console.log(
     `\n\u001b[0;1mPLEASE ENTER THE ${role.toUpperCase()}\'S INFORMATION.`
@@ -26,6 +27,9 @@ inputMoreMembers = async (confirm, role) => {
     ? ((role = await getRole()), getTeamDetails(role.role))
     : await createHTML(teamMembers);
 };
+
+console.log('start');
+getTeamDetails();
 
 module.exports = {
   getTeamDetails,
