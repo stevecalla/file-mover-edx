@@ -4,13 +4,12 @@ dotenv.config({ path: "../.env" });
 
 console.log(process.env.NODE_ENV);
 
-// SECTION SET UPCOMING WEEK
-// const weekNumber = 21 - 1; // Week 21 = index of array or 21 - 1
-// SECTION SET CURRENT WEEK
-const weekNumber = 20 - 1; // Week 20 = index of array or 20 - 1
+// SECTION WEEK NUMBER
+// const weekNumber = 21 - 1; // Week 21 = index of array or 21 - 1; // SET UPCOMING WEEK
+const weekNumber = 20 - 1; // Week 20 = index of array or 20 - 1 // SET CURRENT WEEK
+// console.log(weekNumber);
 
-console.log(weekNumber);
-
+// SECTION FILE PATH OPTIONS
 const filePath =   
 ['/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content/01-HTML-Git-CSS',
 '/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content/02-Advanced-CSS',
@@ -38,6 +37,7 @@ const filePath =
 '/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content/24-Project-3-Contd'
 ];
 
+// SECTION MATCH PATTERNS
 const matchPattern01To10 = /^(0[1-9]|10)/;   // 01 to 10
 const matchPattern11To20 = /^(1[1-9]|20)/;   // 11 to 20
 const matchPattern21To28 = /^(2[1-8])/;      // 21 to 28
@@ -45,18 +45,35 @@ const matchPatternChallenge = /^02-Challenge/;  //02-Challenge
 const directoryToDeleteSolved = "Solved";
 const directoryToDeleteMain = "Main";
 
+// SECTION DIRECTORIES
 const contentDirectory = "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content";
 const sourceDirectory = filePath[weekNumber]; // 19-PWA
 
-const destinationFolder = path.basename(sourceDirectory); // Outputs: 01-HTML-Git-CSS (or similar)
-const destinationDirectory = `/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC/${destinationFolder}`;
-const activityDirectory = `/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC/${destinationFolder}/01-Activities` // used to delete solved inside the 01-Activity directory
-const algorithmDirectory = `/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC/${destinationFolder}/03-Algorithms` // used to delete solved inside the 01-Activity directory
+let destinationFolderName = path.basename(sourceDirectory); // Outputs: 01-HTML-Git-CSS (or similar)
+let directoryPath = "";
+let destinationDirectory = "";
+let activityDirectory = "";
+let algorithmDirectory = "";
 
-// TEST DESTINAT DIRECTORIES
-// const destinationDirectory = `/Users/stevecalla/file-mover-edx/01-Class-Content-Destination/${destinationFolder}`;
-// const activityDirectory = `/Users/stevecalla/file-mover-edx/01-Class-Content-Destination/${destinationFolder}/01-Activities` // used to delete solved inside the 01-Activity directory
-// const algorithmDirectory = `/Users/stevecalla/file-mover-edx/01-Class-Content-Destination/${destinationFolder}/03-Algorithms` // used to delete solved inside the 01-Activity directory
+if (process.env.NODE_ENV === 'development') {
+
+  directoryPath = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination";
+  destinationDirectory = `${directoryPath}/${destinationFolderName}`;
+  // used to delete solved inside the 01-Activity directory
+  activityDirectory = `${directoryPath}/${destinationFolderName}/01-Activities` 
+  // used to delete solved inside the 01-Activity directory
+  algorithmDirectory = `${directoryPath}/${destinationFolderName}/03-Algorithms` 
+
+} else {
+
+  directoryPath = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination";
+  destinationDirectory = `${directoryPath}/${destinationFolderName}`;
+  // used to delete solved inside the 01-Activity directory
+  activityDirectory = `${directoryPath}/${destinationFolderName}/01-Activities` 
+  // used to delete solved inside the 01-Activity directory
+  algorithmDirectory = `${directoryPath}/${destinationFolderName}/03-Algorithms` 
+}
+
 
 module.exports = {
   sourceDirectory,
