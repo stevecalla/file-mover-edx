@@ -1,5 +1,5 @@
 {
-  "name": "create-readme",
+  "name": "file-mover-edx",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,19 +8,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stevecalla/create-readme.git"
+    "url": "git+https://github.com/stevecalla/file-mover-edx.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stevecalla/create-readme/issues"
+    "url": "https://github.com/stevecalla/file-mover-edx/issues"
   },
-  "homepage": "https://github.com/stevecalla/create-readme#readme",
+  "homepage": "https://github.com/stevecalla/file-mover-edx#readme",
   "dependencies": {
     "inquirer": "^8.2.4"
   },
   "devDependencies": {
-    "jest": "^28.1.3"
+    "jest": "^28.1.3",
+    "dotenv": "^16.4.5"
   }
 }
 

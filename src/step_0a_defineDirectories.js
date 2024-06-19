@@ -1,7 +1,11 @@
 const path = require('path');
+const dotenv = require('dotenv');
+dotenv.config({ path: "../.env" });
+
+console.log(process.env.NODE_ENV);
+
 // SECTION SET UPCOMING WEEK
 // const weekNumber = 21 - 1; // Week 21 = index of array or 21 - 1
-
 // SECTION SET CURRENT WEEK
 const weekNumber = 20 - 1; // Week 20 = index of array or 20 - 1
 
@@ -41,7 +45,7 @@ const matchPatternChallenge = /^02-Challenge/;  //02-Challenge
 const directoryToDeleteSolved = "Solved";
 const directoryToDeleteMain = "Main";
 
-const contentDirectory = "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content"; //used to retrieve the filePath array above
+const contentDirectory = "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content";
 const sourceDirectory = filePath[weekNumber]; // 19-PWA
 
 const destinationFolder = path.basename(sourceDirectory); // Outputs: 01-HTML-Git-CSS (or similar)
