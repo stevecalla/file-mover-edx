@@ -44,16 +44,16 @@ const runStep4e = true;   // deleteSelectDirectories.js = 02-Challenge
 
 // const runStep4a = false;   // deleteSelectDirectories = starts with 01 to 10
 // const runStep4b = false;   // deleteSelectDirectories = starts with 11 to 20
-// const runStep4c = true;   // deleteSelectDirectories = starts with 21 to 28
+// const runStep4c = true;    // deleteSelectDirectories = starts with 21 to 28
 // const runStep4d = true;   // deleteSelectDirectories.js = 03-Algorithms
 // const runStep4e = true;   // deleteSelectDirectories.js = 02-Challenge 
 
 // SECTION CLASS #1: 
 // const runStep2 = true;    // copyMoveAllDirectoriesFiles.js
-// const runStep3a = false;   // deleteAllDirectories.js = solved
-// const runStep3b = false;   // deleteAllDirectories.js = main
+// const runStep3a = false;  // deleteAllDirectories.js = solved
+// const runStep3b = false;  // deleteAllDirectories.js = main
 
-// const runStep4a = false;   // deleteSelectDirectories = starts with 01 to 10
+// const runStep4a = false;  // deleteSelectDirectories = starts with 01 to 10
 // const runStep4b = true;   // deleteSelectDirectories = starts with 11 to 20
 // const runStep4c = true;   // deleteSelectDirectories = starts with 21 to 28
 // const runStep4d = true;   // deleteSelectDirectories.js = 03-Algorithms
