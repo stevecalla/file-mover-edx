@@ -1,6 +1,7 @@
 const { exec } = require("child_process");
 const path = require("path");
 const os = require("os");
+const { adjustWin32Path } = require("./adjustWin32Path");
 
 function executeGitCommand(directoryPath, command, message) {
   return new Promise((resolve, reject) => {
@@ -86,6 +87,10 @@ async function gitPush(directoryPath) {
 }
 
 async function gitAddCommitPush(directoryPath, commitMessage) {
+
+  // Replace ~ with the user's home directory; modify file path
+  directoryPath = await adjustWin32Path(directoryPath);
+
   try {
     await gitAdd(directoryPath);
     await gitCommit(directoryPath, commitMessage);

@@ -1,3 +1,4 @@
+const os = require('os');
 const { isBlank } = require("../../../utilities/util");
 const { blueColor, greenColor, redColor, whiteColor } = require("../../../utilities/colors");
 
@@ -7,7 +8,7 @@ const questionContentDirectory = [
     type: "input",
     name: "contentDirectory",
     message: `${whiteColor}Enter the ${blueColor}CLASS CONTENT${whiteColor} directory?${redColor}`,
-    default: "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content",
+    default: os.platform() === "win32" ? "/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content" : "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content",
     suffix: " 🟡",
     validate(answer) {
       return isBlank(answer, "Class Content Directory");
@@ -33,8 +34,9 @@ const questionsDestinationPath = [
     type: "input",
     name: "destinationPath",
     message: `${whiteColor}Enter the ${blueColor}DESTINATION${whiteColor} directory?`,
-    // default: "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination", //testing
-    default: "/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC",
+    // default: "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination", //testing on mac
+    // default: "/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC",
+    default: os.platform() === "win32" ? "/Google Drive/edX Tutor/file-mover-edx/UofO-VIRT-FSF-PT-01-2024-U-LOLC" : "/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC",
     suffix: " 🟡",
     validate(answer) {
       return isBlank(answer, "Destination Directory");
