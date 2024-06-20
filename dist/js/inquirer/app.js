@@ -76,8 +76,8 @@ getCopyMoveDeleteDetails = async () => {
         "/Users/stevecalla/file-mover-edx/file-mover-edx",
         commitMessage
       );
-      return;
     })
+    // .then(() => exitProgram())
     .catch((error) => {
       console.error("Error occurred:", error);
     });

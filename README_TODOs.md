@@ -29,5 +29,3 @@ development vs production path in question
 readme finish with images & video
 validation?
 test on windows machine - particularly paths?
-
-OTHER
