@@ -128,7 +128,7 @@ async function gitAddCommitPush(directoryPath, commitMessage) {
   try {
     await gitAdd(directoryPath);
     await gitCommit(directoryPath, commitMessage);
-    // await gitPush(directoryPath);
+    await gitPush(directoryPath);
     process.exit();
   } catch (error) {
     console.error(error);
