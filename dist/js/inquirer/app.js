@@ -65,14 +65,6 @@ getCopyMoveDeleteDetails = async () => {
         `Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`
       )
     )
-    // .then(() => {
-    //   console.log(os.platform());
-    //   if (os.platform() !== "win32") {
-    //     confirmContinue(`Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`)
-    //   } else {
-    //     exitProgram();
-    //   }
-    // })
     .then((isContinue) => !isContinue && exitProgram())
     .then(() => getCommitMessage())
     .then((result) => {
