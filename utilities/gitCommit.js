@@ -66,7 +66,7 @@ async function gitCommit(directoryPath, commitMessage) {
 
 async function gitPush(directoryPath) {
     try {
-        await executeGitCommand(directoryPath, 'push origin HEAD', 'pushing changes');
+        await executeGitCommand(directoryPath, `push origin HEAD`, 'pushing changes');
     } catch (error) {
         console.error(error);
     }
