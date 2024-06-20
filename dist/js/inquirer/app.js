@@ -66,9 +66,6 @@ consoleLogSelections = async (result, contentDirectory, sourceDirectory) => {
   );
 }
 
-
-// ${whiteColor}Delete ${blueColor}SOLVED - ACTIVITIES 01 to 10${whiteColor}:   ${result.deleteSolvedInActivity01To10 ? `${greenColor}${result.deleteSolvedInActivity01To10}` : `${redColor}${deleteSolvedInActivity01To10}`}
-
 createCombinedResult = (result, isContinue, contentDirectory, sourceDirectory) => { 
   result.isContinue = isContinue;
   result.contentDirectory = contentDirectory.contentDirectory;
