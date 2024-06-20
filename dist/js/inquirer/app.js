@@ -70,7 +70,7 @@ getCopyMoveDeleteDetails = async () => {
       }
       getCommitMessage();
     })
-    .then((commitMessage) => gitAddCommitPush(directoryPath, commitMessage))
+    .then((commitMessage) => gitAddCommitPush('/Users/stevecalla/file-mover-edx/file-mover-edx', commitMessage))
     .catch((error) => {
       console.error("Error occurred:", error);
     });
