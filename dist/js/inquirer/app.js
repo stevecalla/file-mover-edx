@@ -14,8 +14,9 @@ getCopyMoveDeleteDetails = async () => {
   let copyToDirectory = "";
   let sourceDirectory = "";
 
-  console.log(`\n\u001b[0;1mPLEASE ENTER THE FILE TO MOVE DETAILS.\n`);
-  await getContentDirectory()
+  // console.log(`\n\u001b[0;1mPLEASE ENTER THE FILES TO COPY & DELETE INSTRUCTIONS.\n`);
+  await consoleLogStart()
+    .then(() => getContentDirectory())
     .then((result) => { contentDirectory = result; return result; })
     .then((result) => getAllDirectories(result.contentDirectory))
     .then((allDirectories) => getDirectoryToCopy(allDirectories))
@@ -40,10 +41,13 @@ getCopyMoveDeleteDetails = async () => {
     });
 };
 
+consoleLogStart = async () => {
+  const whiteColor = "\u001b[0;1m";
+  console.log(`\n${whiteColor}PLEASE ENTER THE FILES TO COPY & DELETE INSTRUCTIONS.\n`);
+}
+
 consoleLogSelections = async (result, contentDirectory, sourceDirectory) => {
-
   let destinationFolderName = path.basename(sourceDirectory);
-
   const blueColor = "\x1b[36;1m";
   const greenColor = "\x1b[32;1m";
   const redColor = "\x1b[31;1m";
