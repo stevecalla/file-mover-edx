@@ -59,18 +59,20 @@ getCopyMoveDeleteDetails = async () => {
       return result;
     })
     .then((result) => execute_copy_and_delete(result))
-    // .then(() =>
-    //   confirmContinue(
-    //     `Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`
-    //   )
-    // )
-    .then(() => {
-      if (os.platform === "darwin") {
-        confirmContinue(`Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`)
-      } else {
-        exitProgram();
-      }
-    })
+    .then(() => os.platform() !== "darwin" && exitProgram())
+    .then(() =>
+      confirmContinue(
+        `Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`
+      )
+    )
+    // .then(() => {
+    //   console.log(os.platform());
+    //   if (os.platform() !== "win32") {
+    //     confirmContinue(`Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`)
+    //   } else {
+    //     exitProgram();
+    //   }
+    // })
     .then((isContinue) => !isContinue && exitProgram())
     .then(() => getCommitMessage())
     .then((result) => {
