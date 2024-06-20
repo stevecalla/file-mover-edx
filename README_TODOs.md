@@ -21,7 +21,8 @@ DONE Do you want to start over, continue/copy, exit
 DONE readme draft
 DONE open destination folder
 
-ask if would like to git add -A / git commit in the destination directory?
+DONE - created utility to add, commit & push
+DONE - did not add into the inquirer questions -- ask if would like to git add -A / git commit in the destination directory?
 add try catch & success / fail messages
 
 development vs production path in question
