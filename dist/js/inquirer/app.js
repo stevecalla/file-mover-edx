@@ -69,9 +69,10 @@ getCopyMoveDeleteDetails = async () => {
     .then((result) => {
       let message = result.commitMessage;
       gitAddCommitPush(
-        "/Users/stevecalla/file-mover-edx/file-mover-edx", // mac test
+        // "/Users/stevecalla/file-mover-edx/file-mover-edx", // mac test
         // '/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content', // windows test
-        // destinationPath,
+        // destinationPath, // productoin
+        os.platform() === '/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content' ? "" : "/Users/stevecalla/file-mover-edx/file-mover-edx",
         message
       );
     })
