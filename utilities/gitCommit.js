@@ -72,6 +72,8 @@ async function gitPush(directoryPath) {
     }
 }
 
+console.log('test');
+
 async function gitAddCommitPush(directoryPath, commitMessage) {
     try {
         await gitAdd(directoryPath);
