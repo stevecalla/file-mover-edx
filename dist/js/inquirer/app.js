@@ -7,15 +7,12 @@ const {
   confirmContinue,
   getCommitMessage,
 } = require("./runInquirer");
-
 const { getAllDirectories } = require("../fileMover/utility_getAllDirectories");
-const {
-  execute_copy_and_delete,
-} = require("../fileMover/step_0_executeCopyAndDelete");
+const { execute_copy_and_delete } = require("../fileMover/step_0_executeCopyAndDelete");
 const { openFolder } = require("../../../utilities/openFinder");
 const { gitAddCommitPush } = require("../../../utilities/gitCommit");
-const { blueColor, greenColor, redColor, whiteColor } = require("../../../utilities/colors");
 const { adjustWin32Path } = require("../../../utilities/adjustWin32Path");
+const { blueColor, greenColor, redColor, whiteColor } = require("../../../utilities/colors");
 
 getCopyMoveDeleteDetails = async () => {
   let contentDirectory = "";
@@ -89,6 +86,14 @@ consoleLogStart = async () => {
 
 consoleLogSelections = async (result, contentDirectory, sourceDirectory) => {
   let destinationFolderName = path.basename(sourceDirectory);
+  let destinationPath = "";
+  let contentPath = "";
+
+  if(os.platform() === "win32") {
+    destinationPath = await adjustWin32Path(result.destinationPath);
+  } else {
+    destinationPath = result.destinationPath;
+  }  
 
   console.log(
     `
@@ -97,7 +102,7 @@ consoleLogSelections = async (result, contentDirectory, sourceDirectory) => {
     Copy From     ${blueColor}- Source Path${whiteColor}:           ${sourceDirectory}
     Copy To       ${blueColor}- Folder${whiteColor}:                ${destinationFolderName}
     Copy To       ${blueColor}- Destinaton Path${whiteColor}:       ${
-      result.destinationPath
+      destinationPath
     }/${destinationFolderName}
     ${whiteColor}Delete ${blueColor}SOLVED - All Folders${whiteColor}:           ${
       result.deleteSolvedAllFolders
@@ -133,7 +138,8 @@ consoleLogSelections = async (result, contentDirectory, sourceDirectory) => {
       result.deleteMainInChallengeFolder
         ? `${greenColor}${result.deleteMainInChallengeFolder}`
         : `${redColor}${result.deleteMainInChallengeFolder}`
-    }`
+    }
+    `
   );
 };
 

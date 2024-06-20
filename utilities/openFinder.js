@@ -1,13 +1,12 @@
 const { exec } = require("child_process");
 const path = require('path');
 const os = require("os");
-const { blueColor, greenColor, redColor, whiteColor } = require("./colors");
 const { adjustWin32Path } = require("./adjustWin32Path");
+const { blueColor, greenColor, redColor, whiteColor } = require("./colors");
 
 async function openFolder(directoryPath) {
   let command;
   let failMessage = "";
-  // console.log(os.platform())
 
   if (os.platform() === "darwin") { // macOS
     command = `open -g "${directoryPath}"`; // -g flat doesn't switch focus
@@ -16,13 +15,11 @@ async function openFolder(directoryPath) {
 
   } else if (os.platform() === "win32") { // Windows
 
-    // console.log(directoryPath);
-
+    // Replace ~ with the user's home directory; modify file path
     directoryPath = await adjustWin32Path(directoryPath);
-    // directoryPath = path.join(os.homedir(), directoryPath).replace(/\//g, "\\");
 
     command = `start /b explorer "${directoryPath}"`;
-    
+
     successMessage = `${redColor}\nOpened folder ${directoryPath} successfully.${whiteColor}`;
     console.log(successMessage);
 
