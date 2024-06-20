@@ -22,14 +22,13 @@ DONE readme draft
 DONE open destination folder
 
 DONE - created utility to add, commit & push
-DONE - did not add into the inquirer questions -- ask if would like to git add -A / git commit in the destination directory?
+DONE - ask if would like to git add -A / git commit in the destination directory?
+
 add try catch & success / fail messages
 
 development vs production path in question
-open source folder
 readme finish with images & video
 validation?
 test on windows machine - particularly paths?
-
 
 OTHER

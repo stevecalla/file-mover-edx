@@ -9,7 +9,7 @@ const questionContentDirectory = [
     default: "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content",
     suffix: " 🟡",
     validate(answer) {
-      return isBlank(answer, "first name");
+      return isBlank(answer, "Class Content Directory");
     },
   },
 ];
@@ -35,7 +35,7 @@ const questionsDestinationPath = [
     default: "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination",
     suffix: " 🟡",
     validate(answer) {
-      return isBlank(answer, "last name");
+      return isBlank(answer, "Destination Directory");
     },
   },  
   // SECTION DELETE SOLVED FOLDERS
@@ -44,7 +44,7 @@ const questionsDestinationPath = [
     type: "confirm",
     name: "deleteSolvedAllFolders",
     message: `SOLVED FOLDERS:\n       - Would you like to delete \x1b[36;1mSOLVED - All Folders\u001b[0;1m?`,
-    default: "true",
+    default: true,
     suffix: " 🟡",
   }, 
   {
@@ -52,7 +52,7 @@ const questionsDestinationPath = [
     type: "confirm",
     name: "deleteSolvedInActivity01To10",
     message: `       - Would you like to delete \x1b[36;1mSOLVED - ACTIVITIES 01 to 10\u001b[0;1m?`,
-    default: "false",
+    default: false,
     suffix: " 🟡",
   }, 
   {
@@ -60,7 +60,7 @@ const questionsDestinationPath = [
     type: "confirm",
     name: "deleteSolvedInActivity11To20",
     message: `       - Would you like to delete \x1b[36;1mSOLVED - ACTIVITIES 11 to 20\u001b[0;1m?`,
-    default: "false",
+    default: false,
     suffix: " 🟡",
   }, 
   {
@@ -68,7 +68,7 @@ const questionsDestinationPath = [
     type: "confirm",
     name: "deleteSolvedInActivity21To28",
     message: `       - Would you like to delete \x1b[36;1mSOLVED - ACTIVITIES 21 to 28\u001b[0;1m?`,
-    default: "false",
+    default: false,
     suffix: " 🟡",
   },
   {
@@ -76,7 +76,7 @@ const questionsDestinationPath = [
     type: "confirm",
     name: "deleteSolvedInAlgorithmFolder",
     message: `       - Would you like to delete \x1b[36;1mSOLVED - ALGORITHM folder\u001b[0;1m?`,
-    default: "true",
+    default: true,
     suffix: " 🟡",
   },
   // SECTION DELETE MAIN FOLDERS
@@ -85,7 +85,7 @@ const questionsDestinationPath = [
     type: "confirm",
     name: "deleteMainAllFolders",
     message: `MAIN FOLDERS:\n       - Would you like to delete \x1b[36;1mMAIN - All Folders?\u001b[0;1m?`,
-    default: "true",
+    default: true,
     suffix: " 🟡",
   },   
   {
@@ -93,7 +93,7 @@ const questionsDestinationPath = [
     type: "confirm",
     name: "deleteMainInChallengeFolder",
     message: `       - Would you like to delete \x1b[36;1mMAIN - CHALLENGE Folder\u001b[0;1m?`,
-    default: "true",
+    default: false,
     suffix: " 🟡",
   }
 ];
@@ -105,7 +105,7 @@ const questionsContinue = (message) => [
     name: "isContinue",
     // message: `Would you like to \x1b[36;1mCOPY & DELETE per the SELECTIONS\u001b[0;1m?`,
     message: `${message}`,
-    default: "true",
+    default: true,
     suffix: " 🟡",
   },
 ];
@@ -119,7 +119,7 @@ const questionCommitMessage = [
     default: "UPDATE GITLAB CONTENT",
     suffix: " 🟡",
     validate(answer) {
-      return isBlank(answer, "first name");
+      return isBlank(answer, "Commit Message");
     },
   },
 ];

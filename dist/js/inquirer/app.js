@@ -48,7 +48,7 @@ getCopyMoveDeleteDetails = async () => {
     })
     .then(({ result, isContinue }) => {
       if (!isContinue) {
-        return; // EXIT
+        exitProgram();
       }
       result = createCombinedResult(
         result,
@@ -66,7 +66,7 @@ getCopyMoveDeleteDetails = async () => {
     )
     .then((isContinue) => {
       if (!isContinue) {
-        return;
+        exitProgram();
       }
       getCommitMessage();
     })
@@ -161,6 +161,15 @@ createCombinedResult = (
   result.algorithmDirectory = `${result.destinationPath}/${destinationFolderName}/03-Algorithms`;
 
   return result;
+};
+
+exitProgram = () => {
+  const whiteColor = "\u001b[0;1m";
+  const blueColor = "\x1b[36;1m";
+  const greenColor = "\x1b[32;1m";
+  const redColor = "\x1b[31;1m";
+  console.log(`\n${whiteColor}Go${redColor}o${greenColor}d b${whiteColor}ye${blueColor}!!\n`);
+  process.exit();
 };
 
 // getCopyMoveDeleteDetails();
