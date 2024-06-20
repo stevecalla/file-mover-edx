@@ -13,6 +13,7 @@ const {
 } = require("../fileMover/step_0_executeCopyAndDelete");
 const { openFolder } = require("../../../utilities/openFinder");
 const { gitAddCommitPush } = require("../../../utilities/gitCommit");
+const { blueColor, greenColor, redColor, whiteColor } = require("../../../utilities/colors");
 
 getCopyMoveDeleteDetails = async () => {
   let contentDirectory = "";
@@ -41,7 +42,7 @@ getCopyMoveDeleteDetails = async () => {
     })
     .then((result) => {
       return confirmContinue(
-        `Would you like to \x1b[36;1mCOPY & DELETE per the SELECTIONS\u001b[0;1m?`
+        `Would you like to ${blueColor}COPY & DELETE per the SELECTIONS${whiteColor}`
       ).then((isContinue) => {
         return { result, isContinue };
       });
@@ -61,7 +62,7 @@ getCopyMoveDeleteDetails = async () => {
     })
     .then(() =>
       confirmContinue(
-        `Would you like to \x1b[36;1mGit Add, Commit & Push\u001b[0;1m?`
+        `Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`
       )
     )
     .then((isContinue) => {
@@ -83,7 +84,6 @@ getCopyMoveDeleteDetails = async () => {
 };
 
 consoleLogStart = async () => {
-  const whiteColor = "\u001b[0;1m";
   console.log(
     `\n${whiteColor}PLEASE ENTER THE FILES TO COPY & DELETE INSTRUCTIONS.\n`
   );
@@ -91,14 +91,10 @@ consoleLogStart = async () => {
 
 consoleLogSelections = async (result, contentDirectory, sourceDirectory) => {
   let destinationFolderName = path.basename(sourceDirectory);
-  const blueColor = "\x1b[36;1m";
-  const greenColor = "\x1b[32;1m";
-  const redColor = "\x1b[31;1m";
-  const whiteColor = "\u001b[0;1m";
 
   console.log(
     `
-    ${blueColor}SELECTIONS:\u001b[0;1m
+    ${blueColor}SELECTIONS:${whiteColor}
     Content Directory:                     ${contentDirectory.contentDirectory}
     Copy From     ${blueColor}- Source Path${whiteColor}:           ${sourceDirectory}
     Copy To       ${blueColor}- Folder${whiteColor}:                ${destinationFolderName}
@@ -164,10 +160,6 @@ createCombinedResult = (
 };
 
 exitProgram = () => {
-  const whiteColor = "\u001b[0;1m";
-  const blueColor = "\x1b[36;1m";
-  const greenColor = "\x1b[32;1m";
-  const redColor = "\x1b[31;1m";
   console.log(`\n${whiteColor}Go${redColor}o${greenColor}d b${whiteColor}ye${blueColor}!!\n`);
   process.exit();
 };
