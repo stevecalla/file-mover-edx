@@ -86,6 +86,7 @@ async function gitAddCommitPush(directoryPath, commitMessage) {
     try {
         await gitAdd(directoryPath);
         await gitCommit(directoryPath, commitMessage);
+
         // await gitPush(directoryPath);
 
         const pushOutput = await gitPush(directoryPath);
@@ -94,6 +95,7 @@ async function gitAddCommitPush(directoryPath, commitMessage) {
         } else {
             console.log('No push message from GitHub.'); // Handle case where output is undefined or empty
         }
+        
     } catch (error) {
         console.error(error);
     }
