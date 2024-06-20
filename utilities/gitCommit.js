@@ -9,10 +9,10 @@ function executeGitCommand(directoryPath, command, message) {
     const gitCommand = getGitCommand();
 
     const fullCommand = `${gitCommand} -C "${fullPath}" ${command}`;
-    console.log(fullCommand);
+    // console.log(fullCommand);
 
     exec(fullCommand, (error, stdout, stderr) => {
-      console.log("stdout = ", stdout);
+      // console.log("stdout = ", stdout);
       if (error) {
         reject(`Error: ${message} in ${directoryPath}: ${error.message}`);
         return;
@@ -137,9 +137,9 @@ async function gitAddCommitPush(directoryPath, commitMessage) {
 
 // Example usage:
 // const directoryPath = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // mac
-const directoryPath = '/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content'; // windows
-const commitMessage = "Initial commit"; // Replace with your commit message
-gitAddCommitPush(directoryPath, commitMessage);
+// const directoryPath = '/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content'; // windows
+// const commitMessage = "Initial commit"; // Replace with your commit message
+// gitAddCommitPush(directoryPath, commitMessage);
 
 module.exports = {
   gitAddCommitPush,
