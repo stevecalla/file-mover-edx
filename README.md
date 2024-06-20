@@ -15,33 +15,31 @@
 ## Description
 
 ```
-The app is a command-line interface to generate a webpage listing the members of a software engineering team. The team can use the page to gain quick access to information about team's mission and members including email address and GitHub profile. The team manager proceeds through a series of questions to describe each member including name, role/title, employee id along with role specific information such as office number for the manager, GithHub user name for the engineer(s) and current school for intern(s). The app will use this information to create a webpage. 
+The app is a command-line interface to for edX instructional staff to move class content from the edX Instructor content directory to the related edX GitLab (or Github) Student repo. The user designates the path for the instructor Class Content and destination Student Content on their local environment as well as whether to delete all or specific Solved and Main files via a series of command prompt questions. As a result, the applicable folder structure and files will be copied from the Instructor content directory to the Student repo.
 ```
 
 ## Installation
 
-(1) Fork the repo, (2) Clone the forked repo locally, (3) Run "npm install" (to install dependencies), (4) Run "node index.js" (from the root directory). To run Jest tests, run "npm test". Jest is setup to use a "--watcher" and provide "--coverage" statistics.
+(1) Fork the repo, (2) Clone the forked repo locally, (3) Run "npm install" (to install dependencies), (4) Run "node index.js" (from the root directory).
 
-## Usage
+## Technologies
 
-This app creates a website which provides detailed information about a software engineering team from the command line.
+1. Node.js
+2. JavaScript
+3. GitHub (website hosting and source code management)
+4. Inquirer NPM
+5. Dotenv NPM
 
 ## Features
 
-This app includes features such as (a) a series of command line prompts to gather team member information, (b) validation for required information and email, default answers for image, modular breakdown of the code, use of inquirer to provide the questions including use of validation and filters (to format the answers). There code includes a robust set of Jest tests to make the code more maintainable.
-<!-- 
-1. TBD
-2. TBD
-3. TBD
--->
-## Future Enhancements
+Command line interface to:
 
-This app can be enhanced by (a) creating the ability to add multiple teams with functionality to switch between teams on the webpage, (b) ability to add a team name and mission, (c) provide more or custom detail about each team member such as the ability to upload a photo, add pronouns, add fun facts, add a phone number and more, (d) the ability to add or delete team members (which can now be done but it's a complete re-build rather than amending the current team), (e) the abiility to modify team member information on the website or from the command line, (f) the ability to customize the page with team colors, icons or other team specific/brand details and (f) more.
-<!-- 
-1. TBD
-2. TBD
-3. TBD
--->
+1. Allows user to input source & destination directory.
+2. Reads the source directory. 
+3. Allows user to selec the applicable content location in the source directory.
+4. Makes a copy of content in the source directory and moves content to the destination directory.
+5. Allows user to delete all or select Solved folders in the destination directory.
+6. Allows user to delete all or select Main folders in the destination directory.
 
 ## App Preview - Static Screenshot
 
@@ -55,7 +53,7 @@ This app can be enhanced by (a) creating the ability to add multiple teams with 
 
 ## Tests
 
-To run Jest tests, run "npm test". Jest is setup to use a "--watch" and to provide "--coverage" statistics.
+No tests at this time.
 
 ## Contributing
 
@@ -71,10 +69,9 @@ Contributor Covenant Code of Conduct
 
 ## Resources
 
-1. GitHub Repo: <https://github.com/stevecalla/team-profile-generator>
-2. GitHub Hosted URL: <https://stevecalla.github.io/team-profile-generator/>
-3. Project Manager: [Steve Calla - GitHub Profile](https://github.com/stevecalla)
-4. Contact: [Email Steve](mailto:callasteven@gmail.com)
+1. GitHub Repo: <https://github.com/stevecalla/file-mover-edx>
+2. Project Manager: [Steve Calla - GitHub Profile](https://github.com/stevecalla)
+3. Contact: [Email Steve](mailto:callasteven@gmail.com)
 
 ## License 
 
@@ -117,4 +114,12 @@ This project is licensed under the terms of the <span style="color:red">The MIT 
 
 1. GitHub Repo: <https://github.com/tbd/tbd>
 2. GitHub Hosted URL: <https://tbd.tbd.com/tbd>
+
+## Future Enhancements
+
+This app can be enhanced by (a) creating the ability to add multiple teams with functionality to switch between teams on the webpage, (b) ability to add a team name and mission, (c) provide more or custom detail about each team member such as the ability to upload a photo, add pronouns, add fun facts, add a phone number and more, (d) the ability to add or delete team members (which can now be done but it's a complete re-build rather than amending the current team), (e) the abiility to modify team member information on the website or from the command line, (f) the ability to customize the page with team colors, icons or other team specific/brand details and (f) more.
+<!-- 
+1. TBD
+2. TBD
+3. TBD
 -->

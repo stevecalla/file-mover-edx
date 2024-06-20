@@ -15,12 +15,19 @@ DONE ask delete solved 11-20
 DONE ask delete solved 21-28
 DONE ask delete main challenge
 DONE ask delete solved algorithms
-
-
-based on the answers above process the data
+DONE based on the answers above process the data
 show results
-do you want to start over, continue/copy, exit
-if continue... open the destination folder
+DONE Do you want to start over, continue/copy, exit
+DONE readme draft
+DONE open destination folder
+
+readme images & video
+development vs production path in question
+add try catch & success / fail messages
+
+open source folder
+validation?
+test on windows machine - particularly paths?
 
 
 OTHER
