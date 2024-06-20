@@ -26,5 +26,5 @@ DONE - exit process after git commit / push
 DONE - add real UofO path
 
 readme finish with images & video
-validation?
+validation for path?
 test on windows machine - particularly paths?
