@@ -67,10 +67,11 @@ getCopyMoveDeleteDetails = async () => {
     )
     .then((isContinue) => !isContinue && exitProgram())
     .then(() => getCommitMessage())
-    .then((commitMessage) => {
+    .then((result) => {
+      let message = result.commitMessage;
       gitAddCommitPush(
         "/Users/stevecalla/file-mover-edx/file-mover-edx",
-        commitMessage
+        message
       );
     })
     .catch((error) => {
