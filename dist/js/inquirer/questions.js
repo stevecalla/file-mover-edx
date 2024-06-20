@@ -20,7 +20,7 @@ const questionDirectoryToCopy = (directories) => [
     prefix: "\n⠋🟡 2)",
     type: "rawlist",
     name: "directoryToCopy",
-    message: "Please select the directory to copy ${blueColor}DIRECTORY TO COPY${whiteColor}?",
+    message: `Please select the directory to copy ${blueColor}DIRECTORY TO COPY${whiteColor}?`,
     choices: directories,
     suffix: " 🟡",
   },
@@ -33,7 +33,8 @@ const questionsDestinationPath = [
     type: "input",
     name: "destinationPath",
     message: `${whiteColor}Enter the ${blueColor}DESTINATION${whiteColor} directory?`,
-    default: "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination",
+    // default: "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination", //testing
+    default: "/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC",
     suffix: " 🟡",
     validate(answer) {
       return isBlank(answer, "Destination Directory");

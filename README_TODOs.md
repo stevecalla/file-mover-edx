@@ -23,7 +23,8 @@ DONE - ask if would like to git add -A / git commit in the destination directory
 DONE - add try catch & success / fail messages
 DONE - exit process after git commit / push
 
-development vs production path in question
+DONE - add real UofO path
+
 readme finish with images & video
 validation?
 test on windows machine - particularly paths?

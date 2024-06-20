@@ -65,7 +65,6 @@ if (process.env.NODE_ENV === 'development') {
   algorithmDirectory = `${directoryPath}/${destinationFolderName}/03-Algorithms` 
 
 } else {
-
   directoryPath = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination";
   destinationDirectory = `${directoryPath}/${destinationFolderName}`;
   // used to delete solved inside the 01-Activity directory
