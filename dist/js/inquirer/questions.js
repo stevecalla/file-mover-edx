@@ -98,14 +98,29 @@ const questionsDestinationPath = [
   }
 ];
 
-const questionsContinue = [
+const questionsContinue = (message) => [
   {
-    prefix: "\n⠋🟡 6)",
+    prefix: "\n⠋🟡🟡🟡",
     type: "confirm",
     name: "isContinue",
-    message: `Would you like to \x1b[36;1mCOPY & DELETE per the SELECTIONS\u001b[0;1m?`,
+    // message: `Would you like to \x1b[36;1mCOPY & DELETE per the SELECTIONS\u001b[0;1m?`,
+    message: `${message}`,
     default: "true",
     suffix: " 🟡",
+  },
+];
+
+const questionCommitMessage = [
+  {
+    prefix: "⠋🟡 6)",
+    type: "input",
+    name: "commitMessage",
+    message: `\u001b[0;1mEnter the \x1b[36;1mGIT COMMIT MESSAGE\u001b[0;1m?`,
+    default: "UPDATE GITLAB CONTENT",
+    suffix: " 🟡",
+    validate(answer) {
+      return isBlank(answer, "first name");
+    },
   },
 ];
 
@@ -114,4 +129,5 @@ module.exports = {
   questionDirectoryToCopy,
   questionsDestinationPath,
   questionsContinue,
+  questionCommitMessage,
 };

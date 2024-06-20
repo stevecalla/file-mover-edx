@@ -4,15 +4,20 @@ const {
   getDirectoryToCopy,
   getDestinationPath,
   confirmContinue,
+  getCommitMessage,
 } = require("./runInquirer");
 
 const { getAllDirectories } = require("../fileMover/utility_getAllDirectories");
-const { execute_copy_and_delete } = require("../fileMover/step_0_executeCopyAndDelete");
+const {
+  execute_copy_and_delete,
+} = require("../fileMover/step_0_executeCopyAndDelete");
 const { openFolder } = require("../../../utilities/openFinder");
+const { gitAddCommitPush } = require("../../../utilities/gitCommit");
 
 getCopyMoveDeleteDetails = async () => {
   let contentDirectory = "";
   let sourceDirectory = "";
+  let destinationPath = "";
 
   await consoleLogStart()
     .then(() => getContentDirectory()) // QUESTION #1
@@ -30,11 +35,14 @@ getCopyMoveDeleteDetails = async () => {
     .then(() => getDestinationPath()) // QUESTION #3
     .then((result) => {
       consoleLogSelections(result, contentDirectory, sourceDirectory);
-      openFolder(result.destinationPath);
+      destinationPath = result.destinationPath;
+      openFolder(destinationPath);
       return result;
     })
     .then((result) => {
-      return confirmContinue().then((isContinue) => {
+      return confirmContinue(
+        `Would you like to \x1b[36;1mCOPY & DELETE per the SELECTIONS\u001b[0;1m?`
+      ).then((isContinue) => {
         return { result, isContinue };
       });
     })
@@ -49,7 +57,20 @@ getCopyMoveDeleteDetails = async () => {
         sourceDirectory
       );
       execute_copy_and_delete(result);
+      // add progress messages
     })
+    .then(() =>
+      confirmContinue(
+        `Would you like to \x1b[36;1mGit Add, Commit & Push\u001b[0;1m?`
+      )
+    )
+    .then((isContinue) => {
+      if (!isContinue) {
+        return;
+      }
+      getCommitMessage();
+    })
+    .then((commitMessage) => gitAddCommitPush(directoryPath, commitMessage))
     .catch((error) => {
       console.error("Error occurred:", error);
     });

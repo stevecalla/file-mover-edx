@@ -26,7 +26,7 @@ async function execute_copy_and_delete(copyAndDeleteDetails) {
 
 // SECTION - STEP #1: COPY ALL FILES FROM SOURCE TO DESTINATION
 async function copyMoveAllFiles(copyAndDeleteDetails) {
-  // console.log('copy & delete = ', copyAndDeleteDetails);
+  console.log('copy & delete = ', copyAndDeleteDetails);
 
   const { isContinue, sourceDirectory, destinationDirectory } = copyAndDeleteDetails;
 

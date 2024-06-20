@@ -4,6 +4,7 @@ const {
   questionDirectoryToCopy,
   questionsDestinationPath,
   questionsContinue,
+  questionCommitMessage,
 } = require("./questions");
 
 const getContentDirectory = () => {
@@ -21,14 +22,20 @@ const getDestinationPath = () => {
   return destinationDirectory;
 };
 
-confirmContinue = async () => {
-  const confirm = await inquirer.prompt(questionsContinue);
+confirmContinue = async (message) => {
+  const confirm = await inquirer.prompt(questionsContinue(message));
   return confirm.isContinue;
 };
+
+const getCommitMessage = () => {
+  const gitCommitMessage = inquirer.prompt(questionCommitMessage);
+  return gitCommitMessage;
+}
 
 module.exports = {
   getContentDirectory,
   getDirectoryToCopy,
   getDestinationPath,
   confirmContinue,
+  getCommitMessage,
 };
