@@ -11,6 +11,7 @@ function executeGitCommand(directoryPath, command, message) {
         console.log(fullCommand);
 
         exec(fullCommand, (error, stdout, stderr) => {
+          console.log('stdout = ', stdout);
             if (error) {
                 reject(`Error ${message} in ${directoryPath}: ${error.message}`);
                 return;
