@@ -21,16 +21,14 @@ DONE Do you want to start over, continue/copy, exit
 DONE readme draft
 DONE open destination folder
 
-readme images & video
-development vs production path in question
+ask if would like to git add -A / git commit in the destination directory?
 add try catch & success / fail messages
 
+development vs production path in question
 open source folder
+readme finish with images & video
 validation?
 test on windows machine - particularly paths?
 
 
 OTHER
-open folder 
-ask for directory to delete
-ask if would like to git add -A / git commit in the destination directory?
