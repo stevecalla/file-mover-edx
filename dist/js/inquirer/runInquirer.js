@@ -43,9 +43,9 @@ confirmContinue = async (message) => {
   }
 };
 
-const getCommitMessage = () => {
+const getCommitMessage = async () => {
   try {
-    const gitCommitMessage = inquirer.prompt(questionCommitMessage);
+    const gitCommitMessage = await inquirer.prompt(questionCommitMessage);
     return gitCommitMessage;
   } catch (error) {
     console.log('Error getting commit message ', error);
