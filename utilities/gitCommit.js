@@ -97,8 +97,8 @@ async function gitAddCommitPush(directoryPath, commitMessage) {
 }
 
 // Example usage:
-const directoryPath = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // Replace with your directory path
-const commitMessage = "Initial commit"; // Replace with your commit message
+// const directoryPath = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // Replace with your directory path
+// const commitMessage = "Initial commit"; // Replace with your commit message
 // gitAddCommitPush(directoryPath, commitMessage);
 
 module.exports = {
