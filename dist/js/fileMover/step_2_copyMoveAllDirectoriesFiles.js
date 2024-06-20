@@ -29,7 +29,7 @@ async function copyFilesToDestination(sourceDirectory, destinationDirectory) {
     // console.log(`Copied ${file} to ${destinationFile}`);
   });
 
-  console.log("Files copied successfully!");
+  // console.log("Files copied successfully!");
 }
 
 // Copy files from source to destination while retaining structure

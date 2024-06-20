@@ -26,55 +26,110 @@ async function execute_copy_and_delete(copyAndDeleteDetails) {
 
 // SECTION - STEP #1: COPY ALL FILES FROM SOURCE TO DESTINATION
 async function copyMoveAllFiles(copyAndDeleteDetails) {
-  console.log('copy & delete = ', copyAndDeleteDetails);
+  try {
+    // console.log('copy & delete = ', copyAndDeleteDetails);
+    const { isContinue, sourceDirectory, destinationDirectory } = copyAndDeleteDetails;
 
-  const { isContinue, sourceDirectory, destinationDirectory } = copyAndDeleteDetails;
-
-  isContinue && await copyFilesToDestination(sourceDirectory, destinationDirectory);
+    if(isContinue) {
+      await copyFilesToDestination(sourceDirectory, destinationDirectory);
+      console.log(`\n✅ Files copied to destination successfully`);
+    }
+  } catch (error) {
+    console.log('Error - Copy all files:', error);
+  }
 }
 
 // SECTION - STEP #2: DELETE ALL SOLVED
 async function deleteAllSolved(copyAndDeleteDetails) {
-  const { deleteSolvedAllFolders, destinationDirectory } = copyAndDeleteDetails;
-
-  deleteSolvedAllFolders && await deleteAllDirectories(destinationDirectory, directoryToDeleteSolved);
+  try {
+    const { deleteSolvedAllFolders, destinationDirectory } = copyAndDeleteDetails;
+  
+    if(deleteSolvedAllFolders) {
+      await deleteAllDirectories(destinationDirectory, directoryToDeleteSolved);
+      console.log('✅ Deleted all solved successfully');
+    } 
+  } catch (error) {
+    console.log('Error - Delete all solved:', error);
+  }
 }
 
 async function deleteSolvedInActivity01To10(copyAndDeleteDetails) {
-  const { deleteSolvedInActivity01To10, activityDirectory } = copyAndDeleteDetails;
+  try {
+    const { deleteSolvedInActivity01To10, activityDirectory } = copyAndDeleteDetails;
 
-  deleteSolvedInActivity01To10 && await deleteSelectDirectories(activityDirectory, directoryToDeleteSolved, matchPattern01To10);
+    if(deleteSolvedInActivity01To10) {
+      await deleteSelectDirectories(activityDirectory, directoryToDeleteSolved, matchPattern01To10);
+      console.log('✅ Deleted solved 01 to 10 successfully');
+    } 
+  } catch (error) {
+    console.log('Error - Delete solved 01 to 10:', error);
+  }
 }
 
 async function deleteSolvedInActivity11To20(copyAndDeleteDetails) {
-  const { deleteSolvedInActivity11To20, activityDirectory } = copyAndDeleteDetails;
+  try {
+    const { deleteSolvedInActivity11To20, activityDirectory } = copyAndDeleteDetails;
 
-  deleteSolvedInActivity11To20 && await deleteSelectDirectories(activityDirectory, directoryToDeleteSolved, matchPattern11To20);
+    if(deleteSolvedInActivity11To20) {
+      await deleteSelectDirectories(activityDirectory, directoryToDeleteSolved, matchPattern11To20);
+      console.log('✅ Deleted solved 11 to 20 successfully');
+    } 
+  } catch (error) {
+    console.log('Error - Delete solved 11 to 20:', error);
+  }
 }
 
 async function deleteSolvedInActivity21To28(copyAndDeleteDetails) {
-  const { deleteSolvedInActivity21To28, activityDirectory } = copyAndDeleteDetails;
+  try {
+    const { deleteSolvedInActivity21To28, activityDirectory } = copyAndDeleteDetails;
 
-  deleteSolvedInActivity21To28 && await deleteSelectDirectories(activityDirectory, directoryToDeleteSolved, matchPattern21To28);
+    if(deleteSolvedInActivity21To28) {
+      await deleteSelectDirectories(activityDirectory, directoryToDeleteSolved, matchPattern21To28);
+      console.log('✅ Deleted solved 21 to 28 successfully');
+    } 
+  } catch (error) {
+    console.log('Error - Delete solved 21 to 28:', error);
+  }
 }
 
 async function deleteSolvedInAlgorithmFolder(copyAndDeleteDetails) {
-  const { deleteSolvedInAlgorithmFolder, algorithmDirectory } = copyAndDeleteDetails;
+  try {
+    const { deleteSolvedInAlgorithmFolder, algorithmDirectory } = copyAndDeleteDetails;
 
-  deleteSolvedInAlgorithmFolder && await deleteSelectDirectories(algorithmDirectory, directoryToDeleteSolved, matchPattern01To10);
+    if(deleteSolvedInAlgorithmFolder) {
+      await deleteSelectDirectories(algorithmDirectory, directoryToDeleteSolved, matchPattern01To10);
+      console.log('✅ Deleted solved in algorithm successfully');
+    } 
+  } catch (error) {
+    console.log('Error - Delete solved in algorithm:', error);
+  }
 }
 
 // SECTION - STEP #3: DELETE ALL execute_copy_and_delete
 async function deleteAllMain(copyAndDeleteDetails) {
-  const { deleteMainAllFolders, destinationDirectory } = copyAndDeleteDetails;
+  try {
+    const { deleteMainAllFolders, destinationDirectory } = copyAndDeleteDetails;
 
-  deleteMainAllFolders && await deleteAllDirectories(destinationDirectory, directoryToDeleteMain);
+    if(deleteMainAllFolders) {
+      await deleteAllDirectories(destinationDirectory, directoryToDeleteMain);
+      console.log('✅ Deleted all main successfully');
+    } 
+  } catch (error) {
+    console.log('Error - Delete all main:', error);
+  }
 }
 
 async function deleteMainInChallengeFolder(copyAndDeleteDetails) {
-  const { deleteMainInChallengeFolder, destinationDirectory } = copyAndDeleteDetails;
-
-  deleteMainInChallengeFolder && await deleteSelectDirectories(destinationDirectory, directoryToDeleteMain, matchPatternChallenge);
+  try {
+    const { deleteMainInChallengeFolder, destinationDirectory } = copyAndDeleteDetails;
+    
+    if(deleteMainInChallengeFolder) {
+      await deleteSelectDirectories(destinationDirectory, directoryToDeleteMain, matchPatternChallenge);
+      console.log('✅ Deleted main in challenge folder successfully');
+    } 
+  } catch (error) {
+    console.log('Error - Delete main in challenge:', error);
+  }
 }
 
 module.exports = {

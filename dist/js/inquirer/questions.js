@@ -1,4 +1,4 @@
-const { capitalizeFirstCharacter, lowerCase, isNumber, isEmail, isBlank } = require("../../../utilities/util");
+const { isBlank } = require("../../../utilities/util");
 const { blueColor, greenColor, redColor, whiteColor } = require("../../../utilities/colors");
 
 const questionContentDirectory = [
@@ -6,7 +6,7 @@ const questionContentDirectory = [
     prefix: "⠋🟡 1)",
     type: "input",
     name: "contentDirectory",
-    message: `${whiteColor}Enter the ${blueColor}CLASS CONTENT${whiteColor} directory?`,
+    message: `${whiteColor}Enter the ${blueColor}CLASS CONTENT${whiteColor} directory?${redColor}`,
     default: "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content",
     suffix: " 🟡",
     validate(answer) {

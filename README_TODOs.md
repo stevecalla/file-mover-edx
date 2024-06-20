@@ -23,8 +23,7 @@ DONE open destination folder
 
 DONE - created utility to add, commit & push
 DONE - ask if would like to git add -A / git commit in the destination directory?
-
-add try catch & success / fail messages
+DONE add try catch & success / fail messages
 
 development vs production path in question
 readme finish with images & video

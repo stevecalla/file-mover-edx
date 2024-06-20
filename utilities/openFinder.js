@@ -1,5 +1,6 @@
 const { exec } = require("child_process");
 const os = require("os");
+const { blueColor, greenColor, redColor, whiteColor } = require("./colors");
 
 function openFolder(directoryPath) {
   let command;
@@ -9,7 +10,7 @@ function openFolder(directoryPath) {
   if (os.platform() === "darwin") { // macOS
     // command = `open ${directoryPath}`;
     command = `open -g "${directoryPath}"`; // doesn't switch focus
-    successMessage = `\nOpened folder ${directoryPath} successfully.`;
+    successMessage = `${redColor}\nOpened folder ${directoryPath} successfully.${whiteColor}`;
     console.log(successMessage);
   } else if (os.platform() === "win32") { // Windows
     // command = `explorer "${directoryPath.replace(/\//g, "\\")}"`;

@@ -8,28 +8,48 @@ const {
 } = require("./questions");
 
 const getContentDirectory = () => {
-  const contentDirectory = inquirer.prompt(questionContentDirectory);
-  return contentDirectory;
+  try {
+    const contentDirectory = inquirer.prompt(questionContentDirectory);
+    return contentDirectory;
+  } catch (error) {
+    console.log('Error getting content directory', error);
+  }
 };
 
 const getDirectoryToCopy = (directories) => {
-  const directoryToCopy = inquirer.prompt(questionDirectoryToCopy(directories));
-  return directoryToCopy;
+  try {
+    const directoryToCopy = inquirer.prompt(questionDirectoryToCopy(directories));
+    return directoryToCopy;
+  } catch (error) {
+    console.log('Error getting directory to copy ', error);
+  }
 };
 
 const getDestinationPath = () => {
-  const destinationDirectory = inquirer.prompt(questionsDestinationPath);
-  return destinationDirectory;
+  try {
+    const destinationDirectory = inquirer.prompt(questionsDestinationPath);
+    return destinationDirectory;
+  } catch (error) {
+    console.log('Error getting destination path ', error);
+  }
 };
 
 confirmContinue = async (message) => {
-  const confirm = await inquirer.prompt(questionsContinue(message));
-  return confirm.isContinue;
+  try {
+    const confirm = await inquirer.prompt(questionsContinue(message));
+    return confirm.isContinue;
+  } catch (error) {
+    console.log('Error confirming continue ', error);
+  }
 };
 
 const getCommitMessage = () => {
-  const gitCommitMessage = inquirer.prompt(questionCommitMessage);
-  return gitCommitMessage;
+  try {
+    const gitCommitMessage = inquirer.prompt(questionCommitMessage);
+    return gitCommitMessage;
+  } catch (error) {
+    console.log('Error getting commit message ', error);
+  }
 }
 
 module.exports = {

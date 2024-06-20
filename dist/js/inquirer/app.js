@@ -57,9 +57,9 @@ getCopyMoveDeleteDetails = async () => {
         contentDirectory,
         sourceDirectory
       );
-      execute_copy_and_delete(result);
-      // add progress messages
+      return result;
     })
+    .then((result) => execute_copy_and_delete(result))
     .then(() =>
       confirmContinue(
         `Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`
