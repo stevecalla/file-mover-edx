@@ -11,6 +11,7 @@ const { main } = require("../fileMover/step_0_main_copy")
 
 getCopyMoveDeleteDetails = async () => {
   let contentDirectory = "";
+  let copyToDirectory = "";
   let sourceDirectory = "";
 
   console.log(`\n\u001b[0;1mPLEASE ENTER THE FILE TO MOVE DETAILS.\n`);
@@ -18,9 +19,9 @@ getCopyMoveDeleteDetails = async () => {
     .then((result) => { contentDirectory = result; return result; })
     .then((result) => getAllDirectories(result.contentDirectory))
     .then((allDirectories) => getDirectoryToCopy(allDirectories))
-    .then((result) => { sourceDirectory = result; return result; })
+    .then((result) => { sourceDirectory = result.directoryToCopy; return result; })
     .then(() => getDestinationPath())
-    .then((result) => { consoleLogSelections(result, contentDirectory); return result; })
+    .then((result) => { consoleLogSelections(result, contentDirectory, sourceDirectory); return result; })
     .then((result) => {
       return confirmContinue()
               .then((isContinue) => {
@@ -39,26 +40,39 @@ getCopyMoveDeleteDetails = async () => {
     });
 };
 
-consoleLogSelections = async (result, contentDirectory) => {
+consoleLogSelections = async (result, contentDirectory, sourceDirectory) => {
+
+  let destinationFolderName = path.basename(sourceDirectory);
+
+  const blueColor = "\x1b[36;1m";
+  const greenColor = "\x1b[32;1m";
+  const redColor = "\x1b[31;1m";
+  const whiteColor = "\u001b[0;1m";
+
   console.log(
     `
-    \u001b[0;1mSELECTIONS:
-    Copy Files From - \x1b[36;1mSource Path\u001b[0;1m:         ${contentDirectory.contentDirectory}
-    Copy Files To - \x1b[36;1mDestinaton Path\u001b[0;1m:       ${result.destinationPath}
-    Delete \x1b[36;1mSOLVED - All Folders\u001b[0;1m:           ${result.deleteSolvedAllFolders}
-    Delete \x1b[36;1mSOLVED - ACTIVITIES 01 to 10\u001b[0;1m:   ${result.deleteSolvedInActivity01To10}
-    Delete \x1b[36;1mSOLVED - ACTIVITIES 11 to 20\u001b[0;1m:   ${result.deleteSolvedInActivity11To20}
-    Delete \x1b[36;1mSOLVED - ACTIVITIES 21 to 28\u001b[0;1m:   ${result.deleteSolvedInActivity21To28}
-    Delete \x1b[36;1mSOLVED - ALGORITHM folder\u001b[0;1m:      ${result.deleteSolvedInAlgorithmFolder}
-    Delete \x1b[36;1mMAIN   - All Folders\u001b[0;1m:           ${result.deleteMainAllFolders}
-    Delete \x1b[36;1mMAIN   - CHALLENGE Folder\u001b[0;1m:      ${result.deleteMainInChallengeFolder}`
+    ${blueColor}SELECTIONS:\u001b[0;1m
+    Content Directory:                     ${contentDirectory.contentDirectory}
+    Copy From     ${blueColor}- Source Path${whiteColor}:           ${sourceDirectory}
+    Copy To       ${blueColor}- Folder${whiteColor}:                ${destinationFolderName}
+    Copy To       ${blueColor}- Destinaton Path${whiteColor}:       ${result.destinationPath}/${destinationFolderName}
+    ${whiteColor}Delete ${blueColor}SOLVED - All Folders${whiteColor}:           ${result.deleteSolvedAllFolders ? `${greenColor}${result.deleteSolvedAllFolders}` : `${redColor}${result.deleteSolvedAllFolders}`}
+    ${whiteColor}Delete ${blueColor}SOLVED - ACTIVITIES 01 to 10${whiteColor}:   ${result.deleteSolvedInActivity01To10 ? `${greenColor}${result.deleteSolvedInActivity01To10}` : `${redColor}${result.deleteSolvedInActivity01To10}`}
+    ${whiteColor}Delete ${blueColor}SOLVED - ACTIVITIES 11 to 20${whiteColor}:   ${result.deleteSolvedInActivity11To20 ? `${greenColor}${result.deleteSolvedInActivity11To20}` : `${redColor}${result.deleteSolvedInActivity11To20}`}
+    ${whiteColor}Delete ${blueColor}SOLVED - ACTIVITIES 21 to 28${whiteColor}:   ${result.deleteSolvedInActivity21To28 ? `${greenColor}${result.deleteSolvedInActivity21To28}` : `${redColor}${result.deleteSolvedInActivity21To28}`}
+    ${whiteColor}Delete ${blueColor}SOLVED - ALGORITHM folder${whiteColor}:      ${result.deleteSolvedInAlgorithmFolder ? `${greenColor}${result.deleteSolvedInAlgorithmFolder}` : `${redColor}${result.deleteSolvedInAlgorithmFolder}`}
+    ${whiteColor}Delete ${blueColor}MAIN   - All Folders${whiteColor}:           ${result.deleteMainAllFolders ? `${greenColor}${result.deleteMainAllFolders}` : `${redColor}${result.deleteMainAllFolders}`}
+    ${whiteColor}Delete ${blueColor}MAIN   - CHALLENGE Folder${whiteColor}:      ${result.deleteMainInChallengeFolder ? `${greenColor}${result.deleteMainInChallengeFolder}` : `${redColor}${result.deleteMainInChallengeFolder}`}`
   );
 }
+
+
+// ${whiteColor}Delete ${blueColor}SOLVED - ACTIVITIES 01 to 10${whiteColor}:   ${result.deleteSolvedInActivity01To10 ? `${greenColor}${result.deleteSolvedInActivity01To10}` : `${redColor}${deleteSolvedInActivity01To10}`}
 
 createCombinedResult = (result, isContinue, contentDirectory, sourceDirectory) => { 
   result.isContinue = isContinue;
   result.contentDirectory = contentDirectory.contentDirectory;
-  result.sourceDirectory = sourceDirectory.directoryToCopy;
+  result.sourceDirectory = sourceDirectory;
   
   let destinationFolderName = path.basename(result.sourceDirectory);
   result.destinationFolderName = destinationFolderName;
