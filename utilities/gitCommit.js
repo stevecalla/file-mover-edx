@@ -73,37 +73,13 @@ async function gitCommit(directoryPath, commitMessage) {
   }
 }
 
-// async function gitPush(directoryPath) {
-//   try {
-//     const pushOutput = await executeGitCommand(
-//       directoryPath,
-//       "push origin HEAD",
-//       "pushing changes"
-//     );
-//     return pushOutput; // Return the output from executeGitCommand
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
 async function gitPush(directoryPath) {
   try {
-    let pushOutput = ""; // Initialize an empty string to accumulate output
-
     await executeGitCommand(
       directoryPath,
       "push origin HEAD",
       "pushing changes"
-    )
-      .then((output) => {
-        console.log(output);
-        pushOutput = output.trim(); // Trim and store the output
-      })
-      .catch((error) => {
-        throw new Error(`Error pushing changes: ${error}`);
-      });
-
-    return pushOutput; // Return the trimmed output
+    );
   } catch (error) {
     console.error(error);
   }
@@ -113,15 +89,7 @@ async function gitAddCommitPush(directoryPath, commitMessage) {
   try {
     await gitAdd(directoryPath);
     await gitCommit(directoryPath, commitMessage);
-
-    // await gitPush(directoryPath);
-
-    const pushOutput = await gitPush(directoryPath);
-    if (pushOutput) {
-      console.log(`Push message from GitHub: ${pushOutput}`);
-    } else {
-      console.log("No push message from GitHub."); // Handle case where output is undefined or empty
-    }
+    await gitPush(directoryPath);
   } catch (error) {
     console.error(error);
   }
