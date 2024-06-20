@@ -1,4 +1,5 @@
 const path = require("path");
+const os = require('os');
 const {
   getContentDirectory,
   getDirectoryToCopy,
@@ -14,6 +15,7 @@ const {
 const { openFolder } = require("../../../utilities/openFinder");
 const { gitAddCommitPush } = require("../../../utilities/gitCommit");
 const { blueColor, greenColor, redColor, whiteColor } = require("../../../utilities/colors");
+const { adjustWin32Path } = require("../../../utilities/adjustWin32Path");
 
 getCopyMoveDeleteDetails = async () => {
   let contentDirectory = "";
@@ -135,22 +137,37 @@ consoleLogSelections = async (result, contentDirectory, sourceDirectory) => {
   );
 };
 
-createCombinedResult = (
+createCombinedResult = async (
   result,
   isContinue,
   contentDirectory,
   sourceDirectory
 ) => {
+
+  let destinationFolderName = path.basename(sourceDirectory);
+  let destinationPath = "";
+
+  if(os.platform() === "win32") {
+    destinationPath = await adjustWin32Path(result.destinationPath);
+    console.log(destinationPath);
+    contentDirectory = await adjustWin32Path(contentDirectory.contentDirectory);
+  } else {
+    destinationPath = result.destinationPath;
+    contentDirectory = contentDirectory.contentDirectory;
+  }
+
+  let destinationDirectory = `${destinationPath}/${destinationFolderName}`;
+  let activityDirectory = `${destinationPath}/${destinationFolderName}/01-Activities`;
+  let algorithmDirectory = `${destinationPath}/${destinationFolderName}/03-Algorithms`;
+  
+  result.destinationPath = destinationPath;
   result.isContinue = isContinue;
-  result.contentDirectory = contentDirectory.contentDirectory;
+  result.contentDirectory = contentDirectory;
   result.sourceDirectory = sourceDirectory;
-
-  let destinationFolderName = path.basename(result.sourceDirectory);
+  result.destinationDirectory = destinationDirectory;
   result.destinationFolderName = destinationFolderName;
-
-  result.destinationDirectory = `${result.destinationPath}/${destinationFolderName}`;
-  result.activityDirectory = `${result.destinationPath}/${destinationFolderName}/01-Activities`;
-  result.algorithmDirectory = `${result.destinationPath}/${destinationFolderName}/03-Algorithms`;
+  result.activityDirectory = activityDirectory;
+  result.algorithmDirectory = algorithmDirectory;
 
   return result;
 };
