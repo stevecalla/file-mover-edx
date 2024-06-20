@@ -118,12 +118,12 @@ async function gitPush(directoryPath) {
 }
 
 async function gitAddCommitPush(directoryPath, commitMessage) {
-  console.log(directoryPath);
+  // console.log(directoryPath);
   // Replace ~ with the user's home directory; modify file path
   if (os.platform() === "win32") { // Windows
     directoryPath = await adjustWin32Path(directoryPath);
   }
-  console.log(directoryPath);
+  // console.log(directoryPath);
 
   try {
     await gitAdd(directoryPath);
