@@ -81,8 +81,6 @@ getCopyMoveDeleteDetails = async () => {
     });
 };
 
-// testing commit on mac
-
 consoleLogStart = async () => {
   console.log(
     `\n${whiteColor}PLEASE ENTER THE FILES TO COPY & DELETE INSTRUCTIONS.\n`
