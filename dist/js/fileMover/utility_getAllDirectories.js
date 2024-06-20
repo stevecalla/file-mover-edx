@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const { contentDirectory } = require("./step_0_defineDirectories");
+// const { contentDirectory } = require("./step_0_defineDirectories");
 
-function getAllDirectories() {
+function getAllDirectories(contentDirectory) {
     try {
         // Read the contents of the directory
         const contents = fs.readdirSync(contentDirectory);
@@ -28,5 +28,9 @@ function getAllDirectories() {
 }
 
 // Example usage:
-const directories = getAllDirectories();
-console.log('Directories:', directories);
+// const directories = getAllDirectories();
+// console.log('Directories:', directories);
+
+module.exports = {
+  getAllDirectories,
+}

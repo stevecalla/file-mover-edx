@@ -23,7 +23,7 @@ async function deleteAllDirectories(directoryPath, directoryToDelete) {
       ) {
         // Recursively delete the directory and its contents
 
-        console.log(`Item to delete ${itemPath}`);
+        // console.log(`Item to delete ${itemPath}`);
         deleteFolderRecursive(itemPath);
       }
     });
@@ -36,15 +36,15 @@ async function deleteAllDirectories(directoryPath, directoryToDelete) {
       deleteFolderRecursive(directoryPath);
     }
 
-    console.log(`${directoryToDelete} directories deleted successfully!`);
+    // console.log(`${directoryToDelete} directories deleted successfully!`);
   } catch (error) {
-    console.error(`Error deleting ${directoryToDelete} directories: ${error}`);
+    // console.error(`Error deleting ${directoryToDelete} directories: ${error}`);
   }
 }
 
 // Recursive function to delete a directory and its contents
 function deleteFolderRecursive(folderPath) {
-  console.log(`Path to delete ${folderPath}`);
+  // console.log(`Path to delete ${folderPath}`);
   if (fs.existsSync(folderPath)) {
     fs.readdirSync(folderPath).forEach((file) => {
       const curPath = path.join(folderPath, file);

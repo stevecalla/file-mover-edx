@@ -1,10 +1,10 @@
 const fs = require("fs");
 const path = require("path");
-const { sourceDirectory, destinationDirectory } = require("./step_0a_defineDirectories");
+// const { sourceDirectory, destinationDirectory } = require("./step_0a_defineDirectories");
 const { getFilesAndDirectories } = require("./step_1_readDirectory");
 
 // Function to copy files to a new directory retaining structure
-async function copyFilesToDestination() {
+async function copyFilesToDestination(sourceDirectory, destinationDirectory) {
   // Retrieve all files and directories from sourceDirectory
   const { directories, files } = await getFilesAndDirectories(sourceDirectory);
 
@@ -26,7 +26,7 @@ async function copyFilesToDestination() {
 
     // Copy file from source to destination
     fs.copyFileSync(file, destinationFile);
-    console.log(`Copied ${file} to ${destinationFile}`);
+    // console.log(`Copied ${file} to ${destinationFile}`);
   });
 
   console.log("Files copied successfully!");

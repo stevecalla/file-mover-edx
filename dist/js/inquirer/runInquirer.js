@@ -1,52 +1,24 @@
 const inquirer = require("inquirer");
 const {
-  questionsRole,
-  questionsBasicInfo,
-  questionsManager,
-  questionsEngineer,
-  questionsIntern,
+  questionContentDirectory,
+  questionDirectoryToCopy,
+  questionsDestinationPath,
   questionsContinue,
 } = require("./questions");
 
-getBasicInfo = () => {
-  const employeeAnswers = inquirer.prompt(questionsBasicInfo);
-  return employeeAnswers;
+const getContentDirectory = () => {
+  const contentDirectory = inquirer.prompt(questionContentDirectory);
+  return contentDirectory;
 };
 
-getRole = () => {
-  const selectRole = inquirer.prompt(questionsRole);
-  return selectRole;
+const getDirectoryToCopy = (directories) => {
+  const directoryToCopy = inquirer.prompt(questionDirectoryToCopy(directories));
+  return directoryToCopy;
 };
 
-getManagerInfo = () => {
-  const managerInfo = inquirer.prompt(questionsManager);
-  return managerInfo;
-};
-
-getEngineerInfo = () => {
-  const engineerInfo = inquirer.prompt(questionsEngineer);
-
-  return engineerInfo;
-};
-
-getInternInfo = () => {
-  const internInfo = inquirer.prompt(questionsIntern);
-  return internInfo;
-};
-
-getRoleQuestion = (role) => {
-  let employeeDetails = {};
-  switch (role) {
-    case "Engineer":
-      employeeDetails = getEngineerInfo();
-      break;
-    case "Intern":
-      employeeDetails = getInternInfo();
-      break;
-    default:
-      employeeDetails = getManagerInfo();
-  }
-  return employeeDetails;
+const getDestinationPath = () => {
+  const destinationDirectory = inquirer.prompt(questionsDestinationPath);
+  return destinationDirectory;
 };
 
 confirmContinue = async () => {
@@ -55,11 +27,8 @@ confirmContinue = async () => {
 };
 
 module.exports = {
-  getBasicInfo,
-  getRole,
-  getManagerInfo,
-  getEngineerInfo,
-  getInternInfo,
-  getRoleQuestion,
+  getContentDirectory,
+  getDirectoryToCopy,
+  getDestinationPath,
   confirmContinue,
 };

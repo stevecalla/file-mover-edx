@@ -5,13 +5,13 @@ async function deleteSelectDirectories(directoryPath, directoryToDelete, matchPa
   try {
     // Read the contents of the directory
     const contents = fs.readdirSync(directoryPath);
-    console.log('directory path = ', directoryPath);
-    console.log('contents = ', contents);
+    // console.log('directory path = ', directoryPath);
+    // console.log('contents = ', contents);
 
     // Iterate through each item in the directory
     contents.forEach((item) => {
       const itemPath = path.join(directoryPath, item);
-      console.log('item = ', item);
+      // console.log('item = ', item);
 
       // Check if the item is a directory
       if (fs.statSync(itemPath).isDirectory()) {
@@ -32,15 +32,15 @@ async function deleteSelectDirectories(directoryPath, directoryToDelete, matchPa
       }
     });
 
-    console.log(`${directoryToDelete} directories deleted successfully!`);
+    // console.log(`${directoryToDelete} directories deleted successfully!`);
   } catch (error) {
-    console.error(`Error deleting ${directoryToDelete} directories: ${error}`);
+    // console.error(`Error deleting ${directoryToDelete} directories: ${error}`);
   }
 }
 
 // Recursive function to delete a directory and its contents
 function deleteFolderRecursive(folderPath) {
-  console.log(folderPath);
+  // console.log(folderPath);
   if (fs.existsSync(folderPath)) {
     fs.readdirSync(folderPath).forEach((file) => {
       const curPath = path.join(folderPath, file);
