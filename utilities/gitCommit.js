@@ -99,7 +99,7 @@ function getGitCommand() {
 async function gitAddCommitPush(directoryPath, commitMessage) {
     try {
         await gitAdd(directoryPath);
-        // await gitCommit(directoryPath, commitMessage);
+        await gitCommit(directoryPath, commitMessage);
         // await gitPush(directoryPath);
     } catch (error) {
         console.error(error);
