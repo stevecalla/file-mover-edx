@@ -65,19 +65,14 @@ getCopyMoveDeleteDetails = async () => {
         `Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`
       )
     )
-    .then((isContinue) => {
-      if (!isContinue) {
-        exitProgram();
-      }
-      getCommitMessage();
-    })
+    .then((isContinue) => !isContinue && exitProgram())
+    .then(() => getCommitMessage())
     .then((commitMessage) => {
       gitAddCommitPush(
         "/Users/stevecalla/file-mover-edx/file-mover-edx",
         commitMessage
       );
     })
-    // .then(() => exitProgram())
     .catch((error) => {
       console.error("Error occurred:", error);
     });
