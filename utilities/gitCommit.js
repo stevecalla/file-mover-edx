@@ -49,22 +49,28 @@ async function getCurrentBranch(directoryPath) {
   });
 }
 
-
 function fetchAndLogStatus(directoryPath) {
   return new Promise((resolve, reject) => {
-    const gitCommand = getGitCommand();
-    const statusCommand = `${gitCommand} -C "${directoryPath}" status`;
+    // Get current branch name
+    getCurrentBranch(directoryPath)
+      .then(currentBranch => {
+        const gitCommand = getGitCommand();
+        const statusCommand = `${gitCommand} -C "${directoryPath}" status`;
 
-    exec(statusCommand, (statusError, statusStdout, statusStderr) => {
-      if (statusError) {
-        reject(
-          `Error fetching status in ${directoryPath}: ${statusError.message}`
-        );
-        return;
-      }
-      console.log(`Repository status in ${directoryPath}:\n${statusStdout}`);
-      resolve();
-    });
+        exec(statusCommand, (statusError, statusStdout, statusStderr) => {
+          if (statusError) {
+            reject(`Error fetching status in ${directoryPath}: ${statusError.message}`);
+            return;
+          }
+
+          // Log repository status and current branch
+          console.log(`Repository status in ${directoryPath} (Branch: ${currentBranch}):\n${statusStdout}`);
+          resolve();
+        });
+      })
+      .catch(error => {
+        reject(`Error getting current branch in ${directoryPath}: ${error}`);
+      });
   });
 }
 
@@ -79,18 +85,6 @@ async function gitAdd(directoryPath) {
     console.error(error);
   }
 }
-
-// async function gitCommit(directoryPath, commitMessage) {
-//   try {
-//     await executeGitCommand(
-//       directoryPath,
-//       `commit -m "${commitMessage}"`,
-//       "committing changes"
-//     );
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
 
 async function gitCommit(directoryPath, commitMessage) {
   try {
@@ -108,18 +102,6 @@ async function gitCommit(directoryPath, commitMessage) {
   }
 }
 
-// async function gitPush(directoryPath) {
-//   try {
-//     await executeGitCommand(
-//       directoryPath,
-//       "push origin HEAD",
-//       "pushing changes"
-//     );
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
 async function gitPush(directoryPath) {
   try {
     // Get current branch name
@@ -135,9 +117,7 @@ async function gitPush(directoryPath) {
   }
 }
 
-
 async function gitAddCommitPush(directoryPath, commitMessage) {
-
   console.log(directoryPath);
   // Replace ~ with the user's home directory; modify file path
   if (os.platform() === "win32") { // Windows
@@ -148,7 +128,7 @@ async function gitAddCommitPush(directoryPath, commitMessage) {
   try {
     await gitAdd(directoryPath);
     await gitCommit(directoryPath, commitMessage);
-    await gitPush(directoryPath);
+    // await gitPush(directoryPath);
     process.exit();
   } catch (error) {
     console.error(error);
