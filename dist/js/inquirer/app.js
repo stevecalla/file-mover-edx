@@ -7,7 +7,7 @@ const {
 } = require("./runInquirer");
 
 const { getAllDirectories } = require("../fileMover/utility_getAllDirectories");
-const { main } = require("../fileMover/step_0_main_copy");
+const { execute_copy_and_delete } = require("../fileMover/step_0_executeCopyAndDelete");
 const { openFolder } = require("../../../utilities/openFinder");
 
 getCopyMoveDeleteDetails = async () => {
@@ -48,7 +48,7 @@ getCopyMoveDeleteDetails = async () => {
         contentDirectory,
         sourceDirectory
       );
-      main(result);
+      execute_copy_and_delete(result);
     })
     .catch((error) => {
       console.error("Error occurred:", error);

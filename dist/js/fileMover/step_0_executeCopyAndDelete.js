@@ -10,8 +10,8 @@ const { copyFilesToDestination } = require("./step_2_copyMoveAllDirectoriesFiles
 const { deleteAllDirectories } = require("./step_3_deleteAllDirectories");
 const { deleteSelectDirectories } = require("./step_5a_deleteSelectDirectories");
 
-// SECTION - MAIN FUNCTION
-async function main(copyAndDeleteDetails) {
+// SECTION - execute_copy_and_delete FUNCTION
+async function execute_copy_and_delete(copyAndDeleteDetails) {
   await copyMoveAllFiles(copyAndDeleteDetails);
 
   await deleteAllSolved(copyAndDeleteDetails);
@@ -64,7 +64,7 @@ async function deleteSolvedInAlgorithmFolder(copyAndDeleteDetails) {
   deleteSolvedInAlgorithmFolder && await deleteSelectDirectories(algorithmDirectory, directoryToDeleteSolved, matchPattern01To10);
 }
 
-// SECTION - STEP #3: DELETE ALL MAIN
+// SECTION - STEP #3: DELETE ALL execute_copy_and_delete
 async function deleteAllMain(copyAndDeleteDetails) {
   const { deleteMainAllFolders, destinationDirectory } = copyAndDeleteDetails;
 
@@ -78,5 +78,5 @@ async function deleteMainInChallengeFolder(copyAndDeleteDetails) {
 }
 
 module.exports = {
-  main,
+  execute_copy_and_delete,
 }
