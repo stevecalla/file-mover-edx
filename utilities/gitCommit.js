@@ -96,6 +96,7 @@ async function gitPush(directoryPath) {
       "pushing changes"
     )
       .then((output) => {
+        console.log(output);
         pushOutput = output.trim(); // Trim and store the output
       })
       .catch((error) => {
