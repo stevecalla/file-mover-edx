@@ -13,11 +13,11 @@ function executeGitCommand(directoryPath, command, message) {
         exec(fullCommand, (error, stdout, stderr) => {
           console.log('stdout = ', stdout);
             if (error) {
-                reject(`Error ${message} in ${directoryPath}: ${error.message}`);
+                reject(`Error: ${message} in ${directoryPath}: ${error.message}`);
                 return;
             }
             if (stderr) {
-                console.warn(`Git ${message} warning in ${directoryPath}: ${stderr}`);
+                console.warn(`Warning: Git ${message} warning in ${directoryPath}: ${stderr}`);
             }
             console.log(`${message} successfully in ${directoryPath}.`);
 
