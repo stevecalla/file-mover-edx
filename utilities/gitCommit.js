@@ -32,21 +32,45 @@ function executeGitCommand(directoryPath, command, message) {
   });
 }
 
-function fetchAndLogStatus(directoryPath) {
+async function getCurrentBranch(directoryPath) {
   return new Promise((resolve, reject) => {
     const gitCommand = getGitCommand();
-    const statusCommand = `${gitCommand} -C "${directoryPath}" status`;
+    const branchCommand = `${gitCommand} symbolic-ref --short HEAD`;
+    console.log('current branch ', branchCommand);
 
-    exec(statusCommand, (statusError, statusStdout, statusStderr) => {
-      if (statusError) {
-        reject(
-          `Error fetching status in ${directoryPath}: ${statusError.message}`
-        );
+    exec(branchCommand, (error, stdout, stderr) => {
+      if (error) {
+        reject(`Error getting current branch in ${directoryPath}: ${error.message}`);
         return;
       }
-      console.log(`Repository status in ${directoryPath}:\n${statusStdout}`);
-      resolve();
+      const currentBranch = stdout.trim();
+      resolve(currentBranch);
     });
+  });
+}
+
+function fetchAndLogStatus(directoryPath) {
+  return new Promise((resolve, reject) => {
+    // Get current branch name
+    getCurrentBranch(directoryPath)
+      .then(currentBranch => {
+        const gitCommand = getGitCommand();
+        const statusCommand = `${gitCommand} -C "${directoryPath}" status`;
+
+        exec(statusCommand, (statusError, statusStdout, statusStderr) => {
+          if (statusError) {
+            reject(`Error fetching status in ${directoryPath}: ${statusError.message}`);
+            return;
+          }
+
+          // Log repository status and current branch
+          console.log(`Repository status in ${directoryPath} (Branch: ${currentBranch}):\n${statusStdout}`);
+          resolve();
+        });
+      })
+      .catch(error => {
+        reject(`Error getting current branch in ${directoryPath}: ${error}`);
+      });
   });
 }
 
@@ -64,9 +88,13 @@ async function gitAdd(directoryPath) {
 
 async function gitCommit(directoryPath, commitMessage) {
   try {
+    // Get current branch name
+    const currentBranch = await getCurrentBranch(directoryPath);
+    console.log('current branch 2 = ', currentBranch);
+
     await executeGitCommand(
       directoryPath,
-      `commit -m "${commitMessage}"`,
+      `commit -m "${commitMessage}" --author="${os.userInfo().username} <${os.userInfo().username}@users.noreply.github.com>" --no-verify --allow-empty --no-post-rewrite`,
       "committing changes"
     );
   } catch (error) {
@@ -76,9 +104,12 @@ async function gitCommit(directoryPath, commitMessage) {
 
 async function gitPush(directoryPath) {
   try {
+    // Get current branch name
+    const currentBranch = await getCurrentBranch(directoryPath);
+
     await executeGitCommand(
       directoryPath,
-      "push origin HEAD",
+      `push origin ${currentBranch}`,
       "pushing changes"
     );
   } catch (error) {
@@ -87,14 +118,17 @@ async function gitPush(directoryPath) {
 }
 
 async function gitAddCommitPush(directoryPath, commitMessage) {
-
+  // console.log(directoryPath);
   // Replace ~ with the user's home directory; modify file path
-  directoryPath = await adjustWin32Path(directoryPath);
+  if (os.platform() === "win32") { // Windows
+    directoryPath = await adjustWin32Path(directoryPath);
+  }
+  // console.log(directoryPath);
 
   try {
     await gitAdd(directoryPath);
     await gitCommit(directoryPath, commitMessage);
-    await gitPush(directoryPath);
+    // await gitPush(directoryPath);
     process.exit();
   } catch (error) {
     console.error(error);
@@ -102,9 +136,10 @@ async function gitAddCommitPush(directoryPath, commitMessage) {
 }
 
 // Example usage:
-// const directoryPath = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // Replace with your directory path
-// const commitMessage = "Initial commit"; // Replace with your commit message
-// gitAddCommitPush(directoryPath, commitMessage);
+// const directoryPath = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // mac
+const directoryPath = '/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content'; // windows
+const commitMessage = "Initial commit"; // Replace with your commit message
+gitAddCommitPush(directoryPath, commitMessage);
 
 module.exports = {
   gitAddCommitPush,
