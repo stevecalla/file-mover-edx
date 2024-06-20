@@ -8,6 +8,7 @@ function executeGitCommand(directoryPath, command, message) {
         const gitCommand = getGitCommand();
 
         const fullCommand = `${gitCommand} -C "${fullPath}" ${command}`;
+        console.log(fullCommand);
 
         exec(fullCommand, (error, stdout, stderr) => {
             if (error) {
