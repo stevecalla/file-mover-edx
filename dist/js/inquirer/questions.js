@@ -113,10 +113,10 @@ const questionsContinue = (message) => [
 
 const questionCommitMessage = [
   {
-    prefix: "⠋🟡 6)",
+    prefix: "⠋🟡",
     type: "input",
     name: "commitMessage",
-    message: `${whiteColor}Enter the ${blueColor}GIT COMMIT MESSAGE${whiteColor}?`,
+    message: `${whiteColor}       - Enter the ${blueColor}GIT COMMIT MESSAGE${whiteColor}?`,
     default: "UPDATE GITLAB CONTENT",
     suffix: " 🟡",
     validate(answer) {
