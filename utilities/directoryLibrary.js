@@ -2,12 +2,7 @@ const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config({ path: "../../../../.env" });
 
-// SECTION WEEK NUMBER
-// const weekNumber = 21 - 1; // Week 21 = index of array or 21 - 1; // SET UPCOMING WEEK
-const weekNumber = 20 - 1; // Week 20 = index of array or 20 - 1 // SET CURRENT WEEK
-// console.log(weekNumber);
-
-// SECTION FILE PATH OPTIONS
+// SECTION FILE PATH OPTIONS FOR TESTING
 const filePath = [
   "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content/01-HTML-Git-CSS",
   "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content/02-Advanced-CSS",
@@ -46,9 +41,9 @@ const directoryToDeleteMain = "Main";
 // SECTION DIRECTORIES
 const contentDirectory =
   "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content";
-const sourceDirectory = filePath[weekNumber]; // 19-PWA
+// const sourceDirectory = filePath[weekNumber]; // 19-PWA
 
-let destinationFolderName = path.basename(sourceDirectory); // Outputs: 01-HTML-Git-CSS (or similar)
+// let destinationFolderName = path.basename(sourceDirectory); // Outputs: 01-HTML-Git-CSS (or similar)
 let directoryPath = "";
 let destinationDirectory = "";
 let activityDirectory = "";
@@ -65,15 +60,15 @@ if (process.env.NODE_ENV === "development") {
 } else {
   directoryPath =
     "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination";
-  destinationDirectory = `${directoryPath}/${destinationFolderName}`;
+  // destinationDirectory = `${directoryPath}/${destinationFolderName}`;
   // used to delete solved inside the 01-Activity directory
-  activityDirectory = `${directoryPath}/${destinationFolderName}/01-Activities`;
+  // activityDirectory = `${directoryPath}/${destinationFolderName}/01-Activities`;
   // used to delete solved inside the 01-Activity directory
-  algorithmDirectory = `${directoryPath}/${destinationFolderName}/03-Algorithms`;
+  // algorithmDirectory = `${directoryPath}/${destinationFolderName}/03-Algorithms`;
 }
 
 module.exports = {
-  sourceDirectory,
+  // sourceDirectory,
   activityDirectory,
   algorithmDirectory,
   destinationDirectory,

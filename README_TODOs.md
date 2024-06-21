@@ -36,7 +36,6 @@ npm package easy git?
 
 readme finish with images & video
 instruction page
-put variables in main file
 add confirm showing the file path for the git push/add/commit
 set question defaults for paths to process.env
 add validiation for the path... must start with "/"
