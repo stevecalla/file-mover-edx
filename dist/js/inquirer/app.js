@@ -1,4 +1,3 @@
-const path = require("path");
 const os = require('os');
 const {
   getContentDirectory,
@@ -11,7 +10,6 @@ const { getAllDirectories } = require("../../../utilities/getAllDirectories");
 const { execute_copy_and_delete } = require("../fileMover/step_0_executeCopyAndDelete");
 const { openFolder } = require("../../../utilities/openFinder");
 const { gitAddCommitPush } = require("../../../utilities/gitCommit");
-const { adjustWin32Path } = require("../../../utilities/adjustWin32Path");
 const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitText } = require('./contentConsoleLogs');
 const { createDirectoriesCopyDeleteRules } = require('./createDirectoriesCopyDeleteRules');
 const { exitProgram } = require("../../../utilities/exitProgram");
