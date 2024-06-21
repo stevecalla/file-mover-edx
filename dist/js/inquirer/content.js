@@ -21,7 +21,6 @@ const confirmGitText = (`Would you like to ${blueColor}Git Add, Commit & Push${w
 async function consoleLogSelections(result, contentDirectory, sourceDirectory) {
   let destinationFolderName = path.basename(sourceDirectory);
   let destinationPath = "";
-  let contentPath = "";
 
   if (os.platform() === "win32") {
     destinationPath = await adjustWin32Path(result.destinationPath);
@@ -32,7 +31,7 @@ async function consoleLogSelections(result, contentDirectory, sourceDirectory) {
   console.log(
     `
     ${blueColor}SELECTIONS:${whiteColor}
-    Content Directory:                     ${contentDirectory.contentDirectory}
+    Content Directory:                     ${contentDirectory}
     Copy From     ${blueColor}- Source Path${whiteColor}:           ${sourceDirectory}
     Copy To       ${blueColor}- Folder${whiteColor}:                ${destinationFolderName}
     Copy To       ${blueColor}- Destinaton Path${whiteColor}:       ${destinationPath}/${destinationFolderName}

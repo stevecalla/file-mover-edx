@@ -26,10 +26,12 @@ DONE - move utilities get all directories to the utility folder
 DONE - rename step 0a define definitions to a libraryDirectories
 DONE - move directoryLibrary to utilities folder
 DONE - rename step_5a... file to step_4... file
+DONE - refactor app.js then block
+DONE - fix selection display = contentDirectory undefined
+
 
 move all references to paths / directors to the libraryOfDirectories
-
-breakup app.js into multiple... for example all the console logs into file
+question path defaults
 
 npm package to sync paths between mac and os?
 npm package easy git?

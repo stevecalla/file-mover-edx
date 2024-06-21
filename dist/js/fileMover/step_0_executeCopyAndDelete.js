@@ -27,11 +27,14 @@ async function execute_copy_and_delete(copyAndDeleteDetails) {
 // SECTION - STEP #1: COPY ALL FILES FROM SOURCE TO DESTINATION
 async function copyMoveAllFiles(copyAndDeleteDetails) {
   try {
-    // console.log('copy & delete = ', copyAndDeleteDetails);
     const { isContinue, sourceDirectory, destinationDirectory } = copyAndDeleteDetails;
 
+    console.log('copy & delete = ', copyAndDeleteDetails);
+    
     if(isContinue) {
       await copyFilesToDestination(sourceDirectory, destinationDirectory);
+
+
       console.log(`\n✅ Files copied to destination successfully`);
     }
   } catch (error) {
