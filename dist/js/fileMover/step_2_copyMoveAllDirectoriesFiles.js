@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-// const { sourceDirectory, destinationDirectory } = require("../../../utilities/directoryLibrary");
 const { getFilesAndDirectories } = require("./step_1_readDirectory");
 
 // Function to copy files to a new directory retaining structure
@@ -33,6 +32,7 @@ async function copyFilesToDestination(sourceDirectory, destinationDirectory) {
 }
 
 // Copy files from source to destination while retaining structure
+// const { sourceDirectory, destinationDirectory } = require("../../../utilities/directoryLibrary");
 // copyFilesToDestination();
 
 module.exports = {

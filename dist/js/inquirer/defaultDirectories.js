@@ -1,8 +1,22 @@
-const path = require("path");
-const dotenv = require("dotenv");
-dotenv.config({ path: "../../../../.env" });
+const os = require('os');
 
-// SECTION FILE PATH OPTIONS FOR TESTING
+// SECTION CONTENT DIRECTORY
+const defaultContentDirectoryMacOS = "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content";
+
+const defaultContentDirectoryWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content";
+
+const defaultContentDirectory = os.platform() === "win32" ? defaultContentDirectoryWindowsOS : defaultContentDirectoryMacOS;
+
+// SECTION DESTINATION DIRECTORY
+const defaultDestinationDirectoryMacOSTesting = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination";
+
+const defaultDestinationDirectoryMacOs = "/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC";
+
+const defaultDestinationDirectoryWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/UofO-VIRT-FSF-PT-01-2024-U-LOLC";
+
+const defaultDestinationDirectory = os.platform() === "win32" ? defaultDestinationDirectoryWindowsOS : defaultDestinationDirectoryMacOs;
+
+// SECTION FILE PATH OPTIONS FOR TESTING CONTENT IF NECESSARY
 const filePath = [
   "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content/01-HTML-Git-CSS",
   "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content/02-Advanced-CSS",
@@ -30,53 +44,7 @@ const filePath = [
   "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content/24-Project-3-Contd",
 ];
 
-// SECTION MATCH PATTERNS
-const matchPattern01To10 = /^(0[1-9]|10)/; // 01 to 10
-const matchPattern11To20 = /^(1[1-9]|20)/; // 11 to 20
-const matchPattern21To28 = /^(2[1-8])/; // 21 to 28
-const matchPatternChallenge = /^02-Challenge/; //02-Challenge
-const directoryToDeleteSolved = "Solved";
-const directoryToDeleteMain = "Main";
-
-// SECTION DIRECTORIES
-const contentDirectory =
-  "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content";
-// const sourceDirectory = filePath[weekNumber]; // 19-PWA
-
-// let destinationFolderName = path.basename(sourceDirectory); // Outputs: 01-HTML-Git-CSS (or similar)
-let directoryPath = "";
-let destinationDirectory = "";
-let activityDirectory = "";
-let algorithmDirectory = "";
-
-if (process.env.NODE_ENV === "development") {
-  directoryPath =
-    "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination";
-  destinationDirectory = `${directoryPath}/${destinationFolderName}`;
-  // used to delete solved inside the 01-Activity directory
-  activityDirectory = `${directoryPath}/${destinationFolderName}/01-Activities`;
-  // used to delete solved inside the 01-Activity directory
-  algorithmDirectory = `${directoryPath}/${destinationFolderName}/03-Algorithms`;
-} else {
-  directoryPath =
-    "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination";
-  // destinationDirectory = `${directoryPath}/${destinationFolderName}`;
-  // used to delete solved inside the 01-Activity directory
-  // activityDirectory = `${directoryPath}/${destinationFolderName}/01-Activities`;
-  // used to delete solved inside the 01-Activity directory
-  // algorithmDirectory = `${directoryPath}/${destinationFolderName}/03-Algorithms`;
-}
-
 module.exports = {
-  // sourceDirectory,
-  activityDirectory,
-  algorithmDirectory,
-  destinationDirectory,
-  contentDirectory,
-  matchPattern01To10,
-  matchPattern11To20,
-  matchPattern21To28,
-  matchPatternChallenge,
-  directoryToDeleteSolved,
-  directoryToDeleteMain,
-};
+  defaultContentDirectory,
+  defaultDestinationDirectory,
+}
