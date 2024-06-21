@@ -23,10 +23,12 @@ DONE - add real UofO path
 DONE - test on windows machine - particularly paths
 DONE - check validation for questions
 DONE - move utilities get all directories to the utility folder
+DONE - rename step 0a define definitions to a libraryDirectories
+DONE - move directoryLibrary to utilities folder
+DONE - rename step_5a... file to step_4... file
 
-modify step 0a define definitions to a libraryDirectories in the utilities folder
 move all references to paths / directors to the libraryOfDirectories
-renumber step 5a to step 4
+
 breakup app.js into multiple... for example all the console logs into file
 
 npm package to sync paths between mac and os?

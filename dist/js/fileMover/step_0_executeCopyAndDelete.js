@@ -8,7 +8,7 @@ const {
 } = require("../../../utilities/directoryLibrary");
 const { copyFilesToDestination } = require("./step_2_copyMoveAllDirectoriesFiles"); // step 2
 const { deleteAllDirectories } = require("./step_3_deleteAllDirectories");
-const { deleteSelectDirectories } = require("./step_5a_deleteSelectDirectories");
+const { deleteSelectDirectories } = require("./step_4_deleteSelectDirectories");
 
 // SECTION - execute_copy_and_delete FUNCTION
 async function execute_copy_and_delete(copyAndDeleteDetails) {
