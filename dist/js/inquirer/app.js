@@ -3,7 +3,7 @@ const os = require('os');
 const {
   getContentDirectory,
   getDirectoryToCopy,
-  getDestinationPath,
+  getDestinationInformation,
   getCommitMessage,
   confirmContinue,
 } = require("./runInquirer");
@@ -12,73 +12,44 @@ const { execute_copy_and_delete } = require("../fileMover/step_0_executeCopyAndD
 const { openFolder } = require("../../../utilities/openFinder");
 const { gitAddCommitPush } = require("../../../utilities/gitCommit");
 const { adjustWin32Path } = require("../../../utilities/adjustWin32Path");
-const { consoleLogStart, consoleLogSelections } = require('./content')
-const { blueColor, greenColor, redColor, whiteColor } = require("../../../utilities/colors");
+const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitText } = require('./content');
+const { exitProgram } = require("../../../utilities/exitProgram");
 
 getCopyMoveDeleteDetails = async () => {
   let contentDirectory = "";
   let sourceDirectory = "";
   let destinationPath = "";
+  let destinationInformation = "";
+  const deployPathMacOs = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // MAC DEVELOPMENT TESTING
+  const deployPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content"; // WINDOWS DEVELOPMENT TESTING
+  const deployPathTesting = os.platform() === 'win32' ? deployPathWindowsOS : deployPathMacOs;
 
-  await consoleLogStart()
-    .then(() => getContentDirectory()) // QUESTION #1
-    .then((result) => {
-      contentDirectory = result;
-      openFolder(result.contentDirectory);
-      return result;
-    })
-    .then((result) => getAllDirectories(result.contentDirectory))
-    .then((allDirectories) => getDirectoryToCopy(allDirectories)) // QUESTION #2
-    .then((result) => {
-      sourceDirectory = result.directoryToCopy;
-      return result;
-    })
-    .then(() => getDestinationPath()) // QUESTION #3
-    .then((result) => {
-      consoleLogSelections(result, contentDirectory, sourceDirectory);
-      destinationPath = result.destinationPath;
-      openFolder(destinationPath);
-      return result;
-    })
-    .then((result) => {
-      return confirmContinue(
-        `Would you like to ${blueColor}COPY & DELETE per the SELECTIONS${whiteColor}`
-      ).then((isContinue) => {
-        return { result, isContinue };
-      });
-    })
-    .then(({ result, isContinue }) => {
-      if (!isContinue) {
-        exitProgram();
-      }
-      result = createCombinedResult(
-        result,
-        isContinue,
-        contentDirectory,
-        sourceDirectory
-      );
-      return result;
-    })
+  await consoleLogStartText()
+    // SECTION = QUESTION #1 - GET CONTENT DIRECTORY
+    .then(() => getContentDirectory()) 
+    .then((result) => contentDirectory = result.contentDirectory)
+    .then(() => openFolder(contentDirectory))
+    .then(() => getAllDirectories(contentDirectory)) // READ CONTENTS OF contentDirectory
+    // SECTION = QUESTION #2 - SELECT A DIRECTORY TO COPY
+    .then((result) => getDirectoryToCopy(result))
+    .then((result) => sourceDirectory = result.directoryToCopy)
+    // SECTION = QUESTION #3 - GET COPY & DELETE INSTRUCTIONS
+    .then(() => getDestinationInformation())
+    .then((result) => destinationInformation = result)
+    .then(() => destinationPath = deployPathTesting || destinationInformation.destinationPath) //fix
+    .then(() => openFolder(destinationPath))
+    .then(() => consoleLogSelections(destinationInformation, contentDirectory, sourceDirectory))
+    // SECTION = CONFIRM THEN EXECUTE COPY & DELETE
+    .then(() => confirmContinue(confirmCopyText))
+    .then((isContinue) => !isContinue && exitProgram())
+    .then(() => createCombinedResult(destinationInformation, contentDirectory, sourceDirectory))
     .then((result) => execute_copy_and_delete(result))
-    .then(() => os.platform() !== "darwin" && exitProgram())
-    .then(() =>
-      confirmContinue(
-        `Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`
-      )
-    )
+    // SECTION EXECUTE GIT ADD, COMMIT, PUSH; ONLY ON MAC OS; EXIT IF WINDOWS OS SINCE GIT IS NOT WORKING
+    .then(() => os.platform() !== "darwin" && exitProgram()) 
+    .then(() => confirmContinue(confirmGitText)) // CONFIRM GIT ADD, COMMIT, PUSH
     .then((isContinue) => !isContinue && exitProgram())
     .then(() => getCommitMessage())
-    .then((result) => {
-      let message = result.commitMessage;
-      gitAddCommitPush(
-        "/Users/stevecalla/file-mover-edx/file-mover-edx", // mac test / development
-        // destinationPath, // production
-
-        // '/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content', // windows test
-        // os.platform() === 'win32' ? "/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content" : "/Users/stevecalla/file-mover-edx/file-mover-edx",
-        message
-      );
-    })
+    .then((result) => gitAddCommitPush(destinationPath, result.commitMessage))
     .catch((error) => {
       console.error("Error occurred:", error);
     });
@@ -86,7 +57,6 @@ getCopyMoveDeleteDetails = async () => {
 
 createCombinedResult = async (
   result,
-  isContinue,
   contentDirectory,
   sourceDirectory
 ) => {
@@ -97,10 +67,10 @@ createCombinedResult = async (
   if(os.platform() === "win32") {
     destinationPath = await adjustWin32Path(result.destinationPath);
     console.log(destinationPath);
-    contentDirectory = await adjustWin32Path(contentDirectory.contentDirectory);
+    contentDirectory = await adjustWin32Path(contentDirectory);
   } else {
     destinationPath = result.destinationPath;
-    contentDirectory = contentDirectory.contentDirectory;
+    contentDirectory = contentDirectory;
   }
 
   let destinationDirectory = `${destinationPath}/${destinationFolderName}`;
@@ -108,7 +78,7 @@ createCombinedResult = async (
   let algorithmDirectory = `${destinationPath}/${destinationFolderName}/03-Algorithms`;
   
   result.destinationPath = destinationPath;
-  result.isContinue = isContinue;
+  result.isContinue = true;
   result.contentDirectory = contentDirectory;
   result.sourceDirectory = sourceDirectory;
   result.destinationDirectory = destinationDirectory;
@@ -117,11 +87,6 @@ createCombinedResult = async (
   result.algorithmDirectory = algorithmDirectory;
 
   return result;
-};
-
-exitProgram = () => {
-  console.log(`\n${whiteColor}Go${redColor}o${greenColor}d b${whiteColor}ye${blueColor}!!\n`);
-  process.exit();
 };
 
 // getCopyMoveDeleteDetails();

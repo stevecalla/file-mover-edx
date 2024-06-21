@@ -1,3 +1,6 @@
+const path = require("path");
+const os = require('os');
+const { adjustWin32Path } = require("../../../utilities/adjustWin32Path");
 const {
   blueColor,
   greenColor,
@@ -5,11 +8,15 @@ const {
   whiteColor,
 } = require("../../../utilities/colors");
 
-async function consoleLogStart() {
+async function consoleLogStartText() {
   console.log(
     `\n${whiteColor}PLEASE ENTER THE FILES TO COPY & DELETE INSTRUCTIONS.\n`
   );
 }
+
+const confirmCopyText = `Would you like to ${blueColor}COPY & DELETE per the SELECTIONS${whiteColor}`;
+
+const confirmGitText = (`Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`);
 
 async function consoleLogSelections(result, contentDirectory, sourceDirectory) {
   let destinationFolderName = path.basename(sourceDirectory);
@@ -63,12 +70,13 @@ async function consoleLogSelections(result, contentDirectory, sourceDirectory) {
       result.deleteMainInChallengeFolder
         ? `${greenColor}${result.deleteMainInChallengeFolder}`
         : `${redColor}${result.deleteMainInChallengeFolder}`
-    }
-    `
+    }`
   );
 }
 
 module.exports = {
-  consoleLogStart,
+  consoleLogStartText,
+  confirmCopyText,
+  confirmGitText,
   consoleLogSelections,
 };
