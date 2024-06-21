@@ -25,7 +25,7 @@ const getDirectoryToCopy = (directories) => {
   }
 };
 
-const getDestinationPath = () => {
+const getDestinationInformation = () => {
   try {
     const destinationDirectory = inquirer.prompt(questionsDestinationPath);
     return destinationDirectory;
@@ -55,7 +55,7 @@ const getCommitMessage = async () => {
 module.exports = {
   getContentDirectory,
   getDirectoryToCopy,
-  getDestinationPath,
+  getDestinationInformation,
   confirmContinue,
   getCommitMessage,
 };

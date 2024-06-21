@@ -1,12 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
-const { adjustWin32Path } = require("../../../utilities/adjustWin32Path");
+const { adjustWin32Path } = require("./adjustWin32Path");
 
 async function getAllDirectories(contentDirectory) {
-
+  // For Windows OS, modify path and add home directory
     if (os.platform() === "win32") {
-        // Replace ~ with the user's home directory; modify file path
         contentDirectory = await adjustWin32Path(contentDirectory);
     }
 
@@ -35,7 +34,8 @@ async function getAllDirectories(contentDirectory) {
 }
 
 // Example usage:
-// const directories = await getAllDirectories();
+// const { contentDirectory } = require("./directoryLibrary");
+// const directories = await getAllDirectories(contentDirectory);
 // console.log('Directories:', directories);
 
 module.exports = {

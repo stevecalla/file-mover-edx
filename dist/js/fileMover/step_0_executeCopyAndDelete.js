@@ -5,10 +5,10 @@ const {
   matchPatternChallenge,
   directoryToDeleteSolved,
   directoryToDeleteMain,
-} = require("./step_0a_defineDirectories");
+} = require("../../../utilities/directoryLibrary");
 const { copyFilesToDestination } = require("./step_2_copyMoveAllDirectoriesFiles"); // step 2
 const { deleteAllDirectories } = require("./step_3_deleteAllDirectories");
-const { deleteSelectDirectories } = require("./step_5a_deleteSelectDirectories");
+const { deleteSelectDirectories } = require("./step_4_deleteSelectDirectories");
 
 // SECTION - execute_copy_and_delete FUNCTION
 async function execute_copy_and_delete(copyAndDeleteDetails) {
@@ -27,7 +27,7 @@ async function execute_copy_and_delete(copyAndDeleteDetails) {
 // SECTION - STEP #1: COPY ALL FILES FROM SOURCE TO DESTINATION
 async function copyMoveAllFiles(copyAndDeleteDetails) {
   try {
-    console.log('copy & delete = ', copyAndDeleteDetails);
+    // console.log('copy & delete = ', copyAndDeleteDetails);
     const { isContinue, sourceDirectory, destinationDirectory } = copyAndDeleteDetails;
 
     if(isContinue) {
