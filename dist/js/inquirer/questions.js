@@ -1,4 +1,5 @@
 const os = require('os');
+const { defaultContentDirectory, defaultDestinationDirectory } = require('./defaultDirectories');
 const { isBlank } = require("../../../utilities/util");
 const { blueColor, redColor, whiteColor } = require("../../../utilities/colors");
 
@@ -8,7 +9,7 @@ const questionContentDirectory = [
     type: "input",
     name: "contentDirectory",
     message: `${whiteColor}Enter the ${blueColor}CLASS CONTENT${whiteColor} directory?${redColor}`,
-    default: os.platform() === "win32" ? "/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content" : "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content",
+    default: defaultContentDirectory,
     suffix: " 🟡",
     validate(answer) {
       return isBlank(answer, "Class Content Directory");
@@ -28,6 +29,7 @@ const questionDirectoryToCopy = (directories) => [
   },
 ];
 
+// SECTION GET DESTINATON INFORMATION
 const allSolvedText = `SOLVED FOLDERS:\n       - Would you like to delete ${blueColor}SOLVED - All Folders${whiteColor}?`;
 const solvedInActivity01To10Text = `       - Would you like to delete ${blueColor}SOLVED - ACTIVITIES 01 to 10${whiteColor}?`;
 const solvedInActivity11To20Text = `       - Would you like to delete ${blueColor}SOLVED - ACTIVITIES 11 to 20${whiteColor}?`;
@@ -35,7 +37,6 @@ const solvedInActivity21To28Text = `       - Would you like to delete ${blueColo
 const solvedInAlgorithmFolderText = `       - Would you like to delete ${blueColor}SOLVED - ALGORITHM folder${whiteColor}?`;
 const mainAllFoldersText = `MAIN FOLDERS:\n       - Would you like to delete ${blueColor}MAIN - All Folders?${whiteColor}?`;
 const mainInChallengeFolderText = `       - Would you like to delete ${blueColor}MAIN - CHALLENGE Folder${whiteColor}?`;
-
 const questionsDestinationPath = [
   // SECTION GET DESTINATION DIRECTORY
   {
@@ -43,9 +44,7 @@ const questionsDestinationPath = [
     type: "input",
     name: "destinationPath",
     message: `${whiteColor}Enter the ${blueColor}DESTINATION${whiteColor} directory?`,
-    // default: "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination", //testing on mac
-    // default: "/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC",
-    default: os.platform() === "win32" ? "/Google Drive/edX Tutor/file-mover-edx/UofO-VIRT-FSF-PT-01-2024-U-LOLC" : "/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC",
+    default: defaultDestinationDirectory,
     suffix: " 🟡",
     validate(answer) {
       return isBlank(answer, "Destination Directory");
