@@ -5,7 +5,7 @@ const {
   matchPatternChallenge,
   directoryToDeleteSolved,
   directoryToDeleteMain,
-} = require("./step_0a_defineDirectories");
+} = require("../../../utilities/directoryLibrary");
 const { copyFilesToDestination } = require("./step_2_copyMoveAllDirectoriesFiles"); // step 2
 const { deleteAllDirectories } = require("./step_3_deleteAllDirectories");
 const { deleteSelectDirectories } = require("./step_5a_deleteSelectDirectories");

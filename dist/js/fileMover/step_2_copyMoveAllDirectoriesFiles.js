@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-// const { sourceDirectory, destinationDirectory } = require("./step_0a_defineDirectories");
+// const { sourceDirectory, destinationDirectory } = require("../../../utilities/directoryLibrary");
 const { getFilesAndDirectories } = require("./step_1_readDirectory");
 
 // Function to copy files to a new directory retaining structure

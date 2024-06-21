@@ -22,14 +22,15 @@ DONE - exit process after git commit / push
 DONE - add real UofO path
 DONE - test on windows machine - particularly paths
 DONE - check validation for questions
+DONE - move utilities get all directories to the utility folder
 
-move utilities all directories to the utility folder
 modify step 0a define definitions to a libraryDirectories in the utilities folder
 move all references to paths / directors to the libraryOfDirectories
 renumber step 5a to step 4
 breakup app.js into multiple... for example all the console logs into file
 
 npm package to sync paths between mac and os?
+npm package easy git?
 
 readme finish with images & video
 instruction page

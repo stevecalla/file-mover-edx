@@ -4,10 +4,10 @@ const {
   getContentDirectory,
   getDirectoryToCopy,
   getDestinationPath,
-  confirmContinue,
   getCommitMessage,
+  confirmContinue,
 } = require("./runInquirer");
-const { getAllDirectories } = require("../../../utilities/directoryLibrary");
+const { getAllDirectories } = require("../../../utilities/getAllDirectories");
 const { execute_copy_and_delete } = require("../fileMover/step_0_executeCopyAndDelete");
 const { openFolder } = require("../../../utilities/openFinder");
 const { gitAddCommitPush } = require("../../../utilities/gitCommit");
