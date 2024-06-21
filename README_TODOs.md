@@ -32,10 +32,9 @@ DONE - move all references to paths / directors to the default directories js
 DONE - question path defaults
 DONE - clean directoryLibrary rules
 DONE - rename library to match rules
+DONE - add confirm showing the file path for the git push/add/commit
 
-add confirm showing the file path for the git push/add/commit
 add validiation for the path... must start with "/"
-
 readme finish with images & video
 instruction page
 

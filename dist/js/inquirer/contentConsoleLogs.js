@@ -16,7 +16,9 @@ async function consoleLogStartText() {
 
 const confirmCopyText = `Would you like to ${blueColor}COPY & DELETE per the SELECTIONS${whiteColor}`;
 
-const confirmGitText = (`Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`);
+const confirmGitCommitText = `Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`;
+
+const confirmGitPath = (destinationPath) => `Is this the correct path for Git add, commit, push ${blueColor}"${destinationPath}"${whiteColor}?`;
 
 async function consoleLogSelections(result, contentDirectory, sourceDirectory) {
   let destinationFolderName = path.basename(sourceDirectory);
@@ -76,6 +78,7 @@ async function consoleLogSelections(result, contentDirectory, sourceDirectory) {
 module.exports = {
   consoleLogStartText,
   confirmCopyText,
-  confirmGitText,
+  confirmGitCommitText,
   consoleLogSelections,
+  confirmGitPath,
 };

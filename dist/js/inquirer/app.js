@@ -10,7 +10,7 @@ const { getAllDirectories } = require("../../../utilities/getAllDirectories");
 const { execute_copy_and_delete } = require("../fileMover/step_0_executeCopyAndDelete");
 const { openFolder } = require("../../../utilities/openFinder");
 const { gitAddCommitPush } = require("../../../utilities/gitCommit");
-const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitText } = require('./contentConsoleLogs');
+const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitCommitText, confirmGitPath } = require('./contentConsoleLogs');
 const { createDirectoriesCopyDeleteRules } = require('./createDirectoriesCopyDeleteRules');
 const { exitProgram } = require("../../../utilities/exitProgram");
 
@@ -46,10 +46,12 @@ getCopyMoveDeleteDetails = async () => {
     .then((result) => execute_copy_and_delete(result))
     // SECTION EXECUTE GIT ADD, COMMIT, PUSH; ONLY ON MAC OS; EXIT IF WINDOWS OS SINCE GIT IS NOT WORKING
     .then(() => os.platform() !== "darwin" && exitProgram()) 
-    .then(() => confirmContinue(confirmGitText)) // CONFIRM GIT ADD, COMMIT, PUSH
+    .then(() => destinationPath = deployPathTesting || destinationInformation.destinationPath) //fix
+    .then(() => confirmContinue(confirmGitCommitText)) // CONFIRM GIT ADD, COMMIT, PUSH
+    .then((isContinue) => !isContinue && exitProgram())
+    .then(() => confirmContinue(confirmGitPath(destinationPath)))
     .then((isContinue) => !isContinue && exitProgram())
     .then(() => getCommitMessage())
-    .then(() => destinationPath = deployPathTesting || destinationInformation.destinationPath) //fix
     .then((result) => gitAddCommitPush(destinationPath, result.commitMessage))
     .catch((error) => {
       console.error("Error occurred:", error);
