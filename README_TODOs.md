@@ -28,19 +28,20 @@ DONE - move directoryLibrary to utilities folder
 DONE - rename step_5a... file to step_4... file
 DONE - refactor app.js then block
 DONE - fix selection display = contentDirectory undefined
+DONE - move all references to paths / directors to the default directories js
+DONE - question path defaults
+DONE - clean directoryLibrary rules
+DONE - rename library to match rules
 
-
-move all references to paths / directors to the libraryOfDirectories
-question path defaults
-
-npm package to sync paths between mac and os?
-npm package easy git?
+add confirm showing the file path for the git push/add/commit
+add validiation for the path... must start with "/"
 
 readme finish with images & video
 instruction page
-add confirm showing the file path for the git push/add/commit
-set question defaults for paths to process.env
-add validiation for the path... must start with "/"
-windows issue with git commit et al
-try to spin up a git add, commit, push feature in separate project
-run / open automatically on mac?
+
+npm package to sync paths between mac and os?
+npm package easy git?
+  - windows issue with git commit et al
+  - try to spin up a git add, commit, push feature in separate project
+
+run / open automatically on mac
