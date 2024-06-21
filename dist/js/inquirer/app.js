@@ -21,6 +21,7 @@ getCopyMoveDeleteDetails = async () => {
   let sourceDirectory = "";
   let destinationPath = "";
   let destinationInformation = "";
+  const copyPathMacOS = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination"; // MAC TEST copyPath
   const deployPathMacOs = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // MAC DEVELOPMENT TESTING
   const deployPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content"; // WINDOWS DEVELOPMENT TESTING
   const deployPathTesting = os.platform() === 'win32' ? deployPathWindowsOS : deployPathMacOs;
@@ -37,9 +38,9 @@ getCopyMoveDeleteDetails = async () => {
     // SECTION = QUESTION #3 - GET COPY & DELETE INSTRUCTIONS
     .then(() => getDestinationInformation())
     .then((result) => destinationInformation = result)
-    .then(() => destinationPath = deployPathTesting || destinationInformation.destinationPath) //fix
-    .then(() => openFolder(destinationPath))
+    .then(() => {if(copyPathMacOS) {destinationInformation.destinationPath = copyPathMacOS}}) //fix
     .then(() => consoleLogSelections(destinationInformation, contentDirectory, sourceDirectory))
+    .then(() => openFolder(destinationInformation.destinationPath))
     // SECTION = CONFIRM THEN EXECUTE COPY & DELETE
     .then(() => confirmContinue(confirmCopyText))
     .then((isContinue) => !isContinue && exitProgram())
@@ -50,45 +51,12 @@ getCopyMoveDeleteDetails = async () => {
     .then(() => confirmContinue(confirmGitText)) // CONFIRM GIT ADD, COMMIT, PUSH
     .then((isContinue) => !isContinue && exitProgram())
     .then(() => getCommitMessage())
+    .then(() => destinationPath = deployPathTesting || destinationInformation.destinationPath) //fix
     .then((result) => gitAddCommitPush(destinationPath, result.commitMessage))
     .catch((error) => {
       console.error("Error occurred:", error);
     });
 };
-
-// createDirectoriesCopyDeleteRules = async (
-//   result,
-//   contentDirectory,
-//   sourceDirectory
-// ) => {
-
-//   let destinationFolderName = path.basename(sourceDirectory);
-//   let destinationPath = "";
-
-//   if(os.platform() === "win32") {
-//     destinationPath = await adjustWin32Path(result.destinationPath);
-//     console.log(destinationPath);
-//     contentDirectory = await adjustWin32Path(contentDirectory);
-//   } else {
-//     destinationPath = result.destinationPath;
-//     contentDirectory = contentDirectory;
-//   }
-
-//   let destinationDirectory = `${destinationPath}/${destinationFolderName}`;
-//   let activityDirectory = `${destinationPath}/${destinationFolderName}/01-Activities`;
-//   let algorithmDirectory = `${destinationPath}/${destinationFolderName}/03-Algorithms`;
-  
-//   result.destinationPath = destinationPath;
-//   result.isContinue = true;
-//   result.contentDirectory = contentDirectory;
-//   result.sourceDirectory = sourceDirectory;
-//   result.destinationDirectory = destinationDirectory;
-//   result.destinationFolderName = destinationFolderName;
-//   result.activityDirectory = activityDirectory;
-//   result.algorithmDirectory = algorithmDirectory;
-
-//   return result;
-// };
 
 // getCopyMoveDeleteDetails();
 
