@@ -13,6 +13,7 @@ const { openFolder } = require("../../../utilities/openFinder");
 const { gitAddCommitPush } = require("../../../utilities/gitCommit");
 const { adjustWin32Path } = require("../../../utilities/adjustWin32Path");
 const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitText } = require('./content');
+const { createDirectoriesCopyDeleteRules } = require('./createDirectoriesCopyDeleteRules');
 const { exitProgram } = require("../../../utilities/exitProgram");
 
 getCopyMoveDeleteDetails = async () => {
@@ -42,7 +43,7 @@ getCopyMoveDeleteDetails = async () => {
     // SECTION = CONFIRM THEN EXECUTE COPY & DELETE
     .then(() => confirmContinue(confirmCopyText))
     .then((isContinue) => !isContinue && exitProgram())
-    .then(() => createCombinedResult(destinationInformation, contentDirectory, sourceDirectory))
+    .then(() => createDirectoriesCopyDeleteRules(destinationInformation, contentDirectory, sourceDirectory))
     .then((result) => execute_copy_and_delete(result))
     // SECTION EXECUTE GIT ADD, COMMIT, PUSH; ONLY ON MAC OS; EXIT IF WINDOWS OS SINCE GIT IS NOT WORKING
     .then(() => os.platform() !== "darwin" && exitProgram()) 
@@ -55,39 +56,39 @@ getCopyMoveDeleteDetails = async () => {
     });
 };
 
-createCombinedResult = async (
-  result,
-  contentDirectory,
-  sourceDirectory
-) => {
+// createDirectoriesCopyDeleteRules = async (
+//   result,
+//   contentDirectory,
+//   sourceDirectory
+// ) => {
 
-  let destinationFolderName = path.basename(sourceDirectory);
-  let destinationPath = "";
+//   let destinationFolderName = path.basename(sourceDirectory);
+//   let destinationPath = "";
 
-  if(os.platform() === "win32") {
-    destinationPath = await adjustWin32Path(result.destinationPath);
-    console.log(destinationPath);
-    contentDirectory = await adjustWin32Path(contentDirectory);
-  } else {
-    destinationPath = result.destinationPath;
-    contentDirectory = contentDirectory;
-  }
+//   if(os.platform() === "win32") {
+//     destinationPath = await adjustWin32Path(result.destinationPath);
+//     console.log(destinationPath);
+//     contentDirectory = await adjustWin32Path(contentDirectory);
+//   } else {
+//     destinationPath = result.destinationPath;
+//     contentDirectory = contentDirectory;
+//   }
 
-  let destinationDirectory = `${destinationPath}/${destinationFolderName}`;
-  let activityDirectory = `${destinationPath}/${destinationFolderName}/01-Activities`;
-  let algorithmDirectory = `${destinationPath}/${destinationFolderName}/03-Algorithms`;
+//   let destinationDirectory = `${destinationPath}/${destinationFolderName}`;
+//   let activityDirectory = `${destinationPath}/${destinationFolderName}/01-Activities`;
+//   let algorithmDirectory = `${destinationPath}/${destinationFolderName}/03-Algorithms`;
   
-  result.destinationPath = destinationPath;
-  result.isContinue = true;
-  result.contentDirectory = contentDirectory;
-  result.sourceDirectory = sourceDirectory;
-  result.destinationDirectory = destinationDirectory;
-  result.destinationFolderName = destinationFolderName;
-  result.activityDirectory = activityDirectory;
-  result.algorithmDirectory = algorithmDirectory;
+//   result.destinationPath = destinationPath;
+//   result.isContinue = true;
+//   result.contentDirectory = contentDirectory;
+//   result.sourceDirectory = sourceDirectory;
+//   result.destinationDirectory = destinationDirectory;
+//   result.destinationFolderName = destinationFolderName;
+//   result.activityDirectory = activityDirectory;
+//   result.algorithmDirectory = algorithmDirectory;
 
-  return result;
-};
+//   return result;
+// };
 
 // getCopyMoveDeleteDetails();
 
