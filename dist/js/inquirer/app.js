@@ -12,7 +12,7 @@ const { execute_copy_and_delete } = require("../fileMover/step_0_executeCopyAndD
 const { openFolder } = require("../../../utilities/openFinder");
 const { gitAddCommitPush } = require("../../../utilities/gitCommit");
 const { adjustWin32Path } = require("../../../utilities/adjustWin32Path");
-const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitText } = require('./content');
+const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitText } = require('./contentConsoleLogs');
 const { createDirectoriesCopyDeleteRules } = require('./createDirectoriesCopyDeleteRules');
 const { exitProgram } = require("../../../utilities/exitProgram");
 
