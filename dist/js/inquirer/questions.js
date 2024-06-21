@@ -1,6 +1,6 @@
 const os = require('os');
 const { defaultContentDirectory, defaultDestinationDirectory } = require('./defaultDirectories');
-const { isBlank } = require("../../../utilities/util");
+const { isBlank, isPathStartsWithSlash } = require("../../../utilities/util");
 const { blueColor, redColor, whiteColor } = require("../../../utilities/colors");
 
 const questionContentDirectory = [
@@ -13,6 +13,9 @@ const questionContentDirectory = [
     suffix: " 🟡",
     validate(answer) {
       return isBlank(answer, "Class Content Directory");
+    },
+    validate(answer) {
+      return isPathStartsWithSlash(answer, "Class Content Directory");
     },
   },
 ];
@@ -48,6 +51,9 @@ const questionsDestinationPath = [
     suffix: " 🟡",
     validate(answer) {
       return isBlank(answer, "Destination Directory");
+    },
+    validate(answer) {
+      return isPathStartsWithSlash(answer, "Destination Directory");
     },
   },  
   // SECTION DELETE SOLVED FOLDERS
