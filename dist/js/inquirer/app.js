@@ -7,7 +7,7 @@ const {
   confirmContinue,
   getCommitMessage,
 } = require("./runInquirer");
-const { getAllDirectories } = require("../fileMover/utility_getAllDirectories");
+const { getAllDirectories } = require("../../../utilities/directoryLibrary");
 const { execute_copy_and_delete } = require("../fileMover/step_0_executeCopyAndDelete");
 const { openFolder } = require("../../../utilities/openFinder");
 const { gitAddCommitPush } = require("../../../utilities/gitCommit");
@@ -70,9 +70,10 @@ getCopyMoveDeleteDetails = async () => {
     .then((result) => {
       let message = result.commitMessage;
       gitAddCommitPush(
-        // "/Users/stevecalla/file-mover-edx/file-mover-edx", // mac test
+        "/Users/stevecalla/file-mover-edx/file-mover-edx", // mac test / development
+        // destinationPath, // production
+
         // '/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content', // windows test
-        destinationPath, // production
         // os.platform() === 'win32' ? "/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content" : "/Users/stevecalla/file-mover-edx/file-mover-edx",
         message
       );

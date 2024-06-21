@@ -2,8 +2,6 @@ const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config({ path: "../../../../.env" });
 
-// console.log(process.env.NODE_ENV);
-
 // SECTION WEEK NUMBER
 // const weekNumber = 21 - 1; // Week 21 = index of array or 21 - 1; // SET UPCOMING WEEK
 const weekNumber = 20 - 1; // Week 20 = index of array or 20 - 1 // SET CURRENT WEEK

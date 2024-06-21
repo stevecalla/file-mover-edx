@@ -11,7 +11,7 @@ DONE - ask delete solved 21-28
 DONE - ask delete main challenge
 DONE - ask delete solved algorithms
 DONE - based on the answers above process the data
-show - results
+DONE - display the options selected by the user
 DONE - Do you want to start over, continue/copy, exit
 DONE - readme draft
 DONE - open destination folder
@@ -21,9 +21,22 @@ DONE - add try catch & success / fail messages
 DONE - exit process after git commit / push
 DONE - add real UofO path
 DONE - test on windows machine - particularly paths
+DONE - check validation for questions
+
+move utilities all directories to the utility folder
+modify step 0a define definitions to a libraryDirectories in the utilities folder
+move all references to paths / directors to the libraryOfDirectories
+renumber step 5a to step 4
+breakup app.js into multiple... for example all the console logs into file
+
+npm package to sync paths between mac and os?
 
 readme finish with images & video
-confirm the path to git push...
-check validation for questions
+instruction page
+put variables in main file
+add confirm showing the file path for the git push/add/commit
+set question defaults for paths to process.env
 add validiation for the path... must start with "/"
 windows issue with git commit et al
+try to spin up a git add, commit, push feature in separate project
+run / open automatically on mac?

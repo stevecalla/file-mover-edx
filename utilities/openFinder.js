@@ -1,8 +1,7 @@
 const { exec } = require("child_process");
-const path = require('path');
 const os = require("os");
 const { adjustWin32Path } = require("./adjustWin32Path");
-const { blueColor, greenColor, redColor, whiteColor } = require("./colors");
+const { redColor, whiteColor } = require("./colors");
 
 async function openFolder(directoryPath) {
   let command;
@@ -14,8 +13,7 @@ async function openFolder(directoryPath) {
     console.log(successMessage);
 
   } else if (os.platform() === "win32") { // Windows
-
-    // Replace ~ with the user's home directory; modify file path
+    // For Windows OS, modify path and add home directory
     directoryPath = await adjustWin32Path(directoryPath);
 
     command = `start /b explorer "${directoryPath}"`;
@@ -30,6 +28,8 @@ async function openFolder(directoryPath) {
   }
 
   exec(command, (error, stdout, stderr) => {
+    // COMMENTED OUT BECAUSE WINDOWS OS WAS OPENING THE FOLDER BUT STILL ERRORING
+    
     // let failMessage = "";
 
     // if (error) {
