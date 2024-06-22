@@ -30,17 +30,17 @@ async function openFolder(directoryPath) {
   exec(command, (error, stdout, stderr) => {
     // COMMENTED OUT BECAUSE WINDOWS OS WAS OPENING THE FOLDER BUT STILL ERRORING
     
-    // let failMessage = "";
+    let failMessage = "";
 
-    // if (error) {
-    //   failMessage = `Error opening folder ${directoryPath}: ${error.message}`;
-    //   console.log(failMessage);
-    // }
-    // if (stderr) {
-    //   failMessage = `Error opening folder ${directoryPath}: ${stderr}`;
-    //   console.log(failMessage);
-    // }
-    // // console.log(`Opened folder ${directoryPath} successfully.`);
+    if (error) {
+      failMessage = `Error opening folder ${directoryPath}: ${error.message}`;
+      console.log(failMessage);
+    }
+    if (stderr) {
+      failMessage = `Error opening folder ${directoryPath}: ${stderr}`;
+      console.log(failMessage);
+    }
+    // console.log(`Opened folder ${directoryPath} successfully.`);
   });
 }
 

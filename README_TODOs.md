@@ -33,11 +33,13 @@ DONE - question path defaults
 DONE - clean directoryLibrary rules
 DONE - rename library to match rules
 DONE - add confirm showing the file path for the git push/add/commit
+DONE - change readme title
+DONE - add validiation for the path... must start with "/"
+DONE - added logic to exit if directories don't exist; error message - can't read path?
 
-add validiation for the path... must start with "/"
 readme finish with images & video
 instruction page
-
+test on windows again
 npm package to sync paths between mac and os?
 npm package easy git?
   - windows issue with git commit et al

@@ -1,3 +1,8 @@
+const {
+  blueColor,
+  whiteColor,
+} = require("./colors");
+
 capitalizeFirstCharacter = (answer) => {
   str = answer.trim();
   let firstChar = answer.charAt(0).toUpperCase();
@@ -32,10 +37,21 @@ isBlank = (answer, name) => {
   return true;
 };
 
+isPathStartsWithSlash = (answer) => {
+  const regex = /^\//;
+  const examplePath = "/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC";
+
+  if (!regex.test(answer)) {
+    return `Invalid Path. Must start with a ${blueColor}slash similar to ${examplePath}${whiteColor}.`;
+  }
+   return true;
+};
+
 module.exports = {
   capitalizeFirstCharacter,
   lowerCase,
   isNumber,
   isEmail,
   isBlank,
+  isPathStartsWithSlash,
 };
