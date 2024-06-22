@@ -83,7 +83,7 @@ async function gitAdd(directoryPath) {
     const currentBranch = await getCurrentBranch(directoryPath);
 
     console.log(`\n*** STARTING GIT ADD *****`);
-    console.log(`*** CURRENT BRANCH = ${currentBranch}`);
+    console.log(`*** CURRENT BRANCH = ${currentBranch} ***`);
 
     const command = `add -A`;
     await executeGitCommand(directoryPath, command, "ADDING CHANGES");
@@ -99,7 +99,7 @@ async function gitCommit(directoryPath, commitMessage) {
     const currentBranch = await getCurrentBranch(directoryPath);
     
     console.log(`\n*** STARTING GIT COMMIT *****`);
-    console.log(`*** CURRENT BRANCH = ${currentBranch}`);
+    console.log(`*** CURRENT BRANCH = ${currentBranch} ***`);
 
     const command = `commit -m "${commitMessage}" --author="${os.userInfo().username} <${os.userInfo().username}@users.noreply.github.com>" --no-verify --allow-empty --no-post-rewrite`;
     await executeGitCommand(directoryPath, command, "COMMITTING CHANGES");
@@ -115,7 +115,7 @@ async function gitPush(directoryPath) {
     const currentBranch = await getCurrentBranch(directoryPath);
     
     console.log(`\n*** STARTING GIT PUSH *****`);
-    console.log(`*** CURRENT BRANCH = ${currentBranch}`);
+    console.log(`*** CURRENT BRANCH = ${currentBranch} ***`);
 
     const command = `push origin ${currentBranch}`;
     await executeGitCommand(directoryPath, command, "PUSHING CHANGES");
