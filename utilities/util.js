@@ -37,13 +37,12 @@ isBlank = (answer, name) => {
   return true;
 };
 
-isPathStartsWithSlash = (path) => {
+isPathStartsWithSlash = (answer) => {
   const regex = /^\//;
   const examplePath = "/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC";
 
-  if (!regex.test(path)) {
-    console.log(`Invalid Path. Must start with a ${blueColor}slash similar to ${examplePath}${whiteColor}.`);
-    return `Invalid Path. Must start with a slash similar to ${examplePath}`;
+  if (!regex.test(answer)) {
+    return `Invalid Path. Must start with a ${blueColor}slash similar to ${examplePath}${whiteColor}.`;
   }
    return true;
 };

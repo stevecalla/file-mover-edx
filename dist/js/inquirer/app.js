@@ -16,6 +16,7 @@ const { exitProgram } = require("../../../utilities/exitProgram");
 
 getCopyMoveDeleteDetails = async () => {
   let contentDirectory = "";
+  let contentsOfDirectory = "";
   let sourceDirectory = "";
   let destinationPath = "";
   let destinationInformation = "";
@@ -26,16 +27,20 @@ getCopyMoveDeleteDetails = async () => {
 
   await consoleLogStartText()
     // SECTION = QUESTION #1 - GET CONTENT DIRECTORY
-    .then(() => getContentDirectory()) 
+    .then(() => getContentDirectory())
     .then((result) => contentDirectory = result.contentDirectory)
-    .then(() => openFolder(contentDirectory))
-    .then(() => getAllDirectories(contentDirectory)) // READ CONTENTS OF contentDirectory
     // SECTION = QUESTION #2 - SELECT A DIRECTORY TO COPY
-    .then((result) => getDirectoryToCopy(result))
+    .then(() => getAllDirectories(contentDirectory)) // READ CONTENTS OF contentDirectory
+    .then((result) => contentsOfDirectory = result)
+    .then(() => !contentsOfDirectory.length && exitProgram()) // IF ERROR READING DIRECTORY EXIT
+    .then(() => openFolder(contentDirectory))
+    .then(() => getDirectoryToCopy(contentsOfDirectory))
     .then((result) => sourceDirectory = result.directoryToCopy)
     // SECTION = QUESTION #3 - GET COPY & DELETE INSTRUCTIONS
     .then(() => getDestinationInformation())
     .then((result) => destinationInformation = result)
+    .then(() => getAllDirectories(destinationInformation.destinationPath)) // READ DIRECTORY TO CHECK THAT DIRECTORY EXISTS
+    .then((result) => !result.length && exitProgram()) // IF ERROR READING DIRECTORY EXIT
     .then(() => {if(copyPathMacOS) {destinationInformation.destinationPath = copyPathMacOS}}) //fix
     .then(() => consoleLogSelections(destinationInformation, contentDirectory, sourceDirectory))
     .then(() => openFolder(destinationInformation.destinationPath))
