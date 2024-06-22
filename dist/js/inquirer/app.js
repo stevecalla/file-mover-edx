@@ -13,6 +13,9 @@ const { gitAddCommitPush } = require("../../../utilities/gitCommit");
 const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitCommitText, confirmGitPath } = require('./contentConsoleLogs');
 const { createDirectoriesCopyDeleteRules } = require('./createDirectoriesCopyDeleteRules');
 const { exitProgram } = require("../../../utilities/exitProgram");
+const { link } = require('../../../utilities/hyperlinkBuyACoffee');
+
+console.log(link);
 
 getCopyMoveDeleteDetails = async () => {
   let contentDirectory = "";
@@ -21,6 +24,7 @@ getCopyMoveDeleteDetails = async () => {
   let destinationPath = "";
   let destinationInformation = "";
   const copyPathMacOS = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination"; // MAC TEST copyPath
+  
   const deployPathMacOs = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // MAC DEVELOPMENT TESTING
   const deployPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content"; // WINDOWS DEVELOPMENT TESTING
   const deployPathTesting = os.platform() === 'win32' ? deployPathWindowsOS : deployPathMacOs;

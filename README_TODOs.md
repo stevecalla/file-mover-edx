@@ -36,17 +36,24 @@ DONE - add confirm showing the file path for the git push/add/commit
 DONE - change readme title
 DONE - add validiation for the path... must start with "/"
 DONE - added logic to exit if directories don't exist; error message - can't read path?
+DONE = add a link in the terminal
+DONE = change to proper casing FILE MOVER FOR edX COURSE CONTENT
 
 readme finish with images & video
-- change to proper casing FILE MOVER FOR edX COURSE CONTENT
 instruction page
+
 test on windows again
+
 npm package to sync paths between mac and os?
+
 npm package easy git?
   - windows issue with git commit et al
   - try to spin up a git add, commit, push feature in separate project
 
 run / open automatically on mac
 
+create npm pacakage with it? (how can a node js program be run on a schedule on a mac?)
 
 change directory logic to UofOregon repo; currently set to copy to local folder and git add to different directory (for testing)
+
+add some testing
