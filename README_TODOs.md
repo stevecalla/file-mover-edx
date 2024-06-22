@@ -40,13 +40,11 @@ DONE = add a link in the terminal
 DONE = change to proper casing FILE MOVER FOR edX COURSE CONTENT
 DONE = test on windows again
 DONE = get git add, push, commit working on windows
+DONE = change directory logic to UofOregon repo; currently set to copy to local folder and git add to different directory (for testing)
 
 readme finish with images & video
 instruction page
 add some testing
-
-change directory logic to UofOregon repo; currently set to copy to local folder and git add to different directory (for testing)
-
 
 create npm package with it? (how can a node js program be run on a schedule on a mac?)
 run / open automatically on mac
