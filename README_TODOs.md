@@ -38,6 +38,7 @@ DONE - add validiation for the path... must start with "/"
 DONE - added logic to exit if directories don't exist; error message - can't read path?
 
 readme finish with images & video
+- change to proper casing FILE MOVER FOR edX COURSE CONTENT
 instruction page
 test on windows again
 npm package to sync paths between mac and os?
