@@ -35,7 +35,10 @@ function executeGitCommand(directoryPath, command, message) {
 async function getCurrentBranch(directoryPath) {
   return new Promise((resolve, reject) => {
     const gitCommand = getGitCommand();
-    const branchCommand = `${gitCommand} symbolic-ref --short HEAD`;
+
+    const fullPath = path.resolve(directoryPath);
+    const branchCommand = `${gitCommand}  -C "${fullPath}" symbolic-ref --short HEAD`;
+    
     console.log('current branch ', branchCommand);
 
     exec(branchCommand, (error, stdout, stderr) => {
