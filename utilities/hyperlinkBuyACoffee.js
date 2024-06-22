@@ -3,7 +3,7 @@ const { blueColor, whiteColor } = require("./colors");
 
 const url = `https://www.buymeacoffee.com/stevecalla`;
 
-const text = `\n${whiteColor}Visit ${blueColor}LINK${whiteColor} to support my work.\n${blueColor}${url}${whiteColor} (cmd + click)\n`;
+const text = `${whiteColor}Visit ${blueColor}LINK${whiteColor} to support my work.\n${blueColor}${url}${whiteColor} (cmd + click)\n`;
 
 function createClickableLink() {
   // ANSI escape sequences for hyperlink in terminals (ECMA-48)
