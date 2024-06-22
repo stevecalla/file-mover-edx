@@ -4,9 +4,14 @@ const {
   redColor,
   whiteColor,
 } = require("./colors");
+const { createClickableLink } = require('./hyperlinkBuyACoffee');
 
 async function exitProgram() {
-  console.log(`\n${whiteColor}Go${redColor}o${greenColor}d b${whiteColor}ye${blueColor}!!\n`);
+  console.log(`${whiteColor}Go${redColor}o${greenColor}d b${whiteColor}ye${blueColor}!!`);
+
+  const clickableLink = createClickableLink();
+  console.log(clickableLink);
+
   process.exit();
 };
 

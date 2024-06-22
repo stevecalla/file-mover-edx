@@ -13,6 +13,9 @@ const { gitAddCommitPush } = require("../../../utilities/gitCommit");
 const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitCommitText, confirmGitPath } = require('./contentConsoleLogs');
 const { createDirectoriesCopyDeleteRules } = require('./createDirectoriesCopyDeleteRules');
 const { exitProgram } = require("../../../utilities/exitProgram");
+const { link } = require('../../../utilities/hyperlinkBuyACoffee');
+
+console.log(link);
 
 getCopyMoveDeleteDetails = async () => {
   let contentDirectory = "";

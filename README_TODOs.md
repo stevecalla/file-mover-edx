@@ -37,6 +37,8 @@ DONE - change readme title
 DONE - add validiation for the path... must start with "/"
 DONE - added logic to exit if directories don't exist; error message - can't read path?
 
+add a link in the terminal
+
 readme finish with images & video
 - change to proper casing FILE MOVER FOR edX COURSE CONTENT
 instruction page
@@ -48,5 +50,8 @@ npm package easy git?
 
 run / open automatically on mac
 
+create npm pacakage with it? (how can a node js program be run on a schedule on a mac?)
 
 change directory logic to UofOregon repo; currently set to copy to local folder and git add to different directory (for testing)
+
+add some testing
