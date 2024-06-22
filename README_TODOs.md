@@ -46,3 +46,6 @@ npm package easy git?
   - try to spin up a git add, commit, push feature in separate project
 
 run / open automatically on mac
+
+
+change directory logic to UofOregon repo; currently set to copy to local folder and git add to different directory (for testing)
