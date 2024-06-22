@@ -23,11 +23,15 @@ getCopyMoveDeleteDetails = async () => {
   let sourceDirectory = "";
   let destinationPath = "";
   let destinationInformation = "";
-  const copyPathMacOS = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination"; // MAC TEST copyPath
+  // const copyPathMacOS = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination"; // MAC TEST
+  // const copyPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/01-Class-Content-Destination/"; // WINDOW TEST //fix
+  // const copyPath = os.platform() === 'win32' ? copyPathWindowsOS : copyPathMacOS; //fix
+  const copyPath = "";
   
   const deployPathMacOs = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // MAC DEVELOPMENT TESTING
-  const deployPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content"; // WINDOWS DEVELOPMENT TESTING
+  const deployPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/file-mover-edx"; // WINDOWS DEVELOPMENT TESTING
   const deployPathTesting = os.platform() === 'win32' ? deployPathWindowsOS : deployPathMacOs;
+  // const deployPathTesting = "";
 
   await consoleLogStartText()
     // SECTION = QUESTION #1 - GET CONTENT DIRECTORY
@@ -36,16 +40,20 @@ getCopyMoveDeleteDetails = async () => {
     // SECTION = QUESTION #2 - SELECT A DIRECTORY TO COPY
     .then(() => getAllDirectories(contentDirectory)) // READ CONTENTS OF contentDirectory
     .then((result) => contentsOfDirectory = result)
-    .then(() => !contentsOfDirectory.length && exitProgram()) // IF ERROR READING DIRECTORY EXIT
+    .then(() => !contentsOfDirectory && exitProgram()) // IF ERROR READING DIRECTORY EXIT //fix removed .length
     .then(() => openFolder(contentDirectory))
     .then(() => getDirectoryToCopy(contentsOfDirectory))
     .then((result) => sourceDirectory = result.directoryToCopy)
     // SECTION = QUESTION #3 - GET COPY & DELETE INSTRUCTIONS
     .then(() => getDestinationInformation())
     .then((result) => destinationInformation = result)
+
+    // .then((result) => console.log('destination information = ', destinationInformation)) //fix
     .then(() => getAllDirectories(destinationInformation.destinationPath)) // READ DIRECTORY TO CHECK THAT DIRECTORY EXISTS
-    .then((result) => !result.length && exitProgram()) // IF ERROR READING DIRECTORY EXIT
-    .then(() => {if(copyPathMacOS) {destinationInformation.destinationPath = copyPathMacOS}}) //fix
+
+    // .then((result) => console.log(result.length, result, destinationInformation.destinationPath))
+    .then((result) => !result && exitProgram()) // IF ERROR READING DIRECTORY EXIT //fix changed from !result.length to !result
+    .then(() => {if(copyPath) {destinationInformation.destinationPath = copyPath}}) //fix
     .then(() => consoleLogSelections(destinationInformation, contentDirectory, sourceDirectory))
     .then(() => openFolder(destinationInformation.destinationPath))
     // SECTION = CONFIRM THEN EXECUTE COPY & DELETE
@@ -54,7 +62,9 @@ getCopyMoveDeleteDetails = async () => {
     .then(() => createDirectoriesCopyDeleteRules(destinationInformation, contentDirectory, sourceDirectory))
     .then((result) => execute_copy_and_delete(result))
     // SECTION EXECUTE GIT ADD, COMMIT, PUSH; ONLY ON MAC OS; EXIT IF WINDOWS OS SINCE GIT IS NOT WORKING
-    .then(() => os.platform() !== "darwin" && exitProgram()) 
+
+    // .then(() => os.platform() !== "darwin" && exitProgram()) //fix
+
     .then(() => destinationPath = deployPathTesting || destinationInformation.destinationPath) //fix
     .then(() => confirmContinue(confirmGitCommitText)) // CONFIRM GIT ADD, COMMIT, PUSH
     .then((isContinue) => !isContinue && exitProgram())
