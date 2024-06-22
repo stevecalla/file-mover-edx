@@ -23,13 +23,15 @@ getCopyMoveDeleteDetails = async () => {
   let sourceDirectory = "";
   let destinationPath = "";
   let destinationInformation = "";
-  const copyPathMacOS = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination"; // MAC TEST
-  const copyPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/01-Class-Content-Destination/"; // WINDOW TEST //fix
-  const copyPath = os.platform() === 'win32' ? copyPathWindowsOS : copyPathMacOS; //fix
+  // const copyPathMacOS = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination"; // MAC TEST
+  // const copyPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/01-Class-Content-Destination/"; // WINDOW TEST //fix
+  // const copyPath = os.platform() === 'win32' ? copyPathWindowsOS : copyPathMacOS; //fix
+  const copyPath = "";
   
   const deployPathMacOs = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // MAC DEVELOPMENT TESTING
   const deployPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/file-mover-edx"; // WINDOWS DEVELOPMENT TESTING
   const deployPathTesting = os.platform() === 'win32' ? deployPathWindowsOS : deployPathMacOs;
+  // const deployPathTesting = "";
 
   await consoleLogStartText()
     // SECTION = QUESTION #1 - GET CONTENT DIRECTORY
@@ -38,14 +40,15 @@ getCopyMoveDeleteDetails = async () => {
     // SECTION = QUESTION #2 - SELECT A DIRECTORY TO COPY
     .then(() => getAllDirectories(contentDirectory)) // READ CONTENTS OF contentDirectory
     .then((result) => contentsOfDirectory = result)
-    .then(() => !contentsOfDirectory.length && exitProgram()) // IF ERROR READING DIRECTORY EXIT
+    .then(() => !contentsOfDirectory && exitProgram()) // IF ERROR READING DIRECTORY EXIT //fix removed .length
     .then(() => openFolder(contentDirectory))
     .then(() => getDirectoryToCopy(contentsOfDirectory))
     .then((result) => sourceDirectory = result.directoryToCopy)
     // SECTION = QUESTION #3 - GET COPY & DELETE INSTRUCTIONS
     .then(() => getDestinationInformation())
     .then((result) => destinationInformation = result)
-    .then((result) => console.log('destination information = ', destinationInformation)) //fix
+
+    // .then((result) => console.log('destination information = ', destinationInformation)) //fix
     .then(() => getAllDirectories(destinationInformation.destinationPath)) // READ DIRECTORY TO CHECK THAT DIRECTORY EXISTS
 
     // .then((result) => console.log(result.length, result, destinationInformation.destinationPath))
