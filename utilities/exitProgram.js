@@ -7,7 +7,7 @@ const {
 const { createClickableLink } = require('./hyperlinkBuyACoffee');
 
 async function exitProgram() {
-  console.log(`${whiteColor}Go${redColor}o${greenColor}d b${whiteColor}ye${blueColor}!!`);
+  console.log(`\n${whiteColor}See${greenColor} ya ${blueColor}soon${redColor}!!`);
 
   const clickableLink = createClickableLink();
   console.log(clickableLink);

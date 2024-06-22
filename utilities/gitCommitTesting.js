@@ -20,6 +20,9 @@ const fullPath_4 = path.resolve(defaultDestinationDirectory);
 const userInfo = os.userInfo();
 const platform = os.platform();
 
+// REVIEWING THE RESOLVED PATHS
+// WINDOWS RESOLVE WORKS BUT THE PATH ISN'T COMPLETE; IT NEEDS THE os.userInfo()...
+// ... APPENDED AT THE START PER THE adjustwin32path FUNCTION
 console.log('mac testing = ', fullPath_1);
 console.log('macOs testing = ', fullPath_2);
 console.log('windowsOs testing = ', fullPath_3);
@@ -27,6 +30,9 @@ console.log('os platform testing = ', fullPath_4);
 console.log(userInfo);
 console.log(platform);
 
+
+// NEEDED TO ADD THE testPath_1 TO THE COMMAND
+// NEED TO ADD THE adjustwin32path TO THE WINDOWS OS PATH
 async function getCurrentBranch(directoryPath) {
 
   defaultDestinationDirectoryWindowsOS = await adjustWin32Path(defaultDestinationDirectoryWindowsOS);

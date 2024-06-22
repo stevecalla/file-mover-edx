@@ -29,7 +29,7 @@ async function copyMoveAllFiles(copyAndDeleteDetails) {
   try {
     const { isContinue, sourceDirectory, destinationDirectory } = copyAndDeleteDetails;
 
-    console.log('copy & delete = ', copyAndDeleteDetails);
+    // console.log('copy & delete = ', copyAndDeleteDetails);
     
     if(isContinue) {
       await copyFilesToDestination(sourceDirectory, destinationDirectory);

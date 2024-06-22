@@ -15,8 +15,6 @@ const { createDirectoriesCopyDeleteRules } = require('./createDirectoriesCopyDel
 const { exitProgram } = require("../../../utilities/exitProgram");
 const { link } = require('../../../utilities/hyperlinkBuyACoffee');
 
-console.log(link);
-
 getCopyMoveDeleteDetails = async () => {
   let contentDirectory = "";
   let contentsOfDirectory = "";
