@@ -13,23 +13,14 @@ const { gitAddCommitPush } = require("../../../utilities/gitCommit");
 const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitCommitText, confirmGitPath } = require('./contentConsoleLogs');
 const { createDirectoriesCopyDeleteRules } = require('./createDirectoriesCopyDeleteRules');
 const { exitProgram } = require("../../../utilities/exitProgram");
-const { link } = require('../../../utilities/hyperlinkBuyACoffee');
+const { copyPathTesting, deployPathTesting } = require('./defaultDirectories');
 
 getCopyMoveDeleteDetails = async () => {
-  let contentDirectory = "";
-  let contentsOfDirectory = "";
-  let sourceDirectory = "";
+  let contentDirectory = ""; // course content directory
+  let contentsOfDirectory = ""; // contents of course content directory
+  let sourceDirectory = ""; // directoryToCopy
   let destinationPath = "";
-  let destinationInformation = "";
-  // const copyPathMacOS = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination"; // MAC TEST
-  // const copyPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/01-Class-Content-Destination/"; // WINDOW TEST //fix
-  // const copyPath = os.platform() === 'win32' ? copyPathWindowsOS : copyPathMacOS; //fix
-  const copyPath = "";
-  
-  const deployPathMacOs = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // MAC DEVELOPMENT TESTING
-  const deployPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/file-mover-edx"; // WINDOWS DEVELOPMENT TESTING
-  const deployPathTesting = os.platform() === 'win32' ? deployPathWindowsOS : deployPathMacOs;
-  // const deployPathTesting = "";
+  let destinationInformation = ""; // copy & delete details / information
 
   await consoleLogStartText()
     // SECTION = QUESTION #1 - GET CONTENT DIRECTORY
@@ -38,20 +29,17 @@ getCopyMoveDeleteDetails = async () => {
     // SECTION = QUESTION #2 - SELECT A DIRECTORY TO COPY
     .then(() => getAllDirectories(contentDirectory)) // READ CONTENTS OF contentDirectory
     .then((result) => contentsOfDirectory = result)
-    .then(() => !contentsOfDirectory && exitProgram()) // IF ERROR READING DIRECTORY EXIT //fix removed .length
+    .then(() => !contentsOfDirectory && exitProgram()) // IF ERROR READING DIRECTORY EXIT
     .then(() => openFolder(contentDirectory))
     .then(() => getDirectoryToCopy(contentsOfDirectory))
     .then((result) => sourceDirectory = result.directoryToCopy)
     // SECTION = QUESTION #3 - GET COPY & DELETE INSTRUCTIONS
     .then(() => getDestinationInformation())
     .then((result) => destinationInformation = result)
-
-    // .then((result) => console.log('destination information = ', destinationInformation)) //fix
     .then(() => getAllDirectories(destinationInformation.destinationPath)) // READ DIRECTORY TO CHECK THAT DIRECTORY EXISTS
-
-    // .then((result) => console.log(result.length, result, destinationInformation.destinationPath))
-    .then((result) => !result && exitProgram()) // IF ERROR READING DIRECTORY EXIT //fix changed from !result.length to !result
-    .then(() => {if(copyPath) {destinationInformation.destinationPath = copyPath}}) //fix
+    .then((result) => !result && exitProgram()) // IF ERROR READING DIRECTORY EXIT
+    //fix to correct path; set default copyPathTesting === "" in the defaultDirectories file
+    .then(() => {if(copyPathTesting) {destinationInformation.destinationPath = copyPathTesting}}) 
     .then(() => consoleLogSelections(destinationInformation, contentDirectory, sourceDirectory))
     .then(() => openFolder(destinationInformation.destinationPath))
     // SECTION = CONFIRM THEN EXECUTE COPY & DELETE
@@ -60,10 +48,8 @@ getCopyMoveDeleteDetails = async () => {
     .then(() => createDirectoriesCopyDeleteRules(destinationInformation, contentDirectory, sourceDirectory))
     .then((result) => execute_copy_and_delete(result))
     // SECTION EXECUTE GIT ADD, COMMIT, PUSH; ONLY ON MAC OS; EXIT IF WINDOWS OS SINCE GIT IS NOT WORKING
-
-    // .then(() => os.platform() !== "darwin" && exitProgram()) //fix
-
-    .then(() => destinationPath = deployPathTesting || destinationInformation.destinationPath) //fix
+    //fix to correct path; set default deployPathTesting === "" in the defaultDirectories file
+    .then(() => destinationPath = deployPathTesting || destinationInformation.destinationPath) 
     .then(() => confirmContinue(confirmGitCommitText)) // CONFIRM GIT ADD, COMMIT, PUSH
     .then((isContinue) => !isContinue && exitProgram())
     .then(() => confirmContinue(confirmGitPath(destinationPath)))

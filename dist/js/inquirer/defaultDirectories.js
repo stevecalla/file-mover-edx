@@ -16,6 +16,17 @@ const defaultDestinationDirectoryWindowsOS = "/Google Drive/edX Tutor/file-mover
 
 const defaultDestinationDirectory = os.platform() === "win32" ? defaultDestinationDirectoryWindowsOS : defaultDestinationDirectoryMacOs;
 
+// SECTION PATH TESTING - UNCOMMENT TO USE THESE PATH
+// const copyPathMacOS = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination"; // MAC TEST
+// const copyPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/01-Class-Content-Destination/"; // WINDOW TEST //fix
+// const copyPath = os.platform() === 'win32' ? copyPathWindowsOS : copyPathMacOS; //fix
+const copyPathTesting = "";
+
+// const deployPathMacOs = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // MAC DEVELOPMENT TESTING
+// const deployPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/file-mover-edx"; // WINDOWS DEVELOPMENT TESTING
+// const deployPathTesting = os.platform() === 'win32' ? deployPathWindowsOS : deployPathMacOs;
+const deployPathTesting = "";
+
 // SECTION FILE PATH OPTIONS FOR TESTING CONTENT IF NECESSARY
 const filePath = [
   "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content/01-HTML-Git-CSS",
@@ -47,4 +58,6 @@ const filePath = [
 module.exports = {
   defaultContentDirectory,
   defaultDestinationDirectory,
+  copyPathTesting,
+  deployPathTesting,
 }
