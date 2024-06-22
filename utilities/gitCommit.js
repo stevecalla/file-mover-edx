@@ -9,10 +9,8 @@ function executeGitCommand(directoryPath, command, message) {
     const gitCommand = getGitCommand();
 
     const fullCommand = `${gitCommand} -C "${fullPath}" ${command}`;
-    // console.log(fullCommand);
 
     exec(fullCommand, (error, stdout, stderr) => {
-      // console.log("stdout = ", stdout);
       if (error) {
         reject(`Error: ${message} in ${directoryPath}: ${error.message}`);
         return;
@@ -38,8 +36,6 @@ async function getCurrentBranch(directoryPath) {
 
     const fullPath = path.resolve(directoryPath);
     const branchCommand = `${gitCommand}  -C "${fullPath}" symbolic-ref --short HEAD`;
-    
-    console.log('current branch ', branchCommand);
 
     exec(branchCommand, (error, stdout, stderr) => {
       if (error) {
@@ -83,7 +79,15 @@ function getGitCommand() {
 
 async function gitAdd(directoryPath) {
   try {
-    await executeGitCommand(directoryPath, "add -A", "adding files");
+    // Get current branch name
+    const currentBranch = await getCurrentBranch(directoryPath);
+
+    console.log(`\n*** STARTING GIT ADD *****`);
+    console.log(`*** CURRENT BRANCH = ${currentBranch}`);
+
+    const command = `add -A`;
+    await executeGitCommand(directoryPath, command, "ADDING CHANGES");
+
   } catch (error) {
     console.error(error);
   }
@@ -93,13 +97,13 @@ async function gitCommit(directoryPath, commitMessage) {
   try {
     // Get current branch name
     const currentBranch = await getCurrentBranch(directoryPath);
-    console.log('current branch 2 = ', currentBranch);
+    
+    console.log(`\n*** STARTING GIT COMMIT *****`);
+    console.log(`*** CURRENT BRANCH = ${currentBranch}`);
 
-    await executeGitCommand(
-      directoryPath,
-      `commit -m "${commitMessage}" --author="${os.userInfo().username} <${os.userInfo().username}@users.noreply.github.com>" --no-verify --allow-empty --no-post-rewrite`,
-      "committing changes"
-    );
+    const command = `commit -m "${commitMessage}" --author="${os.userInfo().username} <${os.userInfo().username}@users.noreply.github.com>" --no-verify --allow-empty --no-post-rewrite`;
+    await executeGitCommand(directoryPath, command, "COMMITTING CHANGES");
+
   } catch (error) {
     console.error(error);
   }
@@ -109,12 +113,12 @@ async function gitPush(directoryPath) {
   try {
     // Get current branch name
     const currentBranch = await getCurrentBranch(directoryPath);
+    
+    console.log(`\n*** STARTING GIT PUSH *****`);
+    console.log(`*** CURRENT BRANCH = ${currentBranch}`);
 
-    await executeGitCommand(
-      directoryPath,
-      `push origin ${currentBranch}`,
-      "pushing changes"
-    );
+    const command = `push origin ${currentBranch}`;
+    await executeGitCommand(directoryPath, command, "PUSHING CHANGES");
   } catch (error) {
     console.error(error);
   }
