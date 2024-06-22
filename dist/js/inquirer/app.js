@@ -23,10 +23,12 @@ getCopyMoveDeleteDetails = async () => {
   let sourceDirectory = "";
   let destinationPath = "";
   let destinationInformation = "";
-  const copyPathMacOS = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination"; // MAC TEST copyPath
+  const copyPathMacOS = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination"; // MAC TEST
+  const copyPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/01-Class-Content-Destination/"; // WINDOW TEST //fix
+  const copyPath = os.platform() === 'win32' ? copyPathWindowsOS : copyPathMacOS; //fix
   
   const deployPathMacOs = "/Users/stevecalla/file-mover-edx/file-mover-edx"; // MAC DEVELOPMENT TESTING
-  const deployPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content"; // WINDOWS DEVELOPMENT TESTING
+  const deployPathWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/file-mover-edx"; // WINDOWS DEVELOPMENT TESTING
   const deployPathTesting = os.platform() === 'win32' ? deployPathWindowsOS : deployPathMacOs;
 
   await consoleLogStartText()
@@ -43,9 +45,12 @@ getCopyMoveDeleteDetails = async () => {
     // SECTION = QUESTION #3 - GET COPY & DELETE INSTRUCTIONS
     .then(() => getDestinationInformation())
     .then((result) => destinationInformation = result)
+    .then((result) => console.log('destination information = ', destinationInformation)) //fix
     .then(() => getAllDirectories(destinationInformation.destinationPath)) // READ DIRECTORY TO CHECK THAT DIRECTORY EXISTS
-    .then((result) => !result.length && exitProgram()) // IF ERROR READING DIRECTORY EXIT
-    .then(() => {if(copyPathMacOS) {destinationInformation.destinationPath = copyPathMacOS}}) //fix
+
+    // .then((result) => console.log(result.length, result, destinationInformation.destinationPath))
+    .then((result) => !result && exitProgram()) // IF ERROR READING DIRECTORY EXIT //fix changed from !result.length to !result
+    .then(() => {if(copyPath) {destinationInformation.destinationPath = copyPath}}) //fix
     .then(() => consoleLogSelections(destinationInformation, contentDirectory, sourceDirectory))
     .then(() => openFolder(destinationInformation.destinationPath))
     // SECTION = CONFIRM THEN EXECUTE COPY & DELETE
