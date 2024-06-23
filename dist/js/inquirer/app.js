@@ -1,16 +1,24 @@
-const os = require('os');
 const {
   getContentDirectory,
   getDirectoryToCopy,
   getDestinationInformation,
   getCommitMessage,
+  getNewBranchName,
   confirmContinue,
 } = require("./runInquirer");
 const { getAllDirectories } = require("../../../utilities/getAllDirectories");
 const { execute_copy_and_delete } = require("../fileMover/step_0_executeCopyAndDelete");
 const { openFolder } = require("../../../utilities/openFinder");
 const { gitAddCommitPush } = require("../../../utilities/gitCommit");
-const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitCommitText, confirmGitPath, confirmInstructionText} = require('./contentConsoleLogs');
+const { 
+  consoleLogStartText, 
+  consoleLogSelections, 
+  confirmGitPath, 
+  confirmCopyText, 
+  confirmGitCommitText, 
+  confirmInstructionText,
+  confirmCreateNewBranch,
+} = require('./contentConsoleLogs');
 const { instructionsContent } = require('./contentInstructions');
 const { createDirectoriesCopyDeleteRules } = require('./createDirectoriesCopyDeleteRules');
 const { exitProgram } = require("../../../utilities/exitProgram");
@@ -22,6 +30,8 @@ getCopyMoveDeleteDetails = async () => {
   let sourceDirectory = ""; // directoryToCopy
   let destinationPath = "";
   let destinationInformation = ""; // copy & delete details / information
+  let isCreateNewBranch = false;
+  let branchName = "";
 
   await confirmContinue(confirmInstructionText)
     .then((isContinue) => isContinue && instructionsContent())
@@ -57,8 +67,17 @@ getCopyMoveDeleteDetails = async () => {
     .then((isContinue) => !isContinue && exitProgram())
     .then(() => confirmContinue(confirmGitPath(destinationPath)))
     .then((isContinue) => !isContinue && exitProgram())
+
+    // section ask if want to create new branch
+    .then(() => confirmContinue(confirmCreateNewBranch))
+    .then((result) => { if(result) { isCreateNewBranch = true } }) // default false
+    // ask for new branch name
+    .then(() => isCreateNewBranch && getNewBranchName())
+    .then((result) => { if(result) { branchName = result.branchName } })
+    // section end
+
     .then(() => getCommitMessage())
-    .then((result) => gitAddCommitPush(destinationPath, result.commitMessage))
+    .then((result) => gitAddCommitPush(destinationPath, result.commitMessage, isCreateNewBranch, branchName))
     .catch((error) => {
       console.error("Error occurred:", error);
     });

@@ -44,9 +44,17 @@ DONE = change directory logic to UofOregon repo; currently set to copy to local 
 DONE = instruction page
 DONE = readme - images
 
+
+DONE = instructions - update That to That’s…
+DONE = add note to instructions = win32 path note = prepend os host name?
+DONE = add note to instructions = git commands for win32 vs mac OS
+DONE = add git checkout -b <branchName>
+
 readme - video
 readme - content
+
 tests - add testing
+add jest tests = use chatgpt to write
 
 test app one more time
 save the test branch in the UofO directory

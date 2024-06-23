@@ -20,6 +20,8 @@ const confirmCopyText = `Would you like to ${blueColor}COPY & DELETE per the SEL
 
 const confirmGitCommitText = `Would you like to ${blueColor}Git Add, Commit & Push${whiteColor}?`;
 
+const confirmCreateNewBranch = `Would you like to ${blueColor}create a NEW BRANCH${whiteColor}?`;
+
 const confirmGitPath = (destinationPath) => `Is this the correct path for Git add, commit, push ${blueColor}${destinationPath}?`;
 
 async function consoleLogSelections(result, contentDirectory, sourceDirectory) {
@@ -84,4 +86,5 @@ module.exports = {
   confirmCopyText,
   confirmGitCommitText,
   confirmInstructionText,
+  confirmCreateNewBranch,
 };

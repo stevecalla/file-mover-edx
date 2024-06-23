@@ -124,13 +124,33 @@ async function gitPush(directoryPath) {
   }
 }
 
-async function gitAddCommitPush(directoryPath, commitMessage) {
+async function gitCheckout(directoryPath, branchName) {
+
+  try {
+    // Get current branch name
+    const currentBranch = await getCurrentBranch(directoryPath);
+    
+    console.log(`\n*** STARTING GIT CHECKOUT -b *****`);
+    console.log(`*** CURRENT BRANCH = ${currentBranch} ***`);
+
+    const command = `checkout -b ${branchName}`;
+    await executeGitCommand(directoryPath, command, "CREATING & SWITCHING TO NEW BRANCH");
+
+    console.log(`\n*** NEW BRANCH CREATED ${branchName}} *****`);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function gitAddCommitPush(directoryPath, commitMessage, isCreateNewBranch, newBranchName) {
   // For Windows OS, modify path and add home directory
   if (os.platform() === "win32") { // Windows
     directoryPath = await adjustWin32Path(directoryPath);
   }
 
   try {
+    // add new branch if true
+    isCreateNewBranch && await gitCheckout(directoryPath, newBranchName);
     await gitAdd(directoryPath);
     await gitCommit(directoryPath, commitMessage);
     await gitPush(directoryPath);

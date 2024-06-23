@@ -40,6 +40,7 @@ const solvedInActivity21To28Text = `       - Would you like to delete ${blueColo
 const solvedInAlgorithmFolderText = `       - Would you like to delete ${blueColor}SOLVED - ALGORITHM folder${whiteColor}?`;
 const mainAllFoldersText = `MAIN FOLDERS:\n       - Would you like to delete ${blueColor}MAIN - All Folders?${whiteColor}?`;
 const mainInChallengeFolderText = `       - Would you like to delete ${blueColor}MAIN - CHALLENGE Folder${whiteColor}?`;
+
 const questionsDestinationPath = [
   // SECTION GET DESTINATION DIRECTORY
   {
@@ -142,10 +143,26 @@ const questionCommitMessage = [
   },
 ];
 
+const branchNameText = `${whiteColor}    - Enter the ${blueColor}NEW BRANCH NAME${whiteColor}?`;
+const questionNewBranchName = [
+  {
+    prefix: "⠋🟡",
+    type: "input",
+    name: "branchName",
+    message: branchNameText,
+    // default: "No default",
+    suffix: " 🟡",
+    validate(answer) {
+      return isBlank(answer, "New Branch Name");
+    },
+  },
+];
+
 module.exports = {
   questionContentDirectory,
   questionDirectoryToCopy,
   questionsDestinationPath,
   questionsContinue,
   questionCommitMessage,
+  questionNewBranchName,
 };
