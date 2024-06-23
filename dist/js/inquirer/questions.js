@@ -58,7 +58,7 @@ const questionsDestinationPath = [
   },  
   // SECTION DELETE SOLVED FOLDERS
   {
-    prefix: "\n⠋🟡 4)",
+    prefix: "\n⠋🟡 4a)",
     type: "confirm",
     name: "deleteSolvedAllFolders",
     message: allSolvedText,
@@ -99,7 +99,7 @@ const questionsDestinationPath = [
   },
   // SECTION DELETE MAIN FOLDERS
   {
-    prefix: "\n⠋🟡 5)",
+    prefix: "\n⠋🟡 4b)",
     type: "confirm",
     name: "deleteMainAllFolders",
     message: mainAllFoldersText,
@@ -111,14 +111,14 @@ const questionsDestinationPath = [
     type: "confirm",
     name: "deleteMainInChallengeFolder",
     message: mainInChallengeFolderText,
-    default: false,
+    default: true,
     suffix: " 🟡",
   }
 ];
 
-const questionsContinue = (message) => [
+const questionsContinue = (message, prefix = "🟡🟡") => [
   {
-    prefix: "\n⠋🟡🟡🟡",
+    prefix: `\n⠋🟡${prefix}`,
     type: "confirm",
     name: "isContinue",
     message: `${message}`,

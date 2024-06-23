@@ -1,4 +1,4 @@
-# File Mover for edX Course Content
+# File Mover for edX Course Contentnode 
 [![License:  MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Index
@@ -14,13 +14,20 @@
 
 ## Description
 
-```
-The app is a command-line interface to for edX instructional staff to move class content from the edX Instructor content directory to the related edX GitLab (or Github) Student repo. The user designates the path for the instructor Class Content and destination Student Content on their local environment as well as whether to delete all or specific Solved and Main files via a series of command prompt questions. As a result, the applicable folder structure and files will be copied from the Instructor content directory to the Student repo.
-```
+
+The app is a command-line interface to for edX instructional staff to move class content from the edX Instructor content directory to the related edX GitLab (or Github) Student repo. 
+
+The user designates the path for the instructor Class Content and destination Student Content on their local environment as well as whether to delete all or specific Solved and Main files via a series of command prompt questions. 
+
+As a result, the applicable folder structure and files will be copied from the Instructor content directory to the Student repo.
+
 
 ## Installation
 
-(1) Fork the repo, (2) Clone the forked repo locally, (3) Run "npm install" (to install dependencies), (4) Run "node index.js" (from the root directory).
+(1) Fork the repo (to customize the repo).<br>
+(2) Clone the forked repo locally.<br>
+(3) Run "npm install" (to install dependencies).<br>
+(4) Run "node index.js" (from the root directory).
 
 ## Technologies
 
@@ -43,7 +50,11 @@ Command line interface to:
 
 ## App Preview - Static Screenshot
 
-<img alt="" src="./dist/images/webpage-static-image.png" width="100%" height="425"/>
+### Instructions Screenshot
+<img alt="" src="./dist/images/instructionsDemo.png" width="100%" height="425"/>
+
+### Copy & Delete Screenshot
+<img alt="" src="./dist/images/copyDeleteDemo.png" width="100%" height="425"/>
 
 
 ## App Preview - Video Preview 
