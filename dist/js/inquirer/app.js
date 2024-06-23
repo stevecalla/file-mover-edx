@@ -63,20 +63,19 @@ getCopyMoveDeleteDetails = async () => {
     // SECTION EXECUTE GIT ADD, COMMIT, PUSH; ONLY ON MAC OS; EXIT IF WINDOWS OS SINCE GIT IS NOT WORKING
     //fix in production set default deployPathTesting === "" in the defaultDirectories file
     .then(() => destinationPath = deployPathTesting || destinationInformation.destinationPath) 
+    // SECTION CONFIRM GIT COMMIT PATH
     .then(() => confirmContinue(confirmGitCommitText, '5)')) // CONFIRM GIT ADD, COMMIT, PUSH
     .then((isContinue) => !isContinue && exitProgram())
     .then(() => confirmContinue(confirmGitPath(destinationPath)))
     .then((isContinue) => !isContinue && exitProgram())
-
-    // section ask if want to create new branch
+    // SECTION GET BRANCH NAME
     .then(() => confirmContinue(confirmCreateNewBranch))
     .then((result) => { if(result) { isCreateNewBranch = true } }) // default false
-    // ask for new branch name
-    .then(() => isCreateNewBranch && getNewBranchName())
-    .then((result) => { if(result) { branchName = result.branchName } })
-    // section end
-
+    .then(() => isCreateNewBranch && getNewBranchName()) // get branch name
+    .then((result) => { if(result) { branchName = result.branchName } }) // if branchName create variable
+    // SECTION GET COMMIT MESSAGE
     .then(() => getCommitMessage())
+    // SECTION EXECUTE COMMIT
     .then((result) => gitAddCommitPush(destinationPath, result.commitMessage, isCreateNewBranch, branchName))
     .catch((error) => {
       console.error("Error occurred:", error);
