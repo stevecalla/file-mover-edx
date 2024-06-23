@@ -41,7 +41,7 @@ getCopyMoveDeleteDetails = async () => {
     .then((result) => destinationInformation = result)
     .then(() => getAllDirectories(destinationInformation.destinationPath)) // READ DIRECTORY TO CHECK THAT DIRECTORY EXISTS
     .then((result) => !result && exitProgram()) // IF ERROR READING DIRECTORY EXIT
-    //fix to correct path; set default copyPathTesting === "" in the defaultDirectories file
+    //fix in production set default copyPathTesting === "" in the defaultDirectories file
     .then(() => {if(copyPathTesting) {destinationInformation.destinationPath = copyPathTesting}}) 
     .then(() => consoleLogSelections(destinationInformation, contentDirectory, sourceDirectory))
     .then(() => openFolder(destinationInformation.destinationPath))
@@ -51,7 +51,7 @@ getCopyMoveDeleteDetails = async () => {
     .then(() => createDirectoriesCopyDeleteRules(destinationInformation, contentDirectory, sourceDirectory))
     .then((result) => execute_copy_and_delete(result))
     // SECTION EXECUTE GIT ADD, COMMIT, PUSH; ONLY ON MAC OS; EXIT IF WINDOWS OS SINCE GIT IS NOT WORKING
-    //fix to correct path; set default deployPathTesting === "" in the defaultDirectories file
+    //fix in production set default deployPathTesting === "" in the defaultDirectories file
     .then(() => destinationPath = deployPathTesting || destinationInformation.destinationPath) 
     .then(() => confirmContinue(confirmGitCommitText)) // CONFIRM GIT ADD, COMMIT, PUSH
     .then((isContinue) => !isContinue && exitProgram())
