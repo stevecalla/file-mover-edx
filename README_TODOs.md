@@ -42,9 +42,14 @@ DONE = test on windows again
 DONE = get git add, push, commit working on windows
 DONE = change directory logic to UofOregon repo; currently set to copy to local folder and git add to different directory (for testing)
 DONE = instruction page
+DONE = readme - images
 
-readme finish with images & video
-add some testing
+readme - video
+readme - content
+tests - add testing
+
+test app one more time
+save the test branch in the UofO directory
 
 create npm package with it? (how can a node js program be run on a schedule on a mac?)
 run / open automatically on mac

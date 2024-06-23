@@ -46,14 +46,14 @@ getCopyMoveDeleteDetails = async () => {
     .then(() => consoleLogSelections(destinationInformation, contentDirectory, sourceDirectory))
     .then(() => openFolder(destinationInformation.destinationPath))
     // SECTION = CONFIRM THEN EXECUTE COPY & DELETE
-    .then(() => confirmContinue(confirmCopyText))
+    .then(() => confirmContinue(confirmCopyText, '4c)'))
     .then((isContinue) => !isContinue && exitProgram())
     .then(() => createDirectoriesCopyDeleteRules(destinationInformation, contentDirectory, sourceDirectory))
     .then((result) => execute_copy_and_delete(result))
     // SECTION EXECUTE GIT ADD, COMMIT, PUSH; ONLY ON MAC OS; EXIT IF WINDOWS OS SINCE GIT IS NOT WORKING
     //fix in production set default deployPathTesting === "" in the defaultDirectories file
     .then(() => destinationPath = deployPathTesting || destinationInformation.destinationPath) 
-    .then(() => confirmContinue(confirmGitCommitText)) // CONFIRM GIT ADD, COMMIT, PUSH
+    .then(() => confirmContinue(confirmGitCommitText, '5)')) // CONFIRM GIT ADD, COMMIT, PUSH
     .then((isContinue) => !isContinue && exitProgram())
     .then(() => confirmContinue(confirmGitPath(destinationPath)))
     .then((isContinue) => !isContinue && exitProgram())
