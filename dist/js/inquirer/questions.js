@@ -111,7 +111,7 @@ const questionsDestinationPath = [
     type: "confirm",
     name: "deleteMainInChallengeFolder",
     message: mainInChallengeFolderText,
-    default: false,
+    default: true,
     suffix: " 🟡",
   }
 ];

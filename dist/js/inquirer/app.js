@@ -10,7 +10,8 @@ const { getAllDirectories } = require("../../../utilities/getAllDirectories");
 const { execute_copy_and_delete } = require("../fileMover/step_0_executeCopyAndDelete");
 const { openFolder } = require("../../../utilities/openFinder");
 const { gitAddCommitPush } = require("../../../utilities/gitCommit");
-const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitCommitText, confirmGitPath } = require('./contentConsoleLogs');
+const { consoleLogStartText, confirmCopyText, consoleLogSelections, confirmGitCommitText, confirmGitPath, confirmInstructionText} = require('./contentConsoleLogs');
+const { instructionsContent } = require('./contentInstructions');
 const { createDirectoriesCopyDeleteRules } = require('./createDirectoriesCopyDeleteRules');
 const { exitProgram } = require("../../../utilities/exitProgram");
 const { copyPathTesting, deployPathTesting } = require('./defaultDirectories');
@@ -22,7 +23,9 @@ getCopyMoveDeleteDetails = async () => {
   let destinationPath = "";
   let destinationInformation = ""; // copy & delete details / information
 
-  await consoleLogStartText()
+  await confirmContinue(confirmInstructionText)
+    .then((isContinue) => isContinue && instructionsContent())
+    .then(() => consoleLogStartText())
     // SECTION = QUESTION #1 - GET CONTENT DIRECTORY
     .then(() => getContentDirectory())
     .then((result) => contentDirectory = result.contentDirectory)

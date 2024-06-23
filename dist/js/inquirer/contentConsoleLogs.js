@@ -10,9 +10,11 @@ const {
 
 async function consoleLogStartText() {
   console.log(
-    `\n${whiteColor}PLEASE ENTER THE FILES TO COPY & DELETE INSTRUCTIONS.\n`
+    `${whiteColor}PLEASE ENTER THE DIRECTORY PATHS & COPY INSTRUCTIONS.\n`
   );
 }
+
+const confirmInstructionText = `Would you like to ${blueColor}review the INSTRUCTIONS${whiteColor}`;
 
 const confirmCopyText = `Would you like to ${blueColor}COPY & DELETE per the SELECTIONS${whiteColor}`;
 
@@ -77,8 +79,9 @@ async function consoleLogSelections(result, contentDirectory, sourceDirectory) {
 
 module.exports = {
   consoleLogStartText,
-  confirmCopyText,
-  confirmGitCommitText,
   consoleLogSelections,
   confirmGitPath,
+  confirmCopyText,
+  confirmGitCommitText,
+  confirmInstructionText,
 };
