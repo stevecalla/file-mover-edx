@@ -49,12 +49,15 @@ DONE = instructions - update That to That’s…
 DONE = add note to instructions = win32 path note = prepend os host name?
 DONE = add note to instructions = git commands for win32 vs mac OS
 DONE = add git checkout -b <branchName>
-
-readme - video
-readme - content
+DONE = add jest npm
+DONE = adjust npm scripts
+DONE = adjust readme to include new scripts for testing
 
 tests - add testing
 add jest tests = use chatgpt to write
+
+readme - video
+readme - content
 
 test app one more time
 save the test branch in the UofO directory
