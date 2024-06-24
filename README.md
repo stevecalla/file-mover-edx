@@ -63,9 +63,7 @@ Command line interface to:
 
 
 ## App Preview - Video Preview 
-[Link to Video](https://www.youtube.com/watch?v=_hr9SKZC5Rc&feature=youtu.be)
-
-<img alt="" src="./dist/images/app-video-demo.gif" width="100%" height="425"/>
+[Link to Video](https://youtu.be/QIc5eyGvC7E)
 
 ## Tests
 

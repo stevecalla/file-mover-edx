@@ -54,8 +54,8 @@ SUNDAY, 6/23/2024 - VERSION 1.0
 * DONE = adjust readme to include new scripts for testing<br>
 * DONE = tests - add testing<br>
 * DONE = started adding jest tests = use chatgpt to write<br>
+* DONE = readme - video<br>
 
-readme - video<br>
 adjust exitProgram to return string rather than console log
 
 OTHER IDEAS:
