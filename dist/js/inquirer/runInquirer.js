@@ -5,6 +5,7 @@ const {
   questionsDestinationPath,
   questionsContinue,
   questionCommitMessage,
+  questionNewBranchName,
 } = require("./questions");
 
 const getContentDirectory = () => {
@@ -52,10 +53,20 @@ const getCommitMessage = async () => {
   }
 }
 
+const getNewBranchName = async () => {
+  try {
+    const gitNewBranchName = await inquirer.prompt(questionNewBranchName);
+    return gitNewBranchName;
+  } catch (error) {
+    console.log('Error getting commit message ', error);
+  }
+}
+
 module.exports = {
   getContentDirectory,
   getDirectoryToCopy,
   getDestinationInformation,
-  confirmContinue,
   getCommitMessage,
+  getNewBranchName,
+  confirmContinue,
 };

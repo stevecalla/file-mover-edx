@@ -7,6 +7,7 @@ async function adjustWin32Path(directory) {
         directory = path.join(os.homedir(), directory).replace(/\//g, "\\");
         return directory;
     }
+    return directory;
 }
 
 module.exports = {

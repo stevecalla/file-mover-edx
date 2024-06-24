@@ -27,7 +27,12 @@ As a result, the applicable folder structure and files will be copied from the I
 (1) Fork the repo (to customize the repo).<br>
 (2) Clone the forked repo locally.<br>
 (3) Run "npm install" (to install dependencies).<br>
-(4) Run "node index.js" (from the root directory).
+(4) Start the app (from the root directory):
+
+    "node index.js"... <br>
+    ...or "npm run start"<br>
+
+(5) Run Jest Tests: "npm run test"
 
 ## Technologies
 
@@ -64,7 +69,7 @@ Command line interface to:
 
 ## Tests
 
-No tests at this time.
+Jest is used for testing. Testing is setup for a limited number of functions. To run tests "npm run test".
 
 ## Contributing
 

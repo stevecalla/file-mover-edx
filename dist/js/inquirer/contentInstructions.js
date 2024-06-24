@@ -37,9 +37,25 @@ async function instructionsContent() {
   - Default:      Will default to and confirm the "destination" directory.
   - Commit:       Input the commit message.
   - Confirm:      Continue if appropriate.
-  
-  ${blueColor}That It! Be Efficient & Good Luck!!
+
+  ${blueColor}Windows OS Path:${whiteColor}
+  - The adjustWin32Path.js utility prepends the path with the os.homedir().
+  - The adjustWin32Path.js utility replaces forward-slashes.
+  - To adjust this behavior:
+    * Comment out the adjustWin32Path.js as necessary.
+    * Remove the validation in the questions.js (question #1, question #3).
+    * Adjust validation in app.js at the steps with comment "READ CONTENTS...".
+    * Modify createDirectoriesCopyDeleteRules.js as necessary.
+    * Modify defaultDirectories.js as necessary
+    * Modify gitCommit.js as necessary.
+
+  ${blueColor}Git Checkout, Add, Commit, Push:${whiteColor}
+  - Windows OS uses "git". Mac OS uses "/usr/bin/git".
+  - Defaults may need adjustment in gitCommit.js, getGitCommand function.
+
   ${redColor}Note: If the copy/delete results need to change, simply redo the process!!
+  
+  ${blueColor}That's It! Be Efficient & Good Luck!!${redColor}
   *****************    ${blueColor}*****************    ${whiteColor}*****************
   ${whiteColor}`
   );
