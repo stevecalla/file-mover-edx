@@ -5,7 +5,7 @@ const url = `https://www.buymeacoffee.com/stevecalla`;
 
 const text = `${whiteColor}Visit ${blueColor}LINK${whiteColor} to support my work.\n${blueColor}${url}${whiteColor} (hover + cmd/ctrl + click)\n`;
 
-function createClickableLink() {
+async function createClickableLink() {
   // ANSI escape sequences for hyperlink in terminals (ECMA-48)
   const ESC = '\u001B[';
   const OSC = '\u001B]';
@@ -20,6 +20,8 @@ function createClickableLink() {
 
   // Combine all parts: underlineStart OSC 8 ; URI ; additional information BEL Label OSC 8 ; BEL underlineEnd
   const styledLink = `${underlineStart}${hyperlink}${underlineEnd}`;
+
+  // console.log('styled link = ', styledLink);
 
   return styledLink;
 }

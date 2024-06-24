@@ -69,7 +69,7 @@ Command line interface to:
 
 ## Tests
 
-No tests at this time.
+Jest is used for testing. Testing is setup for a limited number of functions. To run tests "npm run test".
 
 ## Contributing
 

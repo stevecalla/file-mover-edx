@@ -86,7 +86,7 @@ async function gitAdd(directoryPath) {
     console.log(`*** CURRENT BRANCH = ${currentBranch} ***`);
 
     const command = `add -A`;
-    await executeGitCommand(directoryPath, command, "ADDING CHANGES");
+    let output = await executeGitCommand(directoryPath, command, "ADDING CHANGES");
 
   } catch (error) {
     console.error(error);
@@ -168,4 +168,6 @@ async function gitAddCommitPush(directoryPath, commitMessage, isCreateNewBranch,
 
 module.exports = {
   gitAddCommitPush,
+  executeGitCommand,
+  gitAdd,
 }
