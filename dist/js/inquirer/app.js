@@ -34,6 +34,7 @@ getCopyMoveDeleteDetails = async () => {
   let branchName = "";
 
   await confirmContinue(confirmInstructionText)
+    // SECTION RENDER INSTRUCTIONS
     .then((isContinue) => isContinue && instructionsContent())
     .then(() => consoleLogStartText())
     // SECTION = QUESTION #1 - GET CONTENT DIRECTORY
@@ -42,15 +43,15 @@ getCopyMoveDeleteDetails = async () => {
     // SECTION = QUESTION #2 - SELECT A DIRECTORY TO COPY
     .then(() => getAllDirectories(contentDirectory)) // READ CONTENTS OF contentDirectory
     .then((result) => contentsOfDirectory = result)
-    .then(() => !contentsOfDirectory && exitProgram()) // IF ERROR READING DIRECTORY EXIT
+    .then(() => !contentsOfDirectory.length && exitProgram()) // IF ERROR READING DIRECTORY EXIT
     .then(() => openFolder(contentDirectory))
     .then(() => getDirectoryToCopy(contentsOfDirectory))
     .then((result) => sourceDirectory = result.directoryToCopy)
-    // SECTION = QUESTION #3 - GET COPY & DELETE INSTRUCTIONS
+    // SECTION = QUESTION #3 & #4 - GET COPY & DELETE INSTRUCTIONS
     .then(() => getDestinationInformation())
     .then((result) => destinationInformation = result)
     .then(() => getAllDirectories(destinationInformation.destinationPath)) // READ DIRECTORY TO CHECK THAT DIRECTORY EXISTS
-    .then((result) => !result && exitProgram()) // IF ERROR READING DIRECTORY EXIT
+    .then((result) => !result.length && exitProgram()) // IF ERROR READING DIRECTORY EXIT
     //fix in production set default copyPathTesting === "" in the defaultDirectories file
     .then(() => {if(copyPathTesting) {destinationInformation.destinationPath = copyPathTesting}}) 
     .then(() => consoleLogSelections(destinationInformation, contentDirectory, sourceDirectory))
@@ -60,7 +61,7 @@ getCopyMoveDeleteDetails = async () => {
     .then((isContinue) => !isContinue && exitProgram())
     .then(() => createDirectoriesCopyDeleteRules(destinationInformation, contentDirectory, sourceDirectory))
     .then((result) => execute_copy_and_delete(result))
-    // SECTION EXECUTE GIT ADD, COMMIT, PUSH; ONLY ON MAC OS; EXIT IF WINDOWS OS SINCE GIT IS NOT WORKING
+    // SECTION Question #5 - EXECUTE GIT ADD, COMMIT, PUSH
     //fix in production set default deployPathTesting === "" in the defaultDirectories file
     .then(() => destinationPath = deployPathTesting || destinationInformation.destinationPath) 
     // SECTION CONFIRM GIT COMMIT PATH

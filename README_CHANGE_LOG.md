@@ -54,9 +54,13 @@ SUNDAY, 6/23/2024 - VERSION 1.0
 * DONE = adjust readme to include new scripts for testing<br>
 * DONE = tests - add testing<br>
 * DONE = started adding jest tests = use chatgpt to write<br>
+* DONE = readme - video<br>
+* DONE = adjust exitProgram to return string rather than console log; refactored to break into smaller functions
+* DONE = adjust app.js exitProgram condition to include length
 
-readme - video<br>
-test app one more time<br>
-save the test branch in the UofO directory<br>
-create npm package with it? (how can a node js program be run on a schedule on a mac?)<br>
-run / open automatically on mac<br>
+OTHER IDEAS:
+adjust win32 function it returns either windows or mac... don't need to check osplatform each time for example in gitCommit.js
+* test app one more time<br>
+* save the test branch in the UofO directory<br>
+* create npm package with it? (how can a node js program be run on a schedule on a mac?)<br>
+* run / open semi-automatically on mac<br>
