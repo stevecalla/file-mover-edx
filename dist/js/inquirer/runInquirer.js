@@ -35,9 +35,9 @@ const getDestinationInformation = () => {
   }
 };
 
-confirmContinue = async (message, prefix) => {
+confirmContinue = async (message, prefixText) => {
   try {
-    const confirm = await inquirer.prompt(questionsContinue(message, prefix));
+    const confirm = await inquirer.prompt(questionsContinue(message, prefixText));
     return confirm.isContinue;
   } catch (error) {
     console.log('Error confirming continue ', error);

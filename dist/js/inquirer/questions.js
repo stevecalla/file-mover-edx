@@ -117,9 +117,9 @@ const questionsDestinationPath = [
   }
 ];
 
-const questionsContinue = (message, prefix = "🟡🟡") => [
+const questionsContinue = (message, prefixText = "🟡🟡") => [
   {
-    prefix: `\n⠋🟡${prefix}`,
+    prefix: `\n⠋🟡${prefixText}`,
     type: "confirm",
     name: "isContinue",
     message: `${message}`,
