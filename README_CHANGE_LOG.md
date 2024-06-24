@@ -57,6 +57,7 @@ SUNDAY, 6/23/2024 - VERSION 1.0
 * DONE = readme - video<br>
 
 adjust exitProgram to return string rather than console log
+adjust win32 function it returns either windows or mac... don't need to check osplatform each time
 
 OTHER IDEAS:
 * test app one more time<br>
