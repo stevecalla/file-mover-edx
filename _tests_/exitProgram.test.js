@@ -5,22 +5,22 @@ const {
   whiteColor,
 } = require("../utilities/colors");
 const { createClickableLink } = require("../utilities/hyperlinkBuyACoffee");
-const { exitProgram, exitMessage } = require("../utilities/exitProgram");
+const { exitCommand, exitMessage } = require("../utilities/exitProgram");
 
 jest.mock("../utilities/hyperlinkBuyACoffee", () => ({
   createClickableLink: jest.fn(),
 }));
 
-describe("exitProgram function", () => {
+describe("exitCommand function", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  describe("when exitProgram is called", () => {
+  describe("when exitCommand is called", () => {
     it("should call process.exit", async () => {
       const mockExit = jest.spyOn(process, "exit").mockImplementation(() => {});
 
-      await exitProgram(true);
+      await exitCommand(true);
 
       expect(mockExit).toHaveBeenCalled();
     });
@@ -34,7 +34,7 @@ describe("when exitMessage is called", () => {
     expect(createClickableLink).toHaveBeenCalled();
   });
 
-  it("should log the exit message", async () => {
+  it("should create the error message", async () => {
     const message = await exitMessage();
 
     // console.log(message);

@@ -42,7 +42,7 @@ getCopyMoveDeleteDetails = async () => {
     // SECTION = QUESTION #2 - SELECT A DIRECTORY TO COPY
     .then(() => getAllDirectories(contentDirectory)) // READ CONTENTS OF contentDirectory
     .then((result) => contentsOfDirectory = result)
-    .then(() => !contentsOfDirectory && exitProgram()) // IF ERROR READING DIRECTORY EXIT
+    .then(() => !contentsOfDirectory.length && exitProgram()) // IF ERROR READING DIRECTORY EXIT
     .then(() => openFolder(contentDirectory))
     .then(() => getDirectoryToCopy(contentsOfDirectory))
     .then((result) => sourceDirectory = result.directoryToCopy)
@@ -50,7 +50,7 @@ getCopyMoveDeleteDetails = async () => {
     .then(() => getDestinationInformation())
     .then((result) => destinationInformation = result)
     .then(() => getAllDirectories(destinationInformation.destinationPath)) // READ DIRECTORY TO CHECK THAT DIRECTORY EXISTS
-    .then((result) => !result && exitProgram()) // IF ERROR READING DIRECTORY EXIT
+    .then((result) => !result.length && exitProgram()) // IF ERROR READING DIRECTORY EXIT
     //fix in production set default copyPathTesting === "" in the defaultDirectories file
     .then(() => {if(copyPathTesting) {destinationInformation.destinationPath = copyPathTesting}}) 
     .then(() => consoleLogSelections(destinationInformation, contentDirectory, sourceDirectory))
