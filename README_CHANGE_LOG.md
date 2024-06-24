@@ -56,7 +56,10 @@ SUNDAY, 6/23/2024 - VERSION 1.0
 * DONE = started adding jest tests = use chatgpt to write<br>
 
 readme - video<br>
-test app one more time<br>
-save the test branch in the UofO directory<br>
-create npm package with it? (how can a node js program be run on a schedule on a mac?)<br>
-run / open automatically on mac<br>
+adjust exitProgram to return string rather than console log
+
+OTHER IDEAS:
+* test app one more time<br>
+* save the test branch in the UofO directory<br>
+* create npm package with it? (how can a node js program be run on a schedule on a mac?)<br>
+* run / open semi-automatically on mac<br>
