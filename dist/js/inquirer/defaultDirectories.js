@@ -1,7 +1,8 @@
 const os = require('os');
 
 // SECTION CONTENT DIRECTORY
-const defaultContentDirectoryMacOS = "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content";
+// const defaultContentDirectoryMacOS = "/Users/stevecalla/uoregon_fullstack/fullstack-live/01-Class-Content";
+const defaultContentDirectoryMacOS = "/Users/stevecalla/uncharlotte_fullstack/software-development/01-Class-Content";
 
 const defaultContentDirectoryWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/fullstack-live/01-Class-Content";
 
@@ -10,7 +11,8 @@ const defaultContentDirectory = os.platform() === "win32" ? defaultContentDirect
 // SECTION DESTINATION DIRECTORY
 const defaultDestinationDirectoryMacOSTesting = "/Users/stevecalla/file-mover-edx/01-Class-Content-Destination";
 
-const defaultDestinationDirectoryMacOs = "/Users/stevecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC";
+// const defaultDestinationDirectoryMacOs = "/Users/stevclearecalla/uoregon_fullstack/UofO-VIRT-FSF-PT-01-2024-U-LOLC";
+const defaultDestinationDirectoryMacOs = "/Users/stevecalla/uncharlotte_fullstack/UNCC-VIRT-FSF-PT-07-2024-U-LOLC";
 
 const defaultDestinationDirectoryWindowsOS = "/Google Drive/edX Tutor/file-mover-edx/UofO-VIRT-FSF-PT-01-2024-U-LOLC";
 
